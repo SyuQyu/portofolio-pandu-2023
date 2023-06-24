@@ -48,6 +48,20 @@ module.exports = {
           800: '#000000',
           900: '#000000'
         },
+        'cloud': {
+          DEFAULT: '#C8C5BD',
+          50: '#FFFFFF',
+          100: '#FFFFFF',
+          200: '#FFFFFF',
+          300: '#EDECEA',
+          400: '#DBD9D3',
+          500: '#C8C5BD',
+          600: '#AFAA9E',
+          700: '#958F80',
+          800: '#787364',
+          900: '#5A564B',
+          950: '#4A473E'
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
