@@ -11,9 +11,10 @@ export default function Home() {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ["Handy", "Mandy", "Candy", "More Strings"],
+      strings: ["Hello", "こんにちは", "안녕하세요", "Ciao", "Guten tag", "Nǐ hǎo"],
       startDelay: 500,
       typeSpeed: 50,
+      delaySpeed: 90,
       backSpeed: 50,
       backDelay: 500,
       smartBackspace: true,
@@ -32,9 +33,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-wrap h-full">
-      <div className="w-1/2 flex justify-center items-center">
+      <div className="w-1/2 flex justify-center items-center font-extrabold text-5xl">
         <span ref={el}></span>
-        <span>, Pandu Utomo</span> {/* Display the typed string */}
+        <span>, I'm Pandu Utomo</span>
       </div>
       <div className="w-1/2 flex justify-center items-center">
         <Computer />

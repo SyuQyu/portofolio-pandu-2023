@@ -1,5 +1,6 @@
 #layout-default {
     @apply relative flex flex-col w-screen h-auto min-h-screen bg-primary-500 text-white;
+    overflow-x: hidden;
 
     header.header {
         @apply flex flex-row justify-between items-center w-full sm:px-20 xsm:px-5 md:h-28 backdrop-blur-[10px];
@@ -12,5 +13,4 @@
     footer.footer {
         @apply flex justify-center items-center w-full bg-slate-900 py-8;
     }
-
 }
