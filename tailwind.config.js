@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const withMT = require("@material-tailwind/react/utils/withMT");
+module.exports = withMT({
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    "./node_modules/flowbite-react/**/*.js",
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
@@ -62,6 +62,20 @@ module.exports = {
           900: '#5A564B',
           950: '#4A473E'
         },
+        'anzac': {
+          '50': '#fbf7eb',
+          '100': '#f7eaca',
+          '200': '#f0d498',
+          '300': '#e7b65d',
+          '400': '#e1a140',
+          '500': '#cf8323',
+          '600': '#b2651c',
+          '700': '#8f4819',
+          '800': '#773a1c',
+          '900': '#66321d',
+          '950': '#3b180d',
+      },
+      
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -82,6 +96,5 @@ module.exports = {
     },
   },
   plugins: [
-    require('flowbite/plugin')
   ],
-}
+});

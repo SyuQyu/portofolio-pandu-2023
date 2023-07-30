@@ -2,7 +2,6 @@
 import { Suspense, useEffect, useState } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
-import { Loader } from '../loader/loader';
 
 const Load3D = ({ isMobile }: any) => {
     const gltf = useGLTF('/scene/smol/scene.gltf');
@@ -20,7 +19,7 @@ const Load3D = ({ isMobile }: any) => {
             <pointLight intensity={1} />
             <primitive
                 object={gltf.scene}
-                scale={isMobile ? 1 : 1.4}
+                scale={isMobile ? .8 : 1.2}
                 position={isMobile ? [0, -3, -0.2] : [0, -1.5, 0]}
             />
         </mesh>
@@ -29,7 +28,7 @@ const Load3D = ({ isMobile }: any) => {
 
 
 
-export default function Computer() {
+export default function Computer({}) {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -65,7 +64,7 @@ export default function Computer() {
                 position: [-1, 3, 6],
             }}
         >
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={null}>
                 <OrbitControls
                     autoRotate
                     enableZoom={false}
@@ -73,8 +72,7 @@ export default function Computer() {
                     minPolarAngle={Math.PI / 2}
                 />
                 <Load3D />
-
-                <Preload all />
+                <Preload all></Preload>
             </Suspense>
         </Canvas>
     );

@@ -1,0 +1,18 @@
+export const Skills = [
+    { name: 'HTML', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'CSS', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'JavaScript', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'ReactJS', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'NextJS', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'TailwindCSS', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'Material UI', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'Ant Design', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'VueJs', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'ExpressJS', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'Sequilize ORM', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'Prisma ORM', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'Mysql', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'MonggoDB', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'Git', image: '/image/skill/html.png', profiency: 'advance' },
+    { name: 'NodeJS', image: '/image/skill/html.png', profiency: 'advance' },
+];
