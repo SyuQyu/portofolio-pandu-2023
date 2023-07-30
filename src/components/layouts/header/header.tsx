@@ -5,7 +5,12 @@ export default function Header({ className, navbarOpen, setNavbarOpen }: HeaderP
     return (
         <header className={`w-full fixed top-0 left-0 pt-10 pb-1 px-20 flex z-20  ${navbarOpen ? '' : ''} transition-colors duration-300`}>
             <div className={`${navbarOpen ? 'text-black' : 'text-anzac-200'} flex-grow z-20 `}>
-                <h1 className="text-2xl font-bold my-0 transition-colors duration-300">PanduUtomo();</h1>
+                <Link
+                    href="/"
+                    className={`${navbarOpen ? 'text-black' : 'text-anzac-200'} flex-grow z-20 `}
+                >
+                    <h1 className="text-2xl font-bold my-0 transition-colors duration-300">PanduUtomo();</h1>
+                </Link>
             </div>
             <button
                 className="flex top-0 right-0 z-20 relative w-10 h-10 text-anzac-200 focus:outline-none"

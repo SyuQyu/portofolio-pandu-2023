@@ -3,7 +3,8 @@ import Container from '@/components/common/container';
 import Motion from '@/components/common/motion';
 import SkillCards from '@/components/common/skillCards';
 import ImageWithFallback from '@/components/common/imageWithFallback';
-import { Skills } from '@/contants/dataSkills';
+import { Coding, Design, Sosmed } from '@/contants/dataSkills';
+import Link from 'next/link'
 import {
     Card,
     CardHeader,
@@ -63,10 +64,10 @@ export default function AboutMe() {
                 </div>
             </Motion>
             <div className="flex space-x-6 bg-gray-800/50 p-10 rounded-lg">
-                <div className="w-1/3 items-center">
+                <div className="w-1/3 items-center m-auto justify-center flex">
                     <Card
                         shadow={false}
-                        className="relative grid h-[30rem] w-full max-w-[28rem] items-end justify-center overflow-hidden text-center"
+                        className="relative grid h-[35rem] w-full max-w-[28rem] items-end justify-center overflow-hidden text-center"
                     >
                         <CardHeader
                             floated={false}
@@ -87,23 +88,69 @@ export default function AboutMe() {
                     </Card>
                 </div>
                 <div className="w-2/3 m-auto flex flex-col justify-center">
-                    <Motion direction="x" transitionData={{ delay: .6 }}>
-                        <Typography variant="paragraph" className="mb-4 text-white">
-                            Hello there! My name is Pandu Utomo, and I am currently an undergraduate student pursuing a degree in Computer Science with a major in Informatics at Universitas Pembangunan Nasional Veteran Jakarta. I have always been deeply fascinated by the world of technology and its potential to shape the future. My primary areas of interest lie in web development and 3D environment design.
-                        </Typography>
-                        <Typography variant="paragraph" className="mb-4 text-white">
-                            Over the course of my academic journey, I have delved into the intricacies of programming, software development, and data analysis, all of which have contributed to my growing expertise in the field of computer science. Web development, in particular, has captured my imagination, and I find great joy in crafting interactive and visually appealing websites that seamlessly blend form and function.
-                        </Typography>
-                        <Typography variant="paragraph" className="mb-4 text-white">
-                            Additionally, my passion for 3D environment design has allowed me to explore the realm of virtual landscapes and immersive experiences. Combining creativity with technical skills, I have enjoyed experimenting with various design tools to build captivating virtual environments.
-                        </Typography>
-                        <Typography variant="paragraph" className="mb-4 text-white">
-                            Besides my academic pursuits, I have gained practical experience in web development through internships and personal projects, totaling approximately one year of hands-on experience. This exposure has provided me with invaluable insights into the real-world challenges and problem-solving techniques that developers face.
-                        </Typography>
-                        <Typography variant="paragraph" className="mb-4 text-white">
-                            As I continue my education and exploration in the ever-evolving world of technology, my goal is to become a proficient and innovative professional in the field of web development and 3D design. I look forward to contributing my skills and creativity to projects that make a positive impact on people's lives and the digital landscape.
-                        </Typography>
-                    </Motion>
+                    <div className="w-full m-auto flex flex-col justify-center">
+                        <Motion direction="x" transitionData={{ delay: .5 }}>
+                            <div className="flex w-full mb-4 space-x-4">
+                                <Typography variant="h5" className="text-anzac-50" textGradient>
+                                    Introduction
+                                </Typography>
+                                <div className="relative w-full">
+                                    <div className="h-[1px] w-full bg-anzac-200 absolute top-3"></div>
+                                </div>
+                            </div>
+                        </Motion>
+                        <Motion direction="x" transitionData={{ delay: .6 }}>
+                            <Typography variant="paragraph" className="mb-4 text-white">
+                                Hello there! My name is Pandu Utomo, and I am currently an undergraduate student pursuing a degree in Computer Science with a major in Informatics at Universitas Pembangunan Nasional Veteran Jakarta. I have always been deeply fascinated by the world of technology and its potential to shape the future. My primary areas of interest lie in web development and 3D environment design.
+                            </Typography>
+                            <Typography variant="paragraph" className="mb-4 text-white">
+                                Over the course of my academic journey, I have delved into the intricacies of programming, software development, and data analysis, all of which have contributed to my growing expertise in the field of computer science. Web development, in particular, has captured my imagination, and I find great joy in crafting interactive and visually appealing websites that seamlessly blend form and function.
+                            </Typography>
+                            <Typography variant="paragraph" className="mb-4 text-white">
+                                Additionally, my passion for 3D environment design has allowed me to explore the realm of virtual landscapes and immersive experiences. Combining creativity with technical skills, I have enjoyed experimenting with various design tools to build captivating virtual environments.
+                            </Typography>
+                            <Typography variant="paragraph" className="mb-4 text-white">
+                                Besides my academic pursuits, I have gained practical experience in web development through internships and personal projects, totaling approximately one year of hands-on experience. This exposure has provided me with invaluable insights into the real-world challenges and problem-solving techniques that developers face.
+                            </Typography>
+                            <Typography variant="paragraph" className="mb-4 text-white">
+                                As I continue my education and exploration in the ever-evolving world of technology, my goal is to become a proficient and innovative professional in the field of web development and 3D design. I look forward to contributing my skills and creativity to projects that make a positive impact on people's lives and the digital landscape.
+                            </Typography>
+                        </Motion>
+                    </div>
+                    <div className="w-full m-auto flex flex-col justify-center">
+                        <Motion direction="x" transitionData={{ delay: .5 }}>
+                            <div className="flex w-full mb-4 space-x-4">
+                                <Typography variant="h5" className="text-anzac-50 w-[20%]" textGradient>
+                                    Social Media
+                                </Typography>
+                                <div className="relative w-full">
+                                    <div className="h-[1px] w-full bg-anzac-200 absolute top-3"></div>
+                                </div>
+                            </div>
+                        </Motion>
+                        <Motion direction="x" transitionData={{ delay: .6 }} className="flex space-x-6 ">
+                            {
+                                Sosmed?.map((data, index) =>
+                                    <Link href={data.link} key={index}>
+                                        <div className="flex flex-row space-x-4 w-full">
+                                            <ImageWithFallback
+                                                priority={true}
+                                                src={data.image}
+                                                alt={`Image for ${data.name}`}
+                                                width={0}
+                                                height={0}
+                                                sizes='100vw'
+                                                className='w-[32px] sm:h-[32px] object-contain'
+                                            />
+                                            <Typography variant="paragraph" className="text-white m-auto" textGradient>
+                                                {data.name}
+                                            </Typography>
+                                        </div>
+                                    </Link>
+                                )
+                            }
+                        </Motion>
+                    </div>
                 </div>
             </div>
             <div className="mt-10">
@@ -123,7 +170,7 @@ export default function AboutMe() {
             <Motion direction="y" transitionData={{ delay: .6 }}>
                 <div className='grid grid-cols-6 justify-between items-center'>
                     {
-                        Skills?.map((data, index) =>
+                        Coding?.map((data, index) =>
                             <SkillCards key={index} >
                                 <motion.div initial="rest" whileHover="hover" animate="rest" className="border-solid border-2 p-4 justify-center items-center border-anzac-200 rounded-md flex flex-row shadow-lg shadow-anzac-200/30 space-x-6 px-8 m-6">
                                     <div>
@@ -134,7 +181,58 @@ export default function AboutMe() {
                                             width={0}
                                             height={0}
                                             sizes='100vw'
-                                            className='w-[32px] sm:h-[32px] object-cover'
+                                            className='w-[32px] sm:h-[32px] object-contain'
+                                        />
+                                    </div>
+                                    <div>
+                                        <motion.div variants={textMotion}>
+                                            <Typography variant="paragraph" className=" text-white">
+                                                {data.name}
+                                            </Typography>
+                                        </motion.div>
+                                        <motion.div
+                                            variants={slashMotion}
+                                        >
+                                            <Typography variant="small" className="text-white">
+                                                {data.profiency}
+                                            </Typography>
+                                        </motion.div>
+                                    </div>
+                                </motion.div>
+                            </SkillCards>
+                        )
+                    }
+                </div>
+            </Motion>
+            <div className="mt-10">
+                <Motion direction="x" transitionData={{ delay: .4 }}>
+                    <div className="flex w-full mb-6 space-x-4" data-aos='fade-up'>
+                        <div className="relative w-[5%]">
+                            <div className="h-[1px] w-full bg-anzac-200 absolute top-3"></div>
+                        </div>
+                        <div className="w-3/4">
+                            <Typography variant="h5" className="text-anzac-50" textGradient>
+                                Skills 3D & Design
+                            </Typography>
+                        </div>
+                    </div>
+                </Motion>
+            </div>
+            <Motion direction="y" transitionData={{ delay: .6 }}>
+                <div className='grid grid-cols-6 justify-between items-center' data-aos='fade-up'>
+                    {
+                        Design?.map((data, index) =>
+                            <SkillCards key={index} >
+                                <motion.div initial="rest" whileHover="hover" animate="rest" className="border-solid border-2 p-4 justify-center items-center border-anzac-200 rounded-md flex flex-row shadow-lg shadow-anzac-200/30 space-x-6 px-8 m-6">
+                                    <div>
+                                        <ImageWithFallback
+                                            priority={true}
+                                            src={data.image}
+                                            alt={`Image for ${data.name}`}
+                                            width={0}
+                                            height={0}
+                                            sizes='100vw'
+                                            className='w-[32px] sm:h-[32px] object-contain'
                                         />
                                     </div>
                                     <div>
