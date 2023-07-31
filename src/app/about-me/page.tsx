@@ -63,7 +63,7 @@ export default function AboutMe() {
                     </div>
                 </div>
             </Motion>
-            <div className="flex space-x-6 bg-gray-800/50 p-10 rounded-lg">
+            <div className="flex space-x-6 bg-gray-800/50 p-10 rounded-lg" data-aos="zoom-in-up">
                 <div className="w-1/3 items-center m-auto justify-center flex">
                     <Card
                         shadow={false}
@@ -168,7 +168,7 @@ export default function AboutMe() {
                 </Motion>
             </div>
             <Motion direction="y" transitionData={{ delay: .6 }}>
-                <div className='grid grid-cols-6 justify-between items-center'>
+                <div className='grid grid-cols-6 justify-between items-center' data-aos='fade-up'>
                     {
                         Coding?.map((data, index) =>
                             <SkillCards key={index} >
