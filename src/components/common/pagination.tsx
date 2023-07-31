@@ -6,60 +6,47 @@ import React from "react";
 import { Button, IconButton } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 
 const Pagination = ({ number, transitionData, className, currentPage, onChange }: any) => {
     const [active, setActive] = React.useState(currentPage);
-
-    const getItemProps = (index: any) =>
-    ({
-        variant: active === index ? "filled" : "text",
-        color: active === index ? "blue" : "blue-gray",
-        onClick: () => setActive(index),
-    } as any);
+    const router = useRouter();
 
     const next = () => {
         if (active === number) return;
-
-        setActive(active + 1);
+        if (parseInt(currentPage) !== parseInt(number)) {
+            setActive(parseInt(active) + 1);
+            console.log(active)
+            router.push(`/portofolio-3d/${parseInt(active) + 1}`);
+        }
     };
 
     const prev = () => {
         if (active === 1) return;
-
-        setActive(active - 1);
+        if (parseInt(currentPage) !== 1) {
+            setActive(active - 1);
+            console.log(active)
+            router.push(`/portofolio-3d/${active - 1}`);
+        }
     };
 
     return (
-        <div className="flex items-center justify-center gap-4">
-            {console.log(active, "data number")}
+        <div className="flex items-center justify-between gap-4">
             <Button
                 variant="text"
                 color="blue-gray"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 text-anzac-200 text-xl"
                 onClick={prev}
-                disabled={active === 1}
+                disabled={parseInt(currentPage) === 1}
             >
                 <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" /> Previous
             </Button>
-            <div className="flex items-center gap-2">
-                {Array.from(Array(number), (e, index) => (
-                    <IconButton
-                        {...getItemProps(index + 1)}
-                        key={index + 1}
-                        onClick={() => onChange(index + 1)} // Call the onChange function with the correct page number
-                    >
-                        <Link href={`/portofolio-3d/${index + 1}`}>
-                            {index + 1}
-                        </Link>
-                    </IconButton>
-                ))}
-            </div>
             <Button
                 variant="text"
                 color="blue-gray"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 text-anzac-200 text-xl"
                 onClick={next}
-                disabled={active === number}
+                disabled={parseInt(currentPage) === parseInt(number)}
             >
                 Next
                 <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />

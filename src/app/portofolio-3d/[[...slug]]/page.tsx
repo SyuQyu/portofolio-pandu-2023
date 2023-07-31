@@ -15,15 +15,11 @@ export default function Portofolio3D(page: any) {
 
     // Slice the data into chunks of 12 items each
     const paginatedData = Design.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
+        (pages - 1) * itemsPerPage,
+        pages * itemsPerPage
     );
-    const handlePaginationChange = (pages:any) => {
-        setCurrentPage(pages); // Update the URL when the page changes
-    };
     return (
         <Container>
-            {console.log(pages, currentPage)}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {
                     paginatedData?.map((data, index) =>
@@ -41,7 +37,6 @@ export default function Portofolio3D(page: any) {
             <Pagination
                 number={totalPages}
                 currentPage={currentPage}
-                onChange={handlePaginationChange}
             />
         </Container>
     );
