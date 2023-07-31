@@ -19,8 +19,8 @@ export default function PortofolioCoding() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
                 {
                     Coding?.map((data, index) =>
-                        <motion.div whileHover={{ scale: 1.1 }} className="h-full">
-                            <Card className="mt-6 w-full h-full bg-gray-800/50 flex flex-col justify-between" key={index}>
+                        <motion.div whileHover={{ scale: 1.1 }} className="h-full" key={index}>
+                            <Card className="mt-6 w-full h-full bg-gray-800/50 flex flex-col justify-between">
                                 <CardHeader className="relative h-56 shadow-lg shadow-anzac-200/30">
                                     <ImageWithFallback
                                         priority={true}
