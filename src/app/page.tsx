@@ -5,6 +5,7 @@ import Typed from "typed.js";
 import { useEffect, useRef, useState } from "react";
 import CustomTabs from '@/components/tabs/tabs';
 import { dummyData as data } from '@/contants/dummyDataTabs';
+import { Typography } from '@material-tailwind/react';
 
 export default function Home() {
   const [typedString, setTypedString] = useState(""); // State to hold the typed string
@@ -23,7 +24,6 @@ export default function Home() {
       loop: true,
       onStringTyped: (arrayPos, self) => {
         // Update the typedString state with the current typed string
-        setTypedString(self.strings[arrayPos]);
       }
     });
 
@@ -35,13 +35,13 @@ export default function Home() {
   return (
     <>
       <div className="flex h-[95vh] pb-20">
-        <div className="w-1/2 m-auto">
-          <div className="flex justify-center items-center font-extrabold text-5xl">
-            <span ref={el}></span>
-            <span>, I'm Pandu Utomo</span>
+        <div className="w-[55%] m-auto">
+          <div className="flex justify-center items-center w-full">
+            <Typography className="font-extrabold text-5xl" ref={el}></Typography>
+            <Typography className="font-extrabold text-5xl">, I'm Pandu Utomo</Typography>
           </div>
         </div>
-        <div className="w-1/2 flex justify-center items-center">
+        <div className="w-[45%] flex justify-center items-center">
           <Computer />
         </div>
       </div>
