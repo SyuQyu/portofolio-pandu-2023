@@ -3,7 +3,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
-const Load3D = ({ isMobile }: any) => {
+const Load3D = ({ isMobile }: { isMobile: boolean }) => {
     const gltf = useGLTF('/scene/smol/scene.gltf');
     return (
         <mesh>
@@ -19,27 +19,25 @@ const Load3D = ({ isMobile }: any) => {
             <pointLight intensity={1} />
             <primitive
                 object={gltf.scene}
-                scale={isMobile ? .8 : 1.2}
-                position={isMobile ? [0, -3, -0.2] : [0, -1.5, 0]}
+                scale={isMobile ? 1.1 : 1.2}
+                position={isMobile ? [0, -1.5, 0] : [0, -1.5, 0]}
             />
         </mesh>
     );
 };
 
-
-
-export default function Computer({}) {
+export default function Computer() {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         // Add a listener for changes to the screen size
-        const mediaQuery = window.matchMedia("(max-width: 500px)");
+        const mediaQuery = window.matchMedia("(max-width: 768px)");
 
         // Set the initial value of the `isMobile` state variable
         setIsMobile(mediaQuery.matches);
 
         // Define a callback function to handle changes to the media query
-        const handleMediaQueryChange = (event: { matches: boolean | ((prevState: boolean) => boolean); }) => {
+        const handleMediaQueryChange = (event: { matches: boolean }) => {
             setIsMobile(event.matches);
         };
 
@@ -51,6 +49,7 @@ export default function Computer({}) {
             mediaQuery.removeEventListener("change", handleMediaQueryChange);
         };
     }, []);
+
     return (
         <Canvas
             shadows
@@ -71,7 +70,7 @@ export default function Computer({}) {
                     maxPolarAngle={Math.PI / 2}
                     minPolarAngle={Math.PI / 2}
                 />
-                <Load3D />
+                <Load3D isMobile={isMobile} />
                 <Preload all></Preload>
             </Suspense>
         </Canvas>

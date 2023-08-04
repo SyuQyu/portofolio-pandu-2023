@@ -16,7 +16,7 @@ export default function Header({ className, navbarOpen, setNavbarOpen }: MenuPro
                             setNavbarOpen(false);
                         }}
                     >
-                        <p className="text-black">Home</p>
+                        <p className="text-black md:text-2xl text-xl">Home</p>
                     </Link>
                 </li>
                 <li className="nav-li">
@@ -27,7 +27,7 @@ export default function Header({ className, navbarOpen, setNavbarOpen }: MenuPro
                             setNavbarOpen(false);
                         }}
                     >
-                        <p className="text-black">About Me</p>
+                        <p className="text-black md:text-2xl text-xl">About Me</p>
                     </Link>
                 </li>
                 <li className="nav-li">
@@ -38,7 +38,7 @@ export default function Header({ className, navbarOpen, setNavbarOpen }: MenuPro
                             setNavbarOpen(false);
                         }}
                     >
-                        <p className="text-black">3D Gallery</p>
+                        <p className="text-black md:text-2xl text-xl">3D Gallery</p>
                     </Link>
                 </li>
                 <li className="nav-li">
@@ -49,7 +49,7 @@ export default function Header({ className, navbarOpen, setNavbarOpen }: MenuPro
                             setNavbarOpen(false);
                         }}
                     >
-                        <p className="text-black">Programming</p>
+                        <p className="text-black md:text-2xl text-xl">Programming</p>
                     </Link>
                 </li>
             </ul>

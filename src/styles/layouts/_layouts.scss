@@ -7,7 +7,7 @@
     }
 
     main.main {
-        @apply flex flex-col w-full h-full p-20;
+        @apply flex flex-col w-full h-full md:p-20 sm:p-10 p-4;
     }
 
     footer.footer {
