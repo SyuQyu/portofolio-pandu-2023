@@ -20,7 +20,7 @@ export default function Portofolio3D(page: any) {
     );
     return (
         <Container>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
                 {
                     paginatedData?.map((data, index) =>
                         <div key={index} className='w-full h-[100%]' data-aos='fade-up'>

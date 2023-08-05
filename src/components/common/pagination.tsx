@@ -35,7 +35,7 @@ const Pagination = ({ number, transitionData, className, currentPage, onChange }
             <Button
                 variant="text"
                 color="blue-gray"
-                className="flex items-center gap-2 text-anzac-200 text-xl"
+                className="flex items-center gap-2 text-anzac-200 md:text-xl text-base"
                 onClick={prev}
                 disabled={parseInt(currentPage) === 1}
             >
@@ -44,7 +44,7 @@ const Pagination = ({ number, transitionData, className, currentPage, onChange }
             <Button
                 variant="text"
                 color="blue-gray"
-                className="flex items-center gap-2 text-anzac-200 text-xl"
+                className="flex items-center gap-2 text-anzac-200 md:text-xl text-base"
                 onClick={next}
                 disabled={parseInt(currentPage) === parseInt(number)}
             >

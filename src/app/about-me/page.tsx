@@ -52,7 +52,7 @@ export default function AboutMe() {
     return (
         <Container>
             <Motion direction="x" transitionData={{ delay: .4 }}>
-                <div className="flex w-full mb-6 space-x-4 mt-10">
+                <div className="flex w-full mb-6 space-x-4 mt-12">
                     <div className="relative w-[5%]">
                         <div className="h-[1px] w-full bg-anzac-200 absolute top-3"></div>
                     </div>

@@ -1,5 +1,5 @@
 #layout-default {
-    @apply relative flex flex-col w-screen h-auto min-h-screen bg-black text-white;
+    @apply relative flex flex-col w-screen h-auto bg-black text-white;
     overflow-x: hidden;
 
     header.header {
@@ -7,7 +7,7 @@
     }
 
     main.main {
-        @apply flex flex-col w-full h-full md:p-20 sm:p-10 p-4;
+        @apply flex flex-col w-full h-full md:p-20 sm:p-10 p-6;
     }
 
     footer.footer {

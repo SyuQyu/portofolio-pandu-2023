@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 
 export default function Header({ className, navbarOpen, setNavbarOpen }: HeaderProps) {
+    
     return (
         <header className={`w-full fixed top-0 left-0 pt-10 pb-1 px-5 sm:px-10 md:px-20 flex z-20 items-center  ${navbarOpen ? '' : ''} transition-colors duration-300`}>
             <div className={`${navbarOpen ? 'text-black' : 'text-anzac-200'} flex-grow z-20 `}>
@@ -13,7 +14,7 @@ export default function Header({ className, navbarOpen, setNavbarOpen }: HeaderP
                 </Link>
             </div>
             <button
-                className="flex top-0 right-0 z-20 relative md:text-2xl text-xl w-10 h-10 text-anzac-200 focus:outline-none"
+                className="flex top-0 right-0 z-20 relative md:text-2xl text-xl w-10 h-10 text-anzac-200 focus:outline-none pr-[5%]"
                 onClick={() => setNavbarOpen(!navbarOpen)}
             >
                 <div className="absolute w-5 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
