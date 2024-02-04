@@ -30,9 +30,23 @@ export default function Home() {
         // Update the typedString state with the current typed string
       }
     });
+    // const typedPhone = new Typed(elPhone.current, {
+    //   strings: ["Hello", "こんにちは", "안녕하세요", "Ciao", "Guten tag", "Nǐ hǎo"],
+    //   startDelay: 500,
+    //   typeSpeed: 50,
+    //   backSpeed: 50,
+    //   backDelay: 500,
+    //   smartBackspace: true,
+    //   showCursor: false,
+    //   loop: true,
+    //   onStringTyped: (arrayPos, self) => {
+    //     // Update the typedString state with the current typed string
+    //   }
+    // });
 
     return () => {
       typed.destroy();
+      // typedPhone.destroy();
     };
   }, []);
 
@@ -41,7 +55,7 @@ export default function Home() {
       <div id="homeSection" className="flex flex-col-reverse h-screen md:pb-20 pb-0 md:my-0 md:mt-12 mt-6 justify-center items-center">
         <div className="w-full">
           <div className="flex justify-center items-center w-full h-[50px]">
-            <Typography className="font-extrabold md:text-5xl sm:text-2xl text-lg" ref={el}></Typography>
+            <p className="font-extrabold md:text-5xl sm:text-2xl text-lg" ref={el}></p>
             <Typography className="font-extrabold md:text-5xl sm:text-2xl text-lg">, I'm Pandu Utomo</Typography>
           </div>
         </div>
