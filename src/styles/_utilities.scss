@@ -1,5 +1,5 @@
 body::-webkit-scrollbar {
-    width: .5em;
+    width: .2em;
 }
 
 body::-webkit-scrollbar-track {
@@ -7,18 +7,18 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-    outline: 1px solid;
-    @apply bg-cloud-500;
+    outline: 1px solid #f7444e;
+    background-color: #f7444e;
 }
 
-body {
+// body {
 
-    /* Hide the horizontal scrollbar for webkit-based browsers */
-    &::-webkit-scrollbar-horizontal {
-        display: none;
-    }
+//     /* Hide the horizontal scrollbar for webkit-based browsers */
+//     &::-webkit-scrollbar-horizontal {
+//         display: none;
+//     }
 
-    /* Hide the horizontal scrollbar for Firefox */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
+//     /* Hide the horizontal scrollbar for Firefox */
+//     scrollbar-width: none;
+//     -ms-overflow-style: none;
+// }

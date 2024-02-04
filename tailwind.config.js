@@ -4,7 +4,8 @@ module.exports = withMT({
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/parts/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -34,47 +35,7 @@ module.exports = withMT({
           800: "#038C83",
           900: "#014641",
           950: "#012321"
-        },
-        'genoa': {
-          DEFAULT: '#166064',
-          50: '#57D3DA',
-          100: '#47CFD6',
-          200: '#2CC0C8',
-          300: '#25A0A7',
-          400: '#1D8085',
-          500: '#166064',
-          600: '#0C3436',
-          700: '#020808',
-          800: '#000000',
-          900: '#000000'
-        },
-        'cloud': {
-          DEFAULT: '#C8C5BD',
-          50: '#FFFFFF',
-          100: '#FFFFFF',
-          200: '#FFFFFF',
-          300: '#EDECEA',
-          400: '#DBD9D3',
-          500: '#C8C5BD',
-          600: '#AFAA9E',
-          700: '#958F80',
-          800: '#787364',
-          900: '#5A564B',
-          950: '#4A473E'
-        },
-        'anzac': {
-          '50': '#fbf7eb',
-          '100': '#f7eaca',
-          '200': '#f0d498',
-          '300': '#e7b65d',
-          '400': '#e1a140',
-          '500': '#cf8323',
-          '600': '#b2651c',
-          '700': '#8f4819',
-          '800': '#773a1c',
-          '900': '#66321d',
-          '950': '#3b180d',
-      },
+        }
       
       },
       backgroundImage: {

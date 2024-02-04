@@ -4,29 +4,29 @@ import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 const Load3D = ({ isMobile }: { isMobile: boolean }) => {
-    const gltf = useGLTF('/scene/smol/scene.gltf');
+    const gltf = useGLTF('/scene/person_pose/person_pose.glb');
     return (
         <mesh>
             <hemisphereLight intensity={0.15} groundColor="black" />
             <spotLight
-                position={[-20, 50, 10]}
-                angle={0.12}
+                position={[-20, 100, 30]}
+                angle={5}
                 penumbra={1}
                 intensity={1}
-                castShadow
+                // castShadow
                 shadow-mapSize={1024}
             />
             <pointLight intensity={1} />
             <primitive
                 object={gltf.scene}
-                scale={isMobile ? 1.1 : 1.5}
-                position={isMobile ? [0, -1.5, 0] : [0, -1.5, 0]}
+                scale={isMobile ? 2 : 2}
+                position={isMobile ? [0, -2, 0] : [0, -2, 0]}
             />
         </mesh>
     );
 };
 
-export default function Computer() {
+export default function Person() {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -53,6 +53,7 @@ export default function Computer() {
     return (
         <Canvas
             shadows
+            style={{ height: isMobile ? "80vh" : "100vh" }}
             frameloop="demand"
             dpr={[1, 2]}
             gl={{ preserveDrawingBuffer: true }}
@@ -60,12 +61,12 @@ export default function Computer() {
                 fov: 45,
                 near: 0.1,
                 far: 200,
-                position: [-1, 3, 6],
+                position: [-1, 1, 6],
             }}
         >
             <Suspense fallback={null}>
                 <OrbitControls
-                    autoRotate
+                    // autoRotate
                     enableZoom={false}
                     maxPolarAngle={Math.PI / 2}
                     minPolarAngle={Math.PI / 2}

@@ -1,6 +1,0 @@
-export const Coding = [
-    { projectName: 'Company Profile', desc: 'In this project, I am tasked with creating a company profile website for PT. Mega Nusa Indonesia. My primary responsibility is to proficiently translate the user interface (UI) design into a fully functional website using NextJS framework.', projectLink: {github: '', hosting: ''}, image: '/image/coding/compro.png' },
-    { projectName: 'Website Iro Iro Station', desc: 'In this project, I have been assigned to developing an administrative dashboard for Iro Iro Station. My primary task entails translating the provided UI design into a comprehensive and fully functional website. and I am required to implement the necessary backend components.', projectLink: {github: '', hosting: ''}, image: '/image/coding/iroiro.jpeg' },
-    { projectName: 'Gemastik 2022 Ankersal', desc: 'In this project, I am tasked with creating a  website for Anti-Sexual Violence primary responsibility is to proficiently translate the user interface (UI) design into a fully functional website.', projectLink: {github: '', hosting: ''}, image: '/image/coding/ankersal.jpeg' },
-
-];
