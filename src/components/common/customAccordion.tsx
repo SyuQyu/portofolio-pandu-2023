@@ -102,11 +102,11 @@ export default function AccordionCustomStyles({
                             {company}
                         </p>
                         <div className="flex flex-col md:flex-row justify-between items-start md:items-center md:gap-4">
-                            <p className="font-thin text-sm  md:text-base text-gray-500">
+                            <p className="ffont-normal text-sm  md:text-base text-gray-500">
                                 {startEndDateString}
                             </p>
                             <span className="md:block hidden mx-auto h-1 w-1 rounded-full bg-gray-500 content-['']" />
-                            <p className="font-thin text-sm  md:text-base text-gray-500">
+                            <p className="ffont-normal text-sm  md:text-base text-gray-500">
                                 {durationString}
                             </p>
                         </div>
