@@ -16,7 +16,9 @@ const variants = {
 export const Navigation = ({ toggle }: any) => (
     <motion.ul variants={variants} className="w-full flex flex-col gap-6">
         {itemLinks.map((item, index) => (
-            <MenuItem toggle={toggle} dataLink={{ name: item.name, id: item.id }} key={index} />
+            <div onClick={toggle}>
+                <MenuItem dataLink={{ name: item.name, id: item.id }} key={index} />
+            </div>
         ))}
     </motion.ul>
 );

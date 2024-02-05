@@ -1,14 +1,15 @@
 'use client'
 
-import Computer from '@/components/Canvas/computers';
+import dynamic from 'next/dynamic';
+
+const Computer = dynamic(() => import('@/components/Canvas/computers'));
+const AboutMe = dynamic(() => import('@/parts/about-me/aboutMe'));
+const Experience = dynamic(() => import('@/parts/experiences/experience'));
+const Portofolio = dynamic(() => import('@/parts/portofolio/portofolio'));
 import Typed from "typed.js";
 import { useEffect, useRef, useState } from "react";
-import CustomTabs from '@/components/tabs/tabs';
 import { dummyData as data } from '@/contants/dummyDataTabs';
 import { Typography } from '@material-tailwind/react';
-import AboutMe from '@/parts/about-me/aboutMe';
-import Experience from '@/parts/experiences/experience';
-import Portofolio from '@/parts/portofolio/portofolio';
 
 export default function Home() {
   const [typedString, setTypedString] = useState(""); // State to hold the typed string
@@ -52,18 +53,19 @@ export default function Home() {
 
   return (
     <>
-      <div id="homeSection" className="flex flex-col-reverse h-screen md:pb-20 pb-0 md:my-0 md:mt-12 mt-6 justify-center items-center">
-        <div className="w-full">
+      <div id="homeSection" className="flex flex-col-reverse h-screen md:pb-20 pb-0 md:my-0 justify-center items-center">
+        <div className="w-full flex flex-col justify-center items-center">
           <div className="flex justify-center items-center w-full h-[50px]">
             <p className="font-extrabold md:text-5xl sm:text-2xl text-lg" ref={el}></p>
             <Typography className="font-extrabold md:text-5xl sm:text-2xl text-lg">, I'm Pandu Utomo</Typography>
           </div>
+          <p className='tracking-wide mt-2 sm:mt-4 sm:text-base text-sm'>a tech whiz kid</p>
         </div>
         <div className="w-full h-1/2 mb-10 flex justify-center items-center">
           <Computer />
         </div>
       </div>
-      <div className='flex flex-col gap-24 w-full h-full'>
+      <div className='flex flex-col md:gap-24 sm:gap-[80px] gap-[70px] w-full h-full'>
         <div id="aboutMeSection">
           <AboutMe />
         </div>

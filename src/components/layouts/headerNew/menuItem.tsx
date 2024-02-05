@@ -22,7 +22,7 @@ const variants = {
 
 const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
-export const MenuItem = ({ dataLink }: any, { toggle }: any) => {
+export const MenuItem = ({ dataLink }: any) => {
     const handleScrollToId = (selectedId: any) => {
         const element = document.getElementById(selectedId);
         console.log("element", element, selectedId);
@@ -37,9 +37,8 @@ export const MenuItem = ({ dataLink }: any, { toggle }: any) => {
             whileTap={{ scale: 0.95 }}
             className="w-full flex justify-center items-center"
             // onClick={}
-            onClick={() => {handleScrollToId(dataLink.id); toggle;}}
         >
-            <div className="icon-placeholder text-center">
+            <div className="icon-placeholder text-center" onClick={() => {handleScrollToId(dataLink.id)}}>
                 <p className="text-center text-white">
                     {dataLink.name}
                 </p>

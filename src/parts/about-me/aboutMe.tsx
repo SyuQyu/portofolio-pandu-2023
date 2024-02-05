@@ -1,22 +1,19 @@
 'use client'
-import Container from '@/components/common/container';
-import Motion from '@/components/common/motion';
-import SkillCards from '@/components/common/skillCards';
-import ImageWithFallback from '@/components/common/imageWithFallback';
+import dynamic from 'next/dynamic';
+
+// Importing components dynamically
+const Container = dynamic(() => import('@/components/common/container'));
+const Motion = dynamic(() => import('@/components/common/motion'));
+const ImageWithFallback = dynamic(() => import('@/components/common/imageWithFallback'));
+const LineBar = dynamic(() => import('@/components/common/lineBar'));
+const Person = dynamic(() => import('@/components/Canvas/person'));
+
 import { Coding, Design, Sosmed } from '@/contants/dataSkills';
-import LineBar from '@/components/common/lineBar';
 import Link from 'next/link'
 import {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
     Typography,
-    Tooltip,
-    Avatar,
 } from "@material-tailwind/react";
 import { motion } from 'framer-motion';
-import Person from '@/components/Canvas/person';
 export default function AboutMe() {
 
     return (
@@ -48,7 +45,7 @@ export default function AboutMe() {
                             </Motion>
                             <Motion direction="x" transitionData={{ delay: .6 }}>
                                 <Typography className="mb-4 md:text-base text-sm">
-                                    Hello there! My name is Pandu Utomo, and I am currently an undergraduate student pursuing a degree in Computer Science with a major in Informatics at Universitas Pembangunan Nasional Veteran Jakarta. I have always been deeply fascinated by the world of technology and its potential to shape the future. My primary areas of interest lie in web development and 3D environment design.
+                                    Hey! I'm Pandu Utomo, a tech enthusiast pursuing a Computer Science degree at Universitas Pembangunan Nasional Veteran Jakarta. I'm all about conquering the coding wilderness, specializing in web development and 3D environment design. Whether it's making browsers blush with my web wizardry or crafting virtual wonders, I'm on a mission to shape the digital future—one line of code at a time. Join me on this tech-tastic adventure!
                                 </Typography>
                             </Motion>
                         </div>
@@ -61,7 +58,7 @@ export default function AboutMe() {
                                     <div className='w-full h-[3px] bg-[#002c3e]/30 rounded-full' />
                                 </div>
                             </Motion>
-                            <Motion direction="x" transitionData={{ delay: .6 }} className="grid md:grid-cols-4 grid-cols-2 justify-center items-center md:gap-4 gap-4">
+                            <Motion direction="x" transitionData={{ delay: .6 }} className="grid md:grid-cols-4 grid-cols-3 justify-center items-center md:gap-4 gap-4">
                                 {
                                     Sosmed?.map((data, index) =>
                                         <Link href={data.link} key={index}>
