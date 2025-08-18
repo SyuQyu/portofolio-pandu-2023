@@ -1,25 +1,43 @@
 'use client'
 
 import dynamic from 'next/dynamic';
-
-const Computer = dynamic(() => import('@/components/Canvas/computers'));
-const AboutMe = dynamic(() => import('@/parts/about-me/aboutMe'));
-const Experience = dynamic(() => import('@/parts/experiences/experience'));
-const Portofolio = dynamic(() => import('@/parts/portofolio/portofolio'));
-import Typed from "typed.js";
-import { useEffect, useRef, useState } from "react";
-import { dummyData as data } from '@/contants/dummyDataTabs';
+import { useEffect, useRef } from "react";
 import { Typography } from '@material-tailwind/react';
+import Typed from "typed.js";
+
+// Dynamic imports for better code splitting and performance
+const Computer = dynamic(() => import('@/components/Canvas/computers'), {
+  loading: () => <div className="w-full h-1/2 flex justify-center items-center">Loading...</div>,
+  ssr: false
+});
+const AboutMe = dynamic(() => import('@/parts/about-me/aboutMe'), {
+  loading: () => <div className="min-h-[400px] flex justify-center items-center">Loading...</div>,
+  ssr: false
+});
+const Experience = dynamic(() => import('@/parts/experiences/experience'), {
+  loading: () => <div className="min-h-[400px] flex justify-center items-center">Loading...</div>,
+  ssr: false
+});
+const Education = dynamic(() => import('@/parts/education/education'), {
+  loading: () => <div className="min-h-[400px] flex justify-center items-center">Loading...</div>,
+  ssr: false
+});
+const Portofolio = dynamic(() => import('@/parts/portofolio/portofolio'), {
+  loading: () => <div className="min-h-[400px] flex justify-center items-center">Loading...</div>,
+  ssr: false
+});
+
+// Greeting strings for the typed animation
+const GREETING_STRINGS = ["Hello", "こんにちは", "안녕하세요", "Ciao", "Guten tag", "Nǐ hǎo"];
 
 export default function Home() {
-  const [typedString, setTypedString] = useState(""); // State to hold the typed string
-
-  const el = useRef(null);
-  const elPhone = useRef(null);
+  const el = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
+    if (!el.current) return;
+
     const typed = new Typed(el.current, {
-      strings: ["Hello", "こんにちは", "안녕하세요", "Ciao", "Guten tag", "Nǐ hǎo"],
+      strings: GREETING_STRINGS,
       startDelay: 500,
       typeSpeed: 50,
       backSpeed: 50,
@@ -27,27 +45,10 @@ export default function Home() {
       smartBackspace: true,
       showCursor: false,
       loop: true,
-      onStringTyped: (arrayPos, self) => {
-        // Update the typedString state with the current typed string
-      }
     });
-    // const typedPhone = new Typed(elPhone.current, {
-    //   strings: ["Hello", "こんにちは", "안녕하세요", "Ciao", "Guten tag", "Nǐ hǎo"],
-    //   startDelay: 500,
-    //   typeSpeed: 50,
-    //   backSpeed: 50,
-    //   backDelay: 500,
-    //   smartBackspace: true,
-    //   showCursor: false,
-    //   loop: true,
-    //   onStringTyped: (arrayPos, self) => {
-    //     // Update the typedString state with the current typed string
-    //   }
-    // });
 
     return () => {
       typed.destroy();
-      // typedPhone.destroy();
     };
   }, []);
 
@@ -59,7 +60,7 @@ export default function Home() {
             <p className="font-extrabold md:text-5xl sm:text-2xl text-lg" ref={el}></p>
             <Typography className="font-extrabold md:text-5xl sm:text-2xl text-lg">, I'm Pandu Utomo</Typography>
           </div>
-          <p className='tracking-wide mt-2 sm:mt-4 sm:text-base text-sm'>a tech whiz kid</p>
+          <p className='tracking-wide mt-2 sm:mt-4 sm:text-base text-sm'>Computer Science Student | Full-stack Developer | 3D Artist</p>
         </div>
         <div className="w-full h-1/2 mb-10 flex justify-center items-center">
           <Computer />
@@ -71,6 +72,9 @@ export default function Home() {
         </div>
         <div id='experienceSection'>
           <Experience />
+        </div>
+        <div id='educationSection'>
+          <Education />
         </div>
         <div id='portofolioSection'>
           <Portofolio />

@@ -1,177 +1,144 @@
-export const codingPortfolio = [
-    { id: '1', title: 'Company Profile', subtitle: 'Freelance', description: 'In this project, I am tasked with creating a company profile website for PT. Mega Nusa Indonesia. My primary responsibility is to proficiently translate the user interface (UI) design into a fully functional website using NextJS framework.', projectLink: { github: '', hosting: '' }, image: '/image/coding/compro.png' },
-    { id: '2', title: 'Website Iro Iro Station', subtitle: 'Part Time', description: 'In this project, I have been assigned to developing an administrative dashboard for Iro Iro Station. My primary task entails translating the provided UI design into a comprehensive and fully functional website. and I am required to implement the necessary backend components.', projectLink: { github: '', hosting: '' }, image: '/image/coding/iroiro.jpeg' },
-    { id: '3', title: 'Gemastik 2022 Ankersal', subtitle: 'competition', description: 'In this project, I am tasked with creating a  website for Anti-Sexual Violence primary responsibility is to proficiently translate the user interface (UI) design into a fully functional website.', projectLink: { github: '', hosting: '' }, image: '/image/coding/ankersal.jpeg' },
+// Types for better type safety and maintainability
+interface ProjectLink {
+    github: string;
+    hosting: string;
+}
 
-];
+interface PortfolioItem {
+    id: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    projectLink: ProjectLink;
+    image: string;
+}
 
-export const threeDPortfolio = [
+interface ThreeDPortfolioItem {
+    id: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    image: string;
+}
+
+export const codingPortfolio: PortfolioItem[] = [
     {
         id: '1',
-        title: '3D Project 1',
-        subtitle: 'Information 1',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Peluang.co Job Platform',
+        subtitle: 'Full-stack Development · Part-time Project',
+        description: 'Comprehensive job platform built with Next.js and React.js, serving thousands of job seekers and employers. Implemented responsive UI/UX designs, integrated RESTful APIs, and optimized application performance resulting in 40% faster page load times. Features include advanced job search, user authentication, and real-time notifications.',
+        projectLink: { github: '', hosting: 'https://peluang.co' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: '2',
+        title: 'MAXY Academy Learning Platform',
+        subtitle: 'Frontend Development · Internship Project',
+        description: 'Educational platform frontend serving 500+ students, built during internship at MAXY Academy. Collaborated with design team to implement pixel-perfect UI components using React.js and modern CSS frameworks. Ensured cross-browser compatibility and reduced development time by 30% through reusable component architecture.',
+        projectLink: { github: '', hosting: '' },
+        image: '/image/coding/iroiro.jpeg'
+    },
+    {
+        id: '3',
+        title: 'KSM Learning Management System',
+        subtitle: 'Backend Development · Organization Project',
+        description: 'Led development of Learning Management System backend serving 100+ users for KSM Android UPN organization. Implemented RESTful APIs, designed scalable database architecture using MySQL, and managed a team of 3 junior developers. Conducted code reviews and mentored students in backend development.',
+        projectLink: { github: '', hosting: '' },
+        image: '/image/coding/ankersal.jpeg'
+    },
+    {
+        id: '4',
+        title: 'Mudahdigital.id Platform',
+        subtitle: 'Full-stack Development & Entrepreneurship · Self-employed',
+        description: 'Founded and developed digital services platform serving 50+ clients. End-to-end project management from ideation to deployment using modern web technologies. Generated consistent revenue through digital product development while providing technical consultation and client support services.',
+        projectLink: { github: '', hosting: 'https://mudahdigital.id' },
+        image: '/image/coding/compro.png'
+    },
+];
+
+export const threeDPortfolio: ThreeDPortfolioItem[] = [
+    {
+        id: '1',
+        title: 'Architectural Corridor',
+        subtitle: 'Environment Design',
+        description: 'A detailed 3D architectural corridor showcasing advanced lighting techniques and realistic materials. Created using Blender 3D with focus on atmospheric lighting and perspective composition.',
         image: '/image/3D/corridor.png',
     },
     {
         id: '2',
-        title: '3D Project 2',
-        subtitle: 'Information 2',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Crystal Cave Environment',
+        subtitle: 'Fantasy Scene',
+        description: 'Mystical crystal cave environment featuring dynamic lighting effects and procedural crystal formations. Demonstrates expertise in environmental storytelling and fantasy art direction.',
         image: '/image/3D/crystal1.png',
     },
     {
         id: '3',
-        title: '3D Project 3',
-        subtitle: 'Information 3',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Garden Landscape',
+        subtitle: 'Outdoor Environment',
+        description: 'Serene garden landscape with detailed vegetation and natural lighting. Showcases skills in organic modeling, texture work, and outdoor scene composition.',
         image: '/image/3D/garden.png',
     },
     {
         id: '4',
-        title: '3D Project 4',
-        subtitle: 'Information 4',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Modern Kitchen Design',
+        subtitle: 'Interior Architecture',
+        description: 'Contemporary kitchen interior with realistic materials and professional lighting setup. Demonstrates proficiency in architectural visualization and interior design principles.',
         image: '/image/3D/kitchenset1.png',
     },
     {
         id: '5',
-        title: '3D Project 5',
-        subtitle: 'Information 5',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Kitchen Variant Design',
+        subtitle: 'Interior Architecture',
+        description: 'Alternative kitchen layout exploring different design approaches and material combinations. Shows versatility in interior visualization and space planning.',
         image: '/image/3D/kitchenset2.png',
     },
     {
         id: '6',
-        title: '3D Project 6',
-        subtitle: 'Information 6',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Character Environment',
+        subtitle: 'Game Asset',
+        description: 'Stylized character environment designed for game development. Features optimized topology and game-ready assets with careful attention to performance and visual appeal.',
         image: '/image/3D/kunoichi.png',
     },
     {
         id: '7',
-        title: '3D Project 7',
-        subtitle: 'Information 7',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Modern Living Room',
+        subtitle: 'Interior Design',
+        description: 'Contemporary living room scene with modern furniture and ambient lighting. Demonstrates skills in interior design visualization and atmospheric rendering.',
         image: '/image/3D/livingroom.png',
     },
     {
         id: '8',
-        title: '3D Project 8',
-        subtitle: 'Information 8',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Royal Chamber',
+        subtitle: 'Fantasy Architecture',
+        description: 'Luxurious royal chamber with ornate decorations and rich materials. Showcases expertise in period architecture and detailed texture work.',
         image: '/image/3D/royalty.png',
     },
     {
         id: '9',
-        title: '3D Project 9',
-        subtitle: 'Information 9',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Sci-Fi Environment',
+        subtitle: 'Game Design',
+        description: 'Futuristic sci-fi environment with advanced lighting and technical details. Created for game development with optimized performance and visual impact.',
         image: '/image/3D/s15.png',
     },
     {
         id: '10',
-        title: '3D Project 10',
-        subtitle: 'Information 10',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Architectural Gateway',
+        subtitle: 'Environmental Design',
+        description: 'Detailed architectural door and entrance design with focus on proportions and material authenticity. Demonstrates technical modeling skills.',
         image: '/image/3D/door.png',
     },
     {
         id: '11',
-        title: '3D Project 11',
-        subtitle: 'Information 11',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Medieval Throne Room',
+        subtitle: 'Fantasy Interior',
+        description: 'Medieval-inspired throne room with dramatic lighting and atmospheric effects. Shows proficiency in historical architecture and mood creation.',
         image: '/image/3D/thorneroom.png',
     },
     {
         id: '12',
-        title: '3D Project 12',
-        subtitle: 'Information 12',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        title: 'Transportation Design',
+        subtitle: 'Vehicle Modeling',
+        description: 'Detailed train car modeling with realistic materials and environmental context. Demonstrates hard surface modeling and technical accuracy.',
         image: '/image/3D/train.png',
-    },
-    {
-        id: '13',
-        title: '3D Project 13',
-        subtitle: 'Information 13',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/scifi.png',
-    },
-    {
-        id: '14',
-        title: '3D Project 14',
-        subtitle: 'Information 14',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/royalty1.png',
-    },
-    {
-        id: '15',
-        title: '3D Project 15',
-        subtitle: 'Information 15',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/royalty2.png',
-    },
-    {
-        id: '16',
-        title: '3D Project 16',
-        subtitle: 'Information 16',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/royalty3.png',
-    },
-    {
-        id: '17',
-        title: '3D Project 17',
-        subtitle: 'Information 17',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/prototype3.png',
-    },
-    {
-        id: '18',
-        title: '3D Project 18',
-        subtitle: 'Information 18',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/lowpoly.png',
-    },
-    {
-        id: '19',
-        title: '3D Project 19',
-        subtitle: 'Information 19',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/library.png',
-    },
-    {
-        id: '20',
-        title: '3D Project 20',
-        subtitle: 'Information 20',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/lab.png',
-    },
-    {
-        id: '21',
-        title: '3D Project 21',
-        subtitle: 'Information 21',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/klinik.png',
-    },
-    {
-        id: '22',
-        title: '3D Project 22',
-        subtitle: 'Information 22',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/home.png',
-    },
-    {
-        id: '23',
-        title: '3D Project 23',
-        subtitle: 'Information 23',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/done.png',
-    },
-    {
-        id: '24',
-        title: '3D Project 24',
-        subtitle: 'Information 24',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        image: '/image/3D/cube.png',
     },
 ];

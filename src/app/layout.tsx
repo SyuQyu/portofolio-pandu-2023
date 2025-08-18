@@ -1,12 +1,27 @@
 import clsx from 'clsx';
-import Script from 'next/script'
-import '@/styles/index.scss';
+import Script from 'next/script';
 import { POPPINS, ROBOTO_MONO } from '@/contants/fonts';
-
 import DefaultLayout from '@/components/defaultLayout';
+import '@/styles/index.scss';
+
 export const metadata = {
-  title: 'Ndu Portofolio',
-  description: 'Welcome to my portofolio website',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  title: 'Pandu Utomo - Full-stack Developer & 3D Artist',
+  description: 'Computer Science student specializing in full-stack web development and 3D environment design. Experienced with React.js, Next.js, Node.js, and Blender 3D.',
+  keywords: 'Full-stack Developer, 3D Artist, React.js, Next.js, Node.js, Blender, Computer Science, Web Development',
+  authors: [{ name: 'Pandu Utomo' }],
+  creator: 'Pandu Utomo',
+  openGraph: {
+    title: 'Pandu Utomo - Full-stack Developer & 3D Artist',
+    description: 'Computer Science student specializing in full-stack web development and 3D environment design.',
+    type: 'website',
+    locale: 'en_US',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  viewport: 'width=device-width, initial-scale=1',
 }
 
 export default function RootLayout({
