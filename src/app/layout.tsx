@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Script from 'next/script';
 import { POPPINS, ROBOTO_MONO } from '@/contants/fonts';
 import DefaultLayout from '@/components/defaultLayout';
-import '@/styles/index.scss';
+import './globals.css';
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
@@ -21,7 +21,11 @@ export const metadata = {
     index: true,
     follow: true,
   },
-  viewport: 'width=device-width, initial-scale=1',
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
