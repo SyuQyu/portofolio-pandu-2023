@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import Script from 'next/script';
 import { POPPINS, ROBOTO_MONO } from '@/contants/fonts';
 import DefaultLayout from '@/components/defaultLayout';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
 
 export const metadata = {
@@ -34,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <Script id="google-tag-manager" strategy="afterInteractive">
         {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -47,7 +48,9 @@ export default function RootLayout({
       <body className={clsx('scroll-smooth', POPPINS.variable, ROBOTO_MONO.variable)}>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD7JJF8Z"
           height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
-        <DefaultLayout>{children}</DefaultLayout>
+        <ThemeProvider>
+          <DefaultLayout>{children}</DefaultLayout>
+        </ThemeProvider>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-HVM4ZSN3ZG" />
         <Script id="google-analytics">
           {`
@@ -62,3 +65,4 @@ export default function RootLayout({
     </html>
   )
 }
+

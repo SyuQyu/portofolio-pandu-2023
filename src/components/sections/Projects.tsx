@@ -23,27 +23,27 @@ const ProjectCard = ({ item }: { item: any }) => {
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
             >
                 {/* Front Face */}
-                <div className="absolute inset-0 backface-hidden rounded-xl overflow-hidden shadow-lg border border-white/10 bg-gray-900">
+                <div className="absolute inset-0 backface-hidden rounded-xl overflow-hidden shadow-lg border border-[var(--glass-border)] bg-[var(--surface)]">
                     <Image
                         src={item.image}
                         alt={item.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
-                        <h3 className="text-xl font-bold text-white mb-1">{item.title}</h3>
-                        <p className="text-accent-blue text-sm">{item.subtitle}</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                        <h3 className="text-xl font-bold text-[var(--foreground)] mb-1">{item.title}</h3>
+                        <p className="text-[var(--accent-primary)] text-sm">{item.subtitle}</p>
                     </div>
                 </div>
 
                 {/* Back Face */}
                 <div
-                    className="absolute inset-0 backface-hidden rounded-xl bg-gray-800 p-6 flex flex-col justify-between border border-accent-purple/30 shadow-[0_0_20px_rgba(139,92,246,0.2)]"
+                    className="absolute inset-0 backface-hidden rounded-xl bg-[var(--surface)] p-6 flex flex-col justify-between border border-[var(--accent-secondary)]/30 shadow-[0_0_20px_var(--glow-color)]"
                     style={{ transform: 'rotateY(180deg)' }}
                 >
                     <div>
-                        <h3 className="text-xl font-bold text-accent-purple mb-2">{item.title}</h3>
-                        <p className="text-gray-300 text-sm mb-4 line-clamp-4">{item.description}</p>
+                        <h3 className="text-xl font-bold text-[var(--accent-secondary)] mb-2">{item.title}</h3>
+                        <p className="text-[var(--foreground-secondary)] text-sm mb-4 line-clamp-4">{item.description}</p>
                     </div>
 
                     <div className="flex gap-4">
@@ -52,7 +52,7 @@ const ProjectCard = ({ item }: { item: any }) => {
                                 href={item.projectLink.github}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+                                className="p-2 rounded-full bg-[var(--glass-bg)] hover:bg-[var(--surface-hover)] text-[var(--foreground)] transition-colors"
                             >
                                 <FaGithub size={20} />
                             </a>
@@ -62,7 +62,7 @@ const ProjectCard = ({ item }: { item: any }) => {
                                 href={item.projectLink.hosting}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+                                className="p-2 rounded-full bg-[var(--glass-bg)] hover:bg-[var(--surface-hover)] text-[var(--foreground)] transition-colors"
                             >
                                 <FaExternalLinkAlt size={18} />
                             </a>

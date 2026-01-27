@@ -35,7 +35,7 @@ export const Hero = () => {
     return (
         <section className="relative w-full h-screen flex justify-center items-center overflow-hidden">
             {/* 3D Background */}
-            <SceneCanvas className="absolute inset-0 -z-10 bg-gradient-to-b from-primary-dark to-primary-light">
+            <SceneCanvas className="absolute inset-0 -z-10 bg-gradient-to-b from-[var(--background)] to-[var(--background-secondary)]">
                 <ParticleBackground />
                 <FloatingShapes />
             </SceneCanvas>
@@ -48,11 +48,11 @@ export const Hero = () => {
                     transition={{ duration: 0.8 }}
                 >
                     <div className="flex justify-center items-center mb-4 min-h-[60px]">
-                        <span className="font-extrabold md:text-6xl sm:text-4xl text-3xl text-accent-blue" ref={el}></span>
-                        <span className="font-extrabold md:text-6xl sm:text-4xl text-3xl text-white ml-2">, I&apos;m Pandu Utomo</span>
+                        <span className="font-extrabold md:text-6xl sm:text-4xl text-3xl text-[var(--accent-primary)]" ref={el}></span>
+                        <span className="font-extrabold md:text-6xl sm:text-4xl text-3xl text-[var(--foreground)] ml-2">, I&apos;m Pandu Utomo</span>
                     </div>
 
-                    <p className="text-gray-300 md:text-xl text-lg tracking-wide mb-8 max-w-2xl mx-auto">
+                    <p className="text-[var(--foreground-secondary)] md:text-xl text-lg tracking-wide mb-8 max-w-2xl mx-auto">
                         Computer Science Student | Full-stack Developer | 3D Artist
                     </p>
 
@@ -73,9 +73,9 @@ export const Hero = () => {
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
             >
-                <div className="w-[35px] h-[64px] rounded-3xl border-4 border-gray-500 flex justify-center items-start p-2">
+                <div className="w-[35px] h-[64px] rounded-3xl border-4 border-[var(--foreground-muted)] flex justify-center items-start p-2">
                     <motion.div
-                        className="w-3 h-3 rounded-full bg-accent-blue mb-1"
+                        className="w-3 h-3 rounded-full bg-[var(--accent-primary)] mb-1"
                         animate={{ y: [0, 24, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
                     />

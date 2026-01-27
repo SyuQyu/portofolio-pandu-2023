@@ -1,35 +1,112 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-primary-dark: #0a0a0f;
-  --color-primary-light: #111118;
+  /* Space Theme Colors */
+  --color-primary-dark: #050510;
+  --color-primary-light: #0f0f1e;
   --color-accent-blue: #00d4ff;
   --color-accent-purple: #8b5cf6;
   --color-accent-green: #10b981;
-  
+  --color-accent-pink: #ec4899;
+  --color-star-gold: #fbbf24;
+
   /* Fonts */
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
-  
+
   /* Animations */
   --animate-float: float 6s ease-in-out infinite;
   --animate-glow: glow 2s ease-in-out infinite alternate;
-  
+  --animate-twinkle: twinkle 3s ease-in-out infinite;
+  --animate-nebula: nebula 15s ease-in-out infinite;
+
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
   }
-  
+
   @keyframes glow {
-    from { box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff; }
-    to { box-shadow: 0 0 20px #8b5cf6, 0 0 30px #8b5cf6; }
+    from {
+      box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+    }
+
+    to {
+      box-shadow: 0 0 20px #8b5cf6, 0 0 30px #8b5cf6;
+    }
+  }
+
+  @keyframes twinkle {
+
+    0%,
+    100% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  @keyframes nebula {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
   }
 }
 
+/* Dark Theme (Space Night) - Default */
 :root {
-  --background: #0a0a0f;
+  --background: #050510;
+  --background-secondary: #0f0f1e;
   --foreground: #ffffff;
+  --foreground-secondary: #a0aec0;
+  --foreground-muted: #6b7280;
+  --surface: rgba(15, 15, 30, 0.8);
+  --surface-hover: rgba(25, 25, 45, 0.9);
+  --glass-bg: rgba(17, 17, 24, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --accent-primary: #00d4ff;
+  --accent-secondary: #8b5cf6;
+  --accent-tertiary: #10b981;
+  --glow-color: rgba(0, 212, 255, 0.4);
+  --star-color: #00d4ff;
+  --nebula-1: rgba(139, 92, 246, 0.1);
+  --nebula-2: rgba(0, 212, 255, 0.1);
+}
+
+/* Light Theme (Cosmic Day) */
+.light {
+  --background: #f0f4ff;
+  --background-secondary: #e8eeff;
+  --foreground: #1a1a2e;
+  --foreground-secondary: #4a5568;
+  --foreground-muted: #718096;
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface-hover: rgba(255, 255, 255, 0.9);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(99, 102, 241, 0.15);
+  --accent-primary: #6366f1;
+  --accent-secondary: #a855f7;
+  --accent-tertiary: #14b8a6;
+  --glow-color: rgba(99, 102, 241, 0.3);
+  --star-color: #fbbf24;
+  --nebula-1: rgba(168, 85, 247, 0.08);
+  --nebula-2: rgba(99, 102, 241, 0.08);
 }
 
 body {
@@ -37,32 +114,131 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Cosmic Background Effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 20% 20%, var(--nebula-1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, var(--nebula-2) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, var(--nebula-1) 0%, transparent 70%);
+  animation: nebula 15s ease-in-out infinite;
+  background-size: 200% 200%;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #111118;
+  background: var(--background-secondary);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--accent-primary);
   border-radius: 4px;
+  opacity: 0.5;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: var(--accent-secondary);
 }
 
-/* Utilities */
+/* Glass Effect - Theme Aware */
 .glass {
-  background: rgba(17, 17, 24, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
 }
 
+.glass:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 20px var(--glow-color);
+}
+
+/* Text Gradient */
 .text-gradient {
-  background: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Star decoration for light mode */
+.light .cosmic-star {
+  color: var(--star-color);
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.6));
+}
+
+/* Stars decoration for dark mode */
+.dark .cosmic-star,
+:root .cosmic-star {
+  color: var(--star-color);
+  filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.6));
+}
+
+/* Cosmic glow utilities */
+.cosmic-glow {
+  box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
+}
+
+.cosmic-glow-text {
+  text-shadow: 0 0 10px var(--accent-primary), 0 0 20px var(--accent-primary);
+}
+
+/* Nebula gradient background */
+.nebula-bg {
+  background: linear-gradient(135deg,
+      var(--background) 0%,
+      var(--background-secondary) 50%,
+      var(--background) 100%);
+  background-size: 400% 400%;
+  animation: nebula 15s ease infinite;
+}
+
+/* Aurora effect for buttons/accents */
+.aurora {
+  background: linear-gradient(90deg,
+      var(--accent-primary),
+      var(--accent-secondary),
+      var(--accent-tertiary),
+      var(--accent-secondary),
+      var(--accent-primary));
+  background-size: 300% 100%;
+  animation: aurora-flow 8s linear infinite;
+}
+
+@keyframes aurora-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* Constellation line effect */
+.constellation-line {
+  stroke: var(--accent-primary);
+  stroke-width: 1;
+  opacity: 0.3;
+}
+
+/* Theme transition */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
 }

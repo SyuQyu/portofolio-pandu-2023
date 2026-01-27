@@ -16,9 +16,23 @@ export const GradientButton = ({
     const baseStyles = "relative px-8 py-3 rounded-full font-bold transition-all duration-300 overflow-hidden group";
 
     const variants = {
-        primary: "text-white bg-gradient-to-r from-accent-blue to-accent-purple shadow-[0_0_15px_rgba(0,212,255,0.4)] hover:shadow-[0_0_25px_rgba(139,92,246,0.6)]",
-        secondary: "text-white bg-white/10 backdrop-blur border border-white/20 hover:bg-white/20",
-        outline: "text-accent-blue border-2 border-accent-blue hover:bg-accent-blue/10"
+        primary: cn(
+            "text-white",
+            "bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]",
+            "shadow-[0_0_20px_var(--glow-color)]",
+            "hover:shadow-[0_0_30px_var(--glow-color)]"
+        ),
+        secondary: cn(
+            "text-[var(--foreground)]",
+            "bg-[var(--surface)] backdrop-blur",
+            "border border-[var(--glass-border)]",
+            "hover:bg-[var(--surface-hover)]"
+        ),
+        outline: cn(
+            "text-[var(--accent-primary)]",
+            "border-2 border-[var(--accent-primary)]",
+            "hover:bg-[var(--accent-primary)]/10"
+        )
     };
 
     return (
@@ -30,7 +44,7 @@ export const GradientButton = ({
         >
             <span className="relative z-10">{children}</span>
             {variant === 'primary' && (
-                <div className="absolute inset-0 bg-gradient-to-r from-accent-purple to-accent-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent-secondary)] to-[var(--accent-primary)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             )}
         </motion.button>
     );

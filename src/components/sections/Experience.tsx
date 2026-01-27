@@ -32,7 +32,7 @@ export const Experience = () => {
 
             <div className="max-w-4xl mx-auto relative">
                 {/* Vertical Line */}
-                <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-accent-blue to-accent-purple transform -translate-x-1/2 hidden md:block" />
+                <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--accent-primary)] to-[var(--accent-secondary)] transform -translate-x-1/2 hidden md:block" />
 
                 <div className="space-y-12">
                     {EXPERIENCES.map((exp, index) => (
@@ -46,16 +46,16 @@ export const Experience = () => {
                         >
                             <div className="flex-1 w-full relative z-10">
                                 <GlassCard className="relative overflow-hidden group">
-                                    <div className="absolute top-0 left-0 w-1 h-full bg-accent-blue transition-all duration-300 group-hover:w-2" />
-                                    <h3 className="text-xl font-bold text-white mb-1 pl-2">{exp.role}</h3>
-                                    <h4 className="text-accent-purple mb-2 pl-2">{exp.company}</h4>
-                                    <p className="text-gray-400 text-sm mb-4 pl-2 font-mono">{exp.period}</p>
-                                    <p className="text-gray-300 pl-2">{exp.description}</p>
+                                    <div className="absolute top-0 left-0 w-1 h-full bg-[var(--accent-primary)] transition-all duration-300 group-hover:w-2" />
+                                    <h3 className="text-xl font-bold text-[var(--foreground)] mb-1 pl-2">{exp.role}</h3>
+                                    <h4 className="text-[var(--accent-secondary)] mb-2 pl-2">{exp.company}</h4>
+                                    <p className="text-[var(--foreground-muted)] text-sm mb-4 pl-2 font-mono">{exp.period}</p>
+                                    <p className="text-[var(--foreground-secondary)] pl-2">{exp.description}</p>
                                 </GlassCard>
                             </div>
 
                             {/* Timeline Dot */}
-                            <div className="w-8 h-8 rounded-full bg-primary-dark border-4 border-accent-blue z-20 hidden md:block lg:absolute lg:left-1/2 lg:-translate-x-1/2 shadow-[0_0_15px_rgba(0,212,255,0.5)]" />
+                            <div className="w-8 h-8 rounded-full bg-[var(--background)] border-4 border-[var(--accent-primary)] z-20 hidden md:block lg:absolute lg:left-1/2 lg:-translate-x-1/2 shadow-[0_0_15px_var(--glow-color)]" />
 
                             <div className="flex-1 hidden md:block" />
                         </motion.div>
