@@ -77,22 +77,25 @@ export const About = () => {
                         <h3 className="text-xl font-bold mb-6 text-[var(--foreground)]">Technical Arsenal</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div>
-                                <h4 className="text-[var(--accent-primary)] mb-4 font-semibold">Frontend</h4>
-                                <SkillCard title="React / Next.js" level={90} />
-                                <SkillCard title="TypeScript" level={85} />
-                                <SkillCard title="Three.js / R3F" level={75} />
+                                <h4 className="text-[var(--accent-primary)] mb-4 font-semibold">Development</h4>
+                                <SkillCard title="JavaScript / TypeScript" level={90} />
+                                <SkillCard title="React / Next.js" level={95} />
+                                <SkillCard title="Node.js / Express" level={85} />
+                                <SkillCard title="PHP / Kotlin" level={75} />
                             </div>
                             <div>
-                                <h4 className="text-[var(--accent-secondary)] mb-4 font-semibold">Backend</h4>
-                                <SkillCard title="Node.js" level={80} />
-                                <SkillCard title="Python" level={70} />
-                                <SkillCard title="PostgreSQL" level={75} />
+                                <h4 className="text-[var(--accent-secondary)] mb-4 font-semibold">Database & Tools</h4>
+                                <SkillCard title="MySQL / PostgreSQL" level={85} />
+                                <SkillCard title="MongoDB / Prisma" level={80} />
+                                <SkillCard title="Docker / Git" level={85} />
+                                <SkillCard title="Vercel / Netlify" level={90} />
                             </div>
                             <div>
-                                <h4 className="text-[var(--accent-tertiary)] mb-4 font-semibold">Design</h4>
-                                <SkillCard title="Blender" level={80} />
-                                <SkillCard title="Figma" level={85} />
-                                <SkillCard title="UI/UX" level={80} />
+                                <h4 className="text-[var(--accent-tertiary)] mb-4 font-semibold">Design & 3D</h4>
+                                <SkillCard title="Blender 3D" level={85} />
+                                <SkillCard title="Three.js / R3F" level={80} />
+                                <SkillCard title="Figma / UI/UX" level={85} />
+                                <SkillCard title="Responsive Design" level={95} />
                             </div>
                         </div>
                     </GlassCard>

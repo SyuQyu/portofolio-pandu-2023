@@ -6,22 +6,40 @@ import { GlassCard } from '@/components/ui/GlassCard';
 
 const EXPERIENCES = [
     {
+        role: "Web Developer",
+        company: "Barrakusuma Spatial Teknologi",
+        period: "July 2025 - Present",
+        description: "Developing modern web applications using Next.js and Kotlin integration. Implementing responsive design and optimizing user experience across devices."
+    },
+    {
+        role: "Frontend Developer",
+        company: "CrescentRating",
+        period: "Jan 2024 - Dec 2024",
+        description: "Collaborated on the development of a new website, ensuring smooth transitions and enhanced functionality."
+    },
+    {
         role: "Full-stack Developer",
-        company: "Freelance",
-        period: "2023 - Present",
-        description: "Developing modern web applications using Next.js and React technology stack. Delivering high-quality code and immersive user experiences."
+        company: "Peluang.co",
+        period: "Mar 2024 - Aug 2024",
+        description: "Developed and maintained scalable web applications using Next.js, React.js, and Node.js. Optimized application performance, achieving 40% faster load times."
     },
     {
-        role: "3D Artist",
-        company: "Personal Projects",
-        period: "2022 - Present",
-        description: "Creating realistic and stylized 3D environments using Blender. Specializing in hard-surface modeling and procedural texturing."
+        role: "Frontend Developer",
+        company: "MAXY Academy",
+        period: "Sep 2023 - Jan 2024",
+        description: "Built responsive web interfaces for a learning platform serving 500+ students. Implemented pixel-perfect UI components and layouts using React.js."
     },
     {
-        role: "Computer Science Student",
-        company: "University",
-        period: "2021 - Present",
-        description: "Focusing on Software Engineering and Computer Graphics. Active member of tech communities."
+        role: "Staff of Project and Research",
+        company: "KSM Android UPN Veteran Jakarta",
+        period: "Dec 2022 - Dec 2023",
+        description: "Served as a Backend Development Mentor. Led backend development for a Learning Management System (LMS) used by 100+ students."
+    },
+    {
+        role: "Founder & Full-stack Developer",
+        company: "Mudahdigital.id",
+        period: "Jan 2021 - Present",
+        description: "Founded and managed a digital services platform serving 50+ clients. Managed the entire project lifecycle for various digital solutions."
     }
 ];
 
