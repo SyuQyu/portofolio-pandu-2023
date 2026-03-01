@@ -54,6 +54,270 @@ export const codingPortfolio: PortfolioItem[] = [
         projectLink: { github: '', hosting: 'https://mudahdigital.id' },
         image: '/image/coding/compro.png'
     },
+    {
+        id: 'gh-1089341331',
+        title: 'app-fe-freelance',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/app-fe-freelance', hosting: 'https://app-fe-freelance.vercel.app' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-994171489',
+        title: 'Backend-AI',
+        subtitle: 'Python · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/Backend-AI', hosting: 'https://backend-ai-eight.vercel.app' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-772122027',
+        title: 'backend-e-canteen',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/backend-e-canteen', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-921167774',
+        title: 'backend-skripsi-2025',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/backend-skripsi-2025', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-579844975',
+        title: 'basic-api',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/basic-api', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-837755780',
+        title: 'basic-form-nextjs',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/basic-form-nextjs', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-795807430',
+        title: 'bot-character-ai',
+        subtitle: 'JavaScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/bot-character-ai', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-1040167948',
+        title: 'company-profile-mni',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/company-profile-mni', hosting: 'https://company-profile-mni.vercel.app' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-1017456023',
+        title: 'CR-BARENG',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/CR-BARENG', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-719356087',
+        title: 'final-project-sc-backend-2023',
+        subtitle: 'JavaScript · GitHub Repository',
+        description: 'Tugas final project untuk kelas Backend Basic 2023',
+        projectLink: { github: 'https://github.com/SyuQyu/final-project-sc-backend-2023', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-772122242',
+        title: 'frontend-e-canteen',
+        subtitle: 'GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/frontend-e-canteen', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-941527402',
+        title: 'frontend-skripsi-2025',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/frontend-skripsi-2025', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-837763377',
+        title: 'FY24_Front-End-Developer_Type-B',
+        subtitle: 'JavaScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/FY24_Front-End-Developer_Type-B', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-706246534',
+        title: 'gorest-fetch-api',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/gorest-fetch-api', hosting: 'https://gorest-fetch-api.vercel.app' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-815682005',
+        title: 'linnaapp',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/linnaapp', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-815636636',
+        title: 'linnaappbackend',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/linnaappbackend', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-711732104',
+        title: 'MadinaInventoryApp',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'Projek Inventory Management untuk Madina Baja',
+        projectLink: { github: 'https://github.com/SyuQyu/MadinaInventoryApp', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-692670006',
+        title: 'maxy-academy-2023',
+        subtitle: 'JavaScript · GitHub Repository',
+        description: 'bootcamp maxy academy 2023',
+        projectLink: { github: 'https://github.com/SyuQyu/maxy-academy-2023', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-687423206',
+        title: 'mini-project-tsc-backend-2023',
+        subtitle: 'JavaScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/mini-project-tsc-backend-2023', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-655575373',
+        title: 'movie-api-fetch-api.tvmaze',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'nextjs for movie api fetch from api.tvmaze',
+        projectLink: { github: 'https://github.com/SyuQyu/movie-api-fetch-api.tvmaze', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-611993352',
+        title: 'netherbound',
+        subtitle: 'ShaderLab · GitHub Repository',
+        description: 'git for project netherbound',
+        projectLink: { github: 'https://github.com/SyuQyu/netherbound', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-514761727',
+        title: 'portofolio-3d-website',
+        subtitle: 'JavaScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/portofolio-3d-website', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-657908668',
+        title: 'portofolio-pandu-2023',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/portofolio-pandu-2023', hosting: 'https://portofolio-pandu-2023.vercel.app' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-639908590',
+        title: 'ProjectAkhirPemrogramanWeb',
+        subtitle: 'PHP · GitHub Repository',
+        description: 'Pemrograman Web',
+        projectLink: { github: 'https://github.com/SyuQyu/ProjectAkhirPemrogramanWeb', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-504501066',
+        title: 'Simple-Web',
+        subtitle: 'JavaScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/Simple-Web', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-515078609',
+        title: 'SyuQyu',
+        subtitle: 'GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/SyuQyu', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-1053554781',
+        title: 'template-web',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/template-web', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-556499049',
+        title: 'twitter-clone',
+        subtitle: 'Vue · GitHub Repository',
+        description: 'First Project Using Nuxtjs',
+        projectLink: { github: 'https://github.com/SyuQyu/twitter-clone', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-926028801',
+        title: 'web-mama',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/web-mama', hosting: 'https://erni-products.vercel.app' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-535170604',
+        title: 'WeCare',
+        subtitle: 'JavaScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/WeCare', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-705445417',
+        title: 'workfrom-api-init',
+        subtitle: 'GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/workfrom-api-init', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-705469484',
+        title: 'workfrom-be',
+        subtitle: 'JavaScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/workfrom-be', hosting: '' },
+        image: '/image/coding/compro.png'
+    },
+    {
+        id: 'gh-702789433',
+        title: 'workfrom-fe',
+        subtitle: 'TypeScript · GitHub Repository',
+        description: 'A project developed on GitHub.',
+        projectLink: { github: 'https://github.com/SyuQyu/workfrom-fe', hosting: 'https://workfrom-fe.vercel.app' },
+        image: '/image/coding/compro.png'
+    }
 ];
 
 export const threeDPortfolio: ThreeDPortfolioItem[] = [

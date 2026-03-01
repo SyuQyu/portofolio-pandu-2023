@@ -69,10 +69,10 @@ export const Experience = () => {
                         <motion.div
                             key={index}
                             className={`flex flex-col md:flex-row gap-8 items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
+                            initial={{ opacity: 0, y: 50, x: index % 2 === 0 ? 50 : -50 }}
+                            whileInView={{ opacity: 1, y: 0, x: 0 }}
+                            viewport={{ once: false, amount: 0.2 }}
+                            transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
                         >
                             <div className="flex-1 w-full relative z-10">
                                 <GlassCard className="relative overflow-hidden group">
