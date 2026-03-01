@@ -33,7 +33,7 @@ export const FloatingShapes = () => {
             <Shape
                 position={[-4, 2, -2]}
                 color="#8b5cf6"
-                geometry={<icosahedronGeometry args={[1, 0]} />}
+                geometry={<icosahedronGeometry args={[1, 1]} />}
             />
             <Shape
                 position={[4, -2, -3]}

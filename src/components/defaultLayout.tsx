@@ -27,7 +27,7 @@ export default function DefaultLayout({ children }: Props) {
 
     const showLoader = pathname === '/';
     return (
-        <body id='layout-default'>
+        <>
             {showLoader && (
                 <div className={`fixed top-0 left-0 w-screen h-screen bg-[var(--background)] justify-center items-center z-50 ${progress === 100 ? 'opacity-0 hidden' : 'opacity-100 flex'} transition-all duration-1000`}>
                     <Loader />
@@ -39,7 +39,7 @@ export default function DefaultLayout({ children }: Props) {
                 <main className='main'>{children}</main>
             </AnimatePresence>
             <Footer />
-        </body>
+        </>
     );
 }
 

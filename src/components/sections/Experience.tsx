@@ -6,47 +6,59 @@ import { GlassCard } from '@/components/ui/GlassCard';
 
 const EXPERIENCES = [
     {
-        role: "Web Developer",
-        company: "Barrakusuma Spatial Teknologi",
-        period: "July 2025 - Present",
-        description: "Developing modern web applications using Next.js and Kotlin integration. Implementing responsive design and optimizing user experience across devices."
+        role: "Fullstack Web Developer",
+        company: "Eesel",
+        period: "September 2025 - Present",
+        description: "I support Eesel AI's customer-facing engineering work by investigating and fixing bugs, implementing small feature enhancements, and troubleshooting customer configurations and integrations. I also refine and maintain AI prompts to improve response quality."
     },
     {
-        role: "Frontend Developer",
+        role: "Fullstack Web Developer",
         company: "CrescentRating",
-        period: "Jan 2024 - Dec 2024",
-        description: "Collaborated on the development of a new website, ensuring smooth transitions and enhanced functionality."
+        period: "September 2024 - Present",
+        description: "Collaborated on the development of a new website for Crescent Rating and contributed to resolving bugs. My accomplishments included slicing the user interface, converting the existing UI, and bug fixing in backend."
     },
     {
-        role: "Full-stack Developer",
+        role: "Undergraduate in Computer Science (3.9/4.00)",
+        company: "Universitas Pembangunan Nasional Veteran Jakarta",
+        period: "August 2021 - July 2025",
+        description: "Undergraduate studies focusing on Computer Science."
+    },
+    {
+        role: "Fullstack Web Developer Part Time",
         company: "Peluang.co",
-        period: "Mar 2024 - Aug 2024",
-        description: "Developed and maintained scalable web applications using Next.js, React.js, and Node.js. Optimized application performance, achieving 40% faster load times."
+        period: "October 2023 - March 2024",
+        description: "Collaborated on the development of a website product aimed at helping a franchise advertise their business on Peluang.co. Contributions included slicing the UI using Next.js, Tailwind, and Schdn UI, and implementing backend services and APIs."
     },
     {
-        role: "Frontend Developer",
-        company: "MAXY Academy",
-        period: "Sep 2023 - Jan 2024",
-        description: "Built responsive web interfaces for a learning platform serving 500+ students. Implemented pixel-perfect UI components and layouts using React.js."
+        role: "Staff project and research division",
+        company: "Kelompok Studi Mahasiswa Android",
+        period: "December 2022 - December 2023",
+        description: "Participated in creating learning materials named learning ammo, Android Hackathon, Internal Project Development as back-end mentor, and Study Club as Basic back-end mentor."
     },
     {
-        role: "Staff of Project and Research",
-        company: "KSM Android UPN Veteran Jakarta",
-        period: "Dec 2022 - Dec 2023",
-        description: "Served as a Backend Development Mentor. Led backend development for a Learning Management System (LMS) used by 100+ students."
+        role: "Fullstack Web Developer",
+        company: "Etech",
+        period: "June 2022 - September 2022",
+        description: "Collaborated to develop a comprehensive website encompassing both front-end and back-end components. Implemented the UI design using React.js and created APIs using Express.js."
     },
     {
-        role: "Founder & Full-stack Developer",
-        company: "Mudahdigital.id",
-        period: "Jan 2021 - Present",
-        description: "Founded and managed a digital services platform serving 50+ clients. Managed the entire project lifecycle for various digital solutions."
+        role: "Rekayasa Perangkat Lunak",
+        company: "SMK Negeri 1 Kota Bekasi",
+        period: "July 2018 - July 2021",
+        description: "Vocational high school education focusing on Software Engineering."
+    },
+    {
+        role: "Fullstack Web Developer Intern",
+        company: "PT. Brilyan Trimatra Utama",
+        period: "October 2019 - March 2020",
+        description: "Participated in an internship program creating an accommodation website for PON XX 2020. Developed APIs using Express.js and implemented the UI using React.js."
     }
 ];
 
 export const Experience = () => {
     return (
         <section id="experienceSection" className="py-20 relative px-6">
-            <SectionHeading title="Experience" subtitle="My professional journey" />
+            <SectionHeading title="Experience & Education" subtitle="My professional and academic journey" />
 
             <div className="max-w-4xl mx-auto relative">
                 {/* Vertical Line */}

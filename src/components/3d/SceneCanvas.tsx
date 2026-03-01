@@ -21,11 +21,17 @@ export const SceneCanvas = ({
                 camera={{ position: cameraPosition, fov: 45 }}
                 gl={{ antialias: true, alpha: true }}
                 dpr={[1, 2]} // Performance optimization for high DPI screens
+                onCreated={({ gl }) => {
+                    gl.setClearColor(0x000000, 0);
+                }}
+                onError={(error) => {
+                    console.warn('Canvas error:', error);
+                }}
             >
                 <Suspense fallback={null}>
                     {children}
+                    <Preload all />
                 </Suspense>
-                <Preload all />
             </Canvas>
         </div>
     );

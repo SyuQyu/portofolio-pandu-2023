@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import { useTheme } from 'next-themes';
@@ -10,6 +10,11 @@ export const ParticleBackground = (props: any) => {
     const ref = useRef<any>(null);
     const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.5 }));
     const { resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useFrame((state, delta) => {
         if (ref.current) {
@@ -18,8 +23,8 @@ export const ParticleBackground = (props: any) => {
         }
     });
 
-    // Theme-aware particle color
-    const particleColor = resolvedTheme === 'light' ? '#6366f1' : '#00d4ff';
+    // Theme-aware particle color with fallback
+    const particleColor = mounted && resolvedTheme === 'light' ? '#6366f1' : '#00d4ff';
 
     return (
         <group rotation={[0, 0, Math.PI / 4]}>

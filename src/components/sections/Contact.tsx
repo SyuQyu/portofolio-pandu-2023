@@ -29,10 +29,14 @@ export const Contact = () => {
                     <div className="space-y-4">
                         <div className="flex items-center gap-3 text-[var(--foreground-secondary)]">
                             <span className="w-10 h-10 rounded-full bg-[var(--accent-primary)]/20 flex items-center justify-center text-[var(--accent-primary)]">✉️</span>
-                            <a href="mailto:pandu@example.com" className="hover:text-[var(--foreground)] transition-colors">pandu@example.com</a>
+                            <a href="mailto:pandu.utomo.2002@gmail.com" className="hover:text-[var(--foreground)] transition-colors">pandu.utomo.2002@gmail.com</a>
                         </div>
                         <div className="flex items-center gap-3 text-[var(--foreground-secondary)]">
-                            <span className="w-10 h-10 rounded-full bg-[var(--accent-secondary)]/20 flex items-center justify-center text-[var(--accent-secondary)]">📍</span>
+                            <span className="w-10 h-10 rounded-full bg-[var(--accent-secondary)]/20 flex items-center justify-center text-[var(--accent-secondary)]">📞</span>
+                            <a href="https://wa.me/6282137138687" target="_blank" rel="noreferrer" className="hover:text-[var(--foreground)] transition-colors">+62 821-3713-8687</a>
+                        </div>
+                        <div className="flex items-center gap-3 text-[var(--foreground-secondary)]">
+                            <span className="w-10 h-10 rounded-full bg-[var(--accent-tertiary)]/20 flex items-center justify-center text-[var(--accent-tertiary)]">📍</span>
                             <span>Indonesia</span>
                         </div>
                     </div>

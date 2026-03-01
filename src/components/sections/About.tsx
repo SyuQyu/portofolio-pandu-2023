@@ -34,12 +34,10 @@ export const About = () => {
                     <GlassCard className="md:col-span-2 row-span-2 flex flex-col justify-center">
                         <h3 className="text-2xl font-bold mb-4 text-[var(--foreground)]">Who I Am</h3>
                         <p className="text-[var(--foreground-secondary)] leading-relaxed mb-4">
-                            I'm a passionate Full-stack Developer and 3D Artist based in Indonesia.
-                            My passion lies in creating immersive web experiences that blend technical precision with artistic vision.
+                            I am passionate about advancing my skills in software development. With a solid foundation in software development principles, I excel in self-managing independent projects while also thriving in collaborative team environments.
                         </p>
                         <p className="text-[var(--foreground-secondary)] leading-relaxed">
-                            With a background in Computer Science, I bridge the gap between engineering and design,
-                            building applications that are not just functional but also visually stunning.
+                            My commitment to continuous learning and adaptability enables me to contribute effectively to innovative and impactful projects.
                         </p>
                     </GlassCard>
 
@@ -81,7 +79,7 @@ export const About = () => {
                                 <SkillCard title="JavaScript / TypeScript" level={90} />
                                 <SkillCard title="React / Next.js" level={95} />
                                 <SkillCard title="Node.js / Express" level={85} />
-                                <SkillCard title="PHP / Kotlin" level={75} />
+                                <SkillCard title="Python / React Native" level={80} />
                             </div>
                             <div>
                                 <h4 className="text-[var(--accent-secondary)] mb-4 font-semibold">Database & Tools</h4>
