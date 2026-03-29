@@ -5,12 +5,12 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { GlassCard } from '@/components/ui/GlassCard';
 
 const EXPERIENCES = [
-    {
-        role: "Fullstack Web Developer",
-        company: "Eesel",
-        period: "September 2025 - Present",
-        description: "I support Eesel AI's customer-facing engineering work by investigating and fixing bugs, implementing small feature enhancements, and troubleshooting customer configurations and integrations. I also refine and maintain AI prompts to improve response quality."
-    },
+    // {
+    //     role: "Fullstack Web Developer",
+    //     company: "Eesel",
+    //     period: "September 2025 - Present",
+    //     description: "I support Eesel AI's customer-facing engineering work by investigating and fixing bugs, implementing small feature enhancements, and troubleshooting customer configurations and integrations. I also refine and maintain AI prompts to improve response quality."
+    // },
     {
         role: "Fullstack Web Developer",
         company: "CrescentRating",
