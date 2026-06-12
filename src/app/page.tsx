@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { Hero } from '@/components/sections/Hero';
+import { Marquee } from '@/components/ui/Marquee';
 
 const About = dynamic(() => import('@/components/sections/About').then(mod => mod.About), {
   loading: () => <div className="min-h-[400px] flex justify-center items-center text-gray-400">Loading About...</div>,
@@ -32,6 +33,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Marquee />
       <div className='flex flex-col w-full h-full overflow-hidden'>
         <About />
         <Experience />

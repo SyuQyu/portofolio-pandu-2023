@@ -17,7 +17,7 @@ export const Contact = () => {
 
     return (
         <section id="contactSection" className="py-20 relative px-6">
-            <SectionHeading title="Get In Touch" subtitle="Let's build something amazing together" />
+            <SectionHeading number="05" title="Contact" subtitle="Let's build something amazing together" />
 
             <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                 <GlassCard className="flex flex-col justify-center">

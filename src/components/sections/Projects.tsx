@@ -80,7 +80,7 @@ export const Projects = () => {
 
     return (
         <section id="portofolioSection" className="py-20 relative px-6">
-            <SectionHeading title="Portfolio" subtitle="Showcase of my latest work" />
+            <SectionHeading number="03" title="Work" subtitle="Showcase of my latest work" />
 
             <div className="flex justify-center gap-4 mb-12">
                 <GradientButton
@@ -102,14 +102,16 @@ export const Projects = () => {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
             >
                 <AnimatePresence mode="popLayout">
-                    {items.map((item: any) => (
+                    {items.map((item: any, index: number) => (
                         <motion.div
                             key={item.id}
                             layout
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.8 }}
-                            transition={{ duration: 0.3 }}
+                            style={{ transformPerspective: 1000 }}
+                            initial={{ opacity: 0, y: 40, rotateX: -18, scale: 0.92 }}
+                            animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.85, rotateX: 12 }}
+                            whileHover={{ y: -10 }}
+                            transition={{ duration: 0.45, delay: index * 0.06 }}
                         >
                             <ProjectCard item={item} />
                         </motion.div>

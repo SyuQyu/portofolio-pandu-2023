@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Canvas } from '@react-three/fiber';
-import { Float } from '@react-three/drei';
+import { Float, MeshDistortMaterial, Sparkles } from '@react-three/drei';
 
 const SkillCard = ({ title, level }: { title: string; level: number }) => (
     <div className="mb-4">
@@ -27,7 +27,7 @@ export const About = () => {
     return (
         <section id="aboutMeSection" className="py-20 relative px-6">
             <div className="max-w-7xl mx-auto">
-                <SectionHeading title="About Me" subtitle="My journey into the digital realm" />
+                <SectionHeading number="01" title="About" subtitle="My journey into the digital realm" />
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
                     {/* Main Bio Card - Spans 2 cols */}
@@ -44,15 +44,28 @@ export const About = () => {
                     {/* 3D Avatar Area */}
                     <GlassCard className="row-span-2 relative min-h-[300px] flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0">
-                            <Canvas>
+                            <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 2]}>
                                 <ambientLight intensity={0.5} />
-                                <pointLight position={[10, 10, 10]} />
-                                <Float speed={2}>
-                                    <mesh rotation={[0, Math.PI / 4, 0]}>
-                                        <boxGeometry args={[2, 2, 2]} />
-                                        <meshStandardMaterial color="#8b5cf6" wireframe />
+                                <pointLight position={[5, 5, 5]} intensity={1} />
+                                <Float speed={2} rotationIntensity={1.2} floatIntensity={1.5}>
+                                    <mesh>
+                                        <dodecahedronGeometry args={[1.6, 0]} />
+                                        <meshStandardMaterial color="#8b5cf6" wireframe transparent opacity={0.35} />
+                                    </mesh>
+                                    <mesh scale={0.8}>
+                                        <icosahedronGeometry args={[1.1, 5]} />
+                                        <MeshDistortMaterial
+                                            color="#00d4ff"
+                                            emissive="#8b5cf6"
+                                            emissiveIntensity={0.35}
+                                            distort={0.4}
+                                            speed={2.2}
+                                            roughness={0.15}
+                                            metalness={0.85}
+                                        />
                                     </mesh>
                                 </Float>
+                                <Sparkles count={40} scale={4} size={2} speed={0.4} color="#00d4ff" opacity={0.6} />
                             </Canvas>
                         </div>
                     </GlassCard>

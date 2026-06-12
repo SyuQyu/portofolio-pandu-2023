@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { GradientButton } from '@/components/ui/GradientButton';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { scrollToSection as smoothScrollTo } from '@/components/SmoothScroll';
 
 const NAV_ITEMS = [
     { name: 'Home', href: '#homeSection' },
@@ -13,6 +14,27 @@ const NAV_ITEMS = [
     { name: 'Portfolio', href: '#portofolioSection' },
     { name: 'Contact', href: '#contactSection' },
 ];
+
+// Studio-style live mouse coordinate readout (writes to the DOM directly to avoid re-renders)
+const CoordsReadout = () => {
+    const ref = useRef<HTMLSpanElement>(null);
+
+    useEffect(() => {
+        const onMove = (e: MouseEvent) => {
+            if (ref.current) {
+                ref.current.textContent = `X:${String(e.clientX).padStart(4, '0')} Y:${String(e.clientY).padStart(4, '0')}`;
+            }
+        };
+        window.addEventListener('mousemove', onMove, { passive: true });
+        return () => window.removeEventListener('mousemove', onMove);
+    }, []);
+
+    return (
+        <span ref={ref} className="hidden lg:block font-mono text-[10px] tracking-[0.2em] text-[var(--foreground-muted)] tabular-nums min-w-[110px]">
+            X:0000 Y:0000
+        </span>
+    );
+};
 
 export const Navigation = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -28,11 +50,8 @@ export const Navigation = () => {
 
     const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
-        const element = document.querySelector(href);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            setMobileMenuOpen(false);
-        }
+        smoothScrollTo(href);
+        setMobileMenuOpen(false);
     };
 
     return (
@@ -46,32 +65,36 @@ export const Navigation = () => {
                 )}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.6, delay: 2.9, ease: 'easeOut' }}
             >
                 <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                    <a
-                        href="#homeSection"
-                        className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]"
-                        onClick={(e) => scrollToSection(e, '#homeSection')}
-                    >
-                        PU
-                    </a>
+                    <div className="flex items-center gap-6">
+                        <a
+                            href="#homeSection"
+                            className="font-display text-xl font-black uppercase tracking-tight text-[var(--foreground)]"
+                            onClick={(e) => scrollToSection(e, '#homeSection')}
+                        >
+                            PU<span className="text-[var(--foreground-muted)]">&copy;</span>
+                        </a>
+                        <CoordsReadout />
+                    </div>
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex items-center gap-8">
-                        {NAV_ITEMS.map((item) => (
+                        {NAV_ITEMS.map((item, index) => (
                             <a
                                 key={item.name}
                                 href={item.href}
                                 onClick={(e) => scrollToSection(e, item.href)}
-                                className="text-sm font-medium text-[var(--foreground-secondary)] hover:text-[var(--foreground)] transition-colors relative group"
+                                className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--foreground-secondary)] hover:text-[var(--foreground)] transition-colors relative group"
                             >
+                                <span className="text-[var(--foreground-muted)] mr-1">0{index + 1}</span>
                                 {item.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--accent-primary)] transition-all duration-300 group-hover:w-full" />
+                                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[var(--foreground)] transition-all duration-300 group-hover:w-full" />
                             </a>
                         ))}
                         <ThemeToggle />
-                        <GradientButton variant="outline" className="px-6 py-2 text-sm" onClick={() => window.open('/resume.pdf', '_blank')}>
+                        <GradientButton variant="outline" className="px-6 py-2 text-xs" onClick={() => window.open('/resume.pdf', '_blank')}>
                             Resume
                         </GradientButton>
                     </div>

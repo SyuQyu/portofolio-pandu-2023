@@ -1,45 +1,38 @@
 'use client';
-import { useEffect, useState, lazy, Suspense } from 'react';
-import { Html, useProgress } from "@react-three/drei";
+import { useState, lazy } from 'react';
 import { usePathname } from 'next/navigation';
-import { AnimatePresence, useCycle } from 'framer-motion';
-
-// Importing components using dynamic import
-// AOS removed
-// import AOS from 'aos';
-// import 'aos/dist/aos.css';
+import { AnimatePresence } from 'framer-motion';
 
 import { Navigation } from '@/components/sections/Navigation';
+import { ScrollProgress } from '@/components/ui/ScrollProgress';
+import { CustomCursor } from '@/components/ui/CustomCursor';
+import { GlobalScene } from '@/components/3d/GlobalScene';
+import { SmoothScroll } from '@/components/SmoothScroll';
+import { IntroLoader } from '@/components/loader/IntroLoader';
 
 const Footer = lazy(() => import('./layouts/footer/footer'));
-const Loader = lazy(() => import('@/components/loader/loader'));
 
 export default function DefaultLayout({ children }: Props) {
-    const pathname = usePathname()
-    const { progress } = useProgress();
+    const pathname = usePathname();
+    const [introDone, setIntroDone] = useState(false);
+    const showIntro = pathname === '/' && !introDone;
 
-    // AOS removed
-    /*
-    useEffect(() => {
-        AOS.init({});
-    }, []);
-    */
-
-    const showLoader = pathname === '/';
     return (
-        <>
-            {showLoader && (
-                <div className={`fixed top-0 left-0 w-screen h-screen bg-[var(--background)] justify-center items-center z-50 ${progress === 100 ? 'opacity-0 hidden' : 'opacity-100 flex'} transition-all duration-1000`}>
-                    <Loader />
-                </div>
-            )}
+        <SmoothScroll>
+            <AnimatePresence>
+                {showIntro && <IntroLoader onComplete={() => setIntroDone(true)} />}
+            </AnimatePresence>
+
+            <GlobalScene />
+            <ScrollProgress />
+            <CustomCursor />
             <Navigation />
 
             <AnimatePresence mode="wait" initial={false}>
                 <main className='main'>{children}</main>
             </AnimatePresence>
             <Footer />
-        </>
+        </SmoothScroll>
     );
 }
 

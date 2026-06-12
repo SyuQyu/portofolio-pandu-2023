@@ -58,21 +58,27 @@ const EXPERIENCES = [
 export const Experience = () => {
     return (
         <section id="experienceSection" className="py-20 relative px-6">
-            <SectionHeading title="Experience & Education" subtitle="My professional and academic journey" />
+            <SectionHeading number="02" title="Experience" subtitle="My professional and academic journey" />
 
             <div className="max-w-4xl mx-auto relative">
-                {/* Vertical Line */}
-                <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--accent-primary)] to-[var(--accent-secondary)] transform -translate-x-1/2 hidden md:block" />
+                {/* Vertical Line — draws itself as the section scrolls into view */}
+                <motion.div
+                    className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] transform -translate-x-1/2 hidden md:block origin-top"
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.4, ease: 'easeOut' }}
+                />
 
                 <div className="space-y-12">
                     {EXPERIENCES.map((exp, index) => (
                         <motion.div
                             key={index}
                             className={`flex flex-col md:flex-row gap-8 items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-                            initial={{ opacity: 0, y: 50, x: index % 2 === 0 ? 50 : -50 }}
-                            whileInView={{ opacity: 1, y: 0, x: 0 }}
+                            initial={{ opacity: 0, y: 60, x: index % 2 === 0 ? 60 : -60, rotate: index % 2 === 0 ? 2 : -2, filter: 'blur(8px)' }}
+                            whileInView={{ opacity: 1, y: 0, x: 0, rotate: 0, filter: 'blur(0px)' }}
                             viewport={{ once: false, amount: 0.2 }}
-                            transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+                            transition={{ duration: 0.7, type: "spring", bounce: 0.3 }}
                         >
                             <div className="flex-1 w-full relative z-10">
                                 <GlassCard className="relative overflow-hidden group">

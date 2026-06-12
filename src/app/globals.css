@@ -10,9 +10,10 @@
   --color-accent-pink: #ec4899;
   --color-star-gold: #fbbf24;
 
-  /* Fonts */
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  /* Fonts — mapped to the next/font variables loaded in layout.tsx */
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --font-mono: var(--font-roboto-mono), monospace;
+  --font-display: var(--font-archivo), system-ui, sans-serif;
 
   /* Animations */
   --animate-float: float 6s ease-in-out infinite;
@@ -34,11 +35,11 @@
 
   @keyframes glow {
     from {
-      box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.4), 0 0 20px rgba(0, 212, 255, 0.2);
     }
 
     to {
-      box-shadow: 0 0 20px #8b5cf6, 0 0 30px #8b5cf6;
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 30px rgba(139, 92, 246, 0.2);
     }
   }
 
@@ -69,44 +70,44 @@
   }
 }
 
-/* Dark Theme (Space Night) - Default */
+/* Dark Theme (Studio Night) - Default */
 :root {
-  --background: #050510;
-  --background-secondary: #0f0f1e;
-  --foreground: #ffffff;
-  --foreground-secondary: #a0aec0;
-  --foreground-muted: #6b7280;
-  --surface: rgba(15, 15, 30, 0.8);
-  --surface-hover: rgba(25, 25, 45, 0.9);
-  --glass-bg: rgba(17, 17, 24, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.05);
+  --background: #0a0a12;
+  --background-secondary: #12121c;
+  --foreground: #f4f4f6;
+  --foreground-secondary: #9aa0b0;
+  --foreground-muted: #5c6070;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.1);
   --accent-primary: #00d4ff;
   --accent-secondary: #8b5cf6;
-  --accent-tertiary: #10b981;
-  --glow-color: rgba(0, 212, 255, 0.4);
+  --accent-tertiary: #ec4899;
+  --glow-color: rgba(0, 212, 255, 0.25);
   --star-color: #00d4ff;
-  --nebula-1: rgba(139, 92, 246, 0.1);
-  --nebula-2: rgba(0, 212, 255, 0.1);
+  --nebula-1: rgba(139, 92, 246, 0.08);
+  --nebula-2: rgba(0, 212, 255, 0.06);
 }
 
-/* Light Theme (Cosmic Day) */
+/* Light Theme (Studio Day) */
 .light {
-  --background: #f0f4ff;
-  --background-secondary: #e8eeff;
-  --foreground: #1a1a2e;
-  --foreground-secondary: #4a5568;
-  --foreground-muted: #718096;
-  --surface: rgba(255, 255, 255, 0.7);
-  --surface-hover: rgba(255, 255, 255, 0.9);
-  --glass-bg: rgba(255, 255, 255, 0.6);
-  --glass-border: rgba(99, 102, 241, 0.15);
+  --background: #f4f4f8;
+  --background-secondary: #ebebf2;
+  --foreground: #14141f;
+  --foreground-secondary: #4a5061;
+  --foreground-muted: #8a8fa0;
+  --surface: rgba(20, 20, 31, 0.04);
+  --surface-hover: rgba(20, 20, 31, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(99, 102, 241, 0.18);
   --accent-primary: #6366f1;
   --accent-secondary: #a855f7;
-  --accent-tertiary: #14b8a6;
-  --glow-color: rgba(99, 102, 241, 0.3);
-  --star-color: #fbbf24;
-  --nebula-1: rgba(168, 85, 247, 0.08);
-  --nebula-2: rgba(99, 102, 241, 0.08);
+  --accent-tertiary: #ec4899;
+  --glow-color: rgba(99, 102, 241, 0.22);
+  --star-color: #6366f1;
+  --nebula-1: rgba(168, 85, 247, 0.07);
+  --nebula-2: rgba(99, 102, 241, 0.06);
 }
 
 body {
@@ -169,23 +170,15 @@ body::before {
 
 /* Text Gradient */
 .text-gradient {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  background: linear-gradient(120deg, var(--accent-primary) 0%, var(--accent-secondary) 50%, var(--accent-tertiary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Star decoration for light mode */
-.light .cosmic-star {
+.cosmic-star {
   color: var(--star-color);
-  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.6));
-}
-
-/* Stars decoration for dark mode */
-.dark .cosmic-star,
-:root .cosmic-star {
-  color: var(--star-color);
-  filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.6));
+  filter: drop-shadow(0 0 6px var(--glow-color));
 }
 
 /* Cosmic glow utilities */
@@ -234,6 +227,44 @@ body::before {
   stroke: var(--accent-primary);
   stroke-width: 1;
   opacity: 0.3;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Faint grid that fades out radially — used behind the hero */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, var(--glass-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--glass-border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 72%);
+  mask-image: radial-gradient(ellipse at center, black 25%, transparent 72%);
+}
+
+/* 3D card flip helpers */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Theme transition */

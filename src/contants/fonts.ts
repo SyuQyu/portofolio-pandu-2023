@@ -1,4 +1,11 @@
-import { Poppins, Roboto_Mono } from 'next/font/google';
+import { Archivo, Poppins, Roboto_Mono } from 'next/font/google';
+
+export const ARCHIVO = Archivo({
+    weight: ['400', '500', '700', '800', '900'],
+    subsets: ['latin'],
+    variable: '--font-archivo',
+    display: 'swap',
+});
 
 export const POPPINS = Poppins({
     weight: ['200', '300', '400', '500', '700'],

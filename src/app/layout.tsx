@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Script from 'next/script';
-import { POPPINS, ROBOTO_MONO } from '@/contants/fonts';
+import { ARCHIVO, POPPINS, ROBOTO_MONO } from '@/contants/fonts';
 import DefaultLayout from '@/components/defaultLayout';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
@@ -45,7 +45,7 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-PD7JJF8Z');
       `}
       </Script>
-      <body className={clsx('scroll-smooth', POPPINS.variable, ROBOTO_MONO.variable)}>
+      <body className={clsx(POPPINS.variable, ROBOTO_MONO.variable, ARCHIVO.variable)}>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PD7JJF8Z"
           height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
         <ThemeProvider>
