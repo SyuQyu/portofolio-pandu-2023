@@ -1,115 +1,112 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GlassCard } from '@/components/ui/GlassCard';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Canvas } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Sparkles } from '@react-three/drei';
 
-const SkillCard = ({ title, level }: { title: string; level: number }) => (
-    <div className="mb-4">
-        <div className="flex justify-between mb-1">
-            <span className="text-sm font-medium text-[var(--foreground-secondary)]">{title}</span>
-            <span className="text-sm text-[var(--foreground-muted)]">{level}%</span>
-        </div>
-        <div className="w-full bg-[var(--surface)] rounded-full h-2">
-            <motion.div
-                className="bg-[var(--accent-primary)] h-2 rounded-full"
-                initial={{ width: 0 }}
-                whileInView={{ width: `${level}%` }}
-                transition={{ duration: 1, delay: 0.2 }}
-            />
-        </div>
-    </div>
-);
+const TOOLKIT = [
+    'TypeScript', 'JavaScript', 'React', 'Next.js', 'Nuxt.js', 'React Native',
+    'Node.js', 'Express', 'Python', 'Tailwind', 'shadcn UI', 'Material UI',
+    'HTML', 'CSS', 'MySQL', 'PostgreSQL', 'PostGIS', 'Prisma', 'Git',
+    'Three.js', 'Blender',
+];
+
+const SOFT = ['Public Speaking', 'Leadership', 'Teamwork'];
+
+const FACTS: [string, string][] = [
+    ['Now', 'Full-Stack Developer, CrescentRating'],
+    ['Study', 'B.Sc. Computer Science, UPN Veteran Jakarta'],
+    ['Result', 'GPA 3.9 / 4.0 · 2021 to 2025'],
+    ['Base', 'Indonesia · works with teams everywhere'],
+];
+
+const fadeUp = {
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0 },
+};
 
 export const About = () => {
     return (
-        <section id="aboutMeSection" className="py-20 relative px-6">
-            <div className="max-w-7xl mx-auto">
-                <SectionHeading number="01" title="About" subtitle="My journey into the digital realm" />
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
-                    {/* Main Bio Card - Spans 2 cols */}
-                    <GlassCard className="md:col-span-2 row-span-2 flex flex-col justify-center">
-                        <h3 className="text-2xl font-bold mb-4 text-[var(--foreground)]">Who I Am</h3>
-                        <p className="text-[var(--foreground-secondary)] leading-relaxed mb-4">
-                            I am passionate about advancing my skills in software development. With a solid foundation in software development principles, I excel in self-managing independent projects while also thriving in collaborative team environments.
+        <section id="aboutMeSection" className="relative py-20 md:py-28">
+            <div className="mx-auto max-w-6xl px-6">
+                <div className="grid grid-cols-1 gap-y-10 md:grid-cols-[260px_1fr] md:gap-x-12">
+                    {/* Sticky section label */}
+                    <div className="md:sticky md:top-28 md:self-start">
+                        <div className="h-px w-12 bg-[var(--signal)]" />
+                        <h2
+                            className="mt-5 font-display font-black uppercase leading-[0.9] tracking-[-0.03em] text-[var(--foreground)]"
+                            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
+                        >
+                            Who<br />am I?
+                        </h2>
+                        <p className="mt-4 max-w-[24ch] text-sm leading-relaxed text-[var(--foreground-secondary)]">
+                            The engineer behind the renders.
                         </p>
-                        <p className="text-[var(--foreground-secondary)] leading-relaxed">
-                            My commitment to continuous learning and adaptability enables me to contribute effectively to innovative and impactful projects.
+                    </div>
+
+                    {/* Content */}
+                    <motion.div
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: false, amount: 0.2 }}
+                        transition={{ duration: 0.7, ease: 'easeOut' }}
+                    >
+                        <p className="font-display text-2xl md:text-[2rem] leading-[1.18] tracking-[-0.01em] text-[var(--foreground)]">
+                            I&apos;m a full-stack developer who also models, lights and renders in
+                            Blender, so the products I ship and the worlds behind them speak the
+                            same language.
                         </p>
-                    </GlassCard>
 
-                    {/* 3D Avatar Area */}
-                    <GlassCard className="row-span-2 relative min-h-[300px] flex items-center justify-center overflow-hidden">
-                        <div className="absolute inset-0">
-                            <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 2]}>
-                                <ambientLight intensity={0.5} />
-                                <pointLight position={[5, 5, 5]} intensity={1} />
-                                <Float speed={2} rotationIntensity={1.2} floatIntensity={1.5}>
-                                    <mesh>
-                                        <dodecahedronGeometry args={[1.6, 0]} />
-                                        <meshStandardMaterial color="#8b5cf6" wireframe transparent opacity={0.35} />
-                                    </mesh>
-                                    <mesh scale={0.8}>
-                                        <icosahedronGeometry args={[1.1, 5]} />
-                                        <MeshDistortMaterial
-                                            color="#00d4ff"
-                                            emissive="#8b5cf6"
-                                            emissiveIntensity={0.35}
-                                            distort={0.4}
-                                            speed={2.2}
-                                            roughness={0.15}
-                                            metalness={0.85}
-                                        />
-                                    </mesh>
-                                </Float>
-                                <Sparkles count={40} scale={4} size={2} speed={0.4} color="#00d4ff" opacity={0.6} />
-                            </Canvas>
+                        <div className="mt-8 space-y-5 text-[var(--foreground-secondary)] leading-relaxed [hyphens:auto] text-justify">
+                            <p>
+                                I run independent projects end to end and move just as easily inside a
+                                team. Most weeks that means React and Next.js on the front, Node and a
+                                real database behind it, and an eye trained on the details most people
+                                skim past: motion, type, the half-pixel that makes an interface feel
+                                deliberate.
+                            </p>
+                            <p>
+                                The 3D work isn&apos;t a hobby bolted on. It&apos;s where the instinct
+                                for light, depth and composition comes from, and it is the same instinct
+                                I bring back into the browser with WebGL and Three.js.
+                            </p>
                         </div>
-                    </GlassCard>
 
-                    {/* Specs / Info */}
-                    <GlassCard>
-                        <h4 className="text-xl font-bold text-[var(--accent-tertiary)] mb-2">Experience</h4>
-                        <p className="text-3xl font-extrabold text-[var(--foreground)]">3+ Years</p>
-                        <p className="text-sm text-[var(--foreground-muted)]">Full-stack Development</p>
-                    </GlassCard>
+                        {/* Facts */}
+                        <dl className="mt-12 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+                            {FACTS.map(([k, v]) => (
+                                <div key={k} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:gap-8">
+                                    <dt className="w-24 shrink-0 font-mono text-[0.62rem] uppercase tracking-[0.2em] text-[var(--foreground-muted)]">
+                                        {k}
+                                    </dt>
+                                    <dd className="text-[var(--foreground)]">{v}</dd>
+                                </div>
+                            ))}
+                        </dl>
 
-                    <GlassCard>
-                        <h4 className="text-xl font-bold text-[var(--accent-secondary)] mb-2">Projects</h4>
-                        <p className="text-3xl font-extrabold text-[var(--foreground)]">20+</p>
-                        <p className="text-sm text-[var(--foreground-muted)]">Completed</p>
-                    </GlassCard>
-
-                    {/* Skills */}
-                    <GlassCard className="md:col-span-3">
-                        <h3 className="text-xl font-bold mb-6 text-[var(--foreground)]">Technical Arsenal</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div>
-                                <h4 className="text-[var(--accent-primary)] mb-4 font-semibold">Development</h4>
-                                <SkillCard title="JavaScript / TypeScript" level={90} />
-                                <SkillCard title="React / Next.js" level={95} />
-                                <SkillCard title="Node.js / Express" level={85} />
-                                <SkillCard title="Python / React Native" level={80} />
-                            </div>
-                            <div>
-                                <h4 className="text-[var(--accent-secondary)] mb-4 font-semibold">Database & Tools</h4>
-                                <SkillCard title="MySQL / PostgreSQL" level={85} />
-                                <SkillCard title="MongoDB / Prisma" level={80} />
-                                <SkillCard title="Docker / Git" level={85} />
-                                <SkillCard title="Vercel / Netlify" level={90} />
-                            </div>
-                            <div>
-                                <h4 className="text-[var(--accent-tertiary)] mb-4 font-semibold">Design & 3D</h4>
-                                <SkillCard title="Blender 3D" level={85} />
-                                <SkillCard title="Three.js / R3F" level={80} />
-                                <SkillCard title="Figma / UI/UX" level={85} />
-                                <SkillCard title="Responsive Design" level={95} />
-                            </div>
+                        {/* Toolkit chips */}
+                        <div className="mt-12">
+                            <h3 className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
+                                The toolkit
+                            </h3>
+                            <ul className="mt-5 flex flex-wrap gap-2.5">
+                                {TOOLKIT.map((t, i) => (
+                                    <motion.li
+                                        key={t}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: false }}
+                                        transition={{ duration: 0.35, delay: Math.min(i * 0.025, 0.4) }}
+                                        className="rounded-full border border-[var(--line-strong)] px-4 py-1.5 text-sm text-[var(--foreground)] transition-colors hover:border-[var(--signal)] hover:text-[var(--signal-ink)]"
+                                    >
+                                        {t}
+                                    </motion.li>
+                                ))}
+                            </ul>
+                            <p className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[var(--foreground-secondary)]">
+                                Beyond the stack: {SOFT.join(' · ')}
+                            </p>
                         </div>
-                    </GlassCard>
+                    </motion.div>
                 </div>
             </div>
         </section>

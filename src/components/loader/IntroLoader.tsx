@@ -15,14 +15,26 @@ interface IntroLoaderProps {
 export const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
     useEffect(() => {
         const t = setTimeout(onComplete, 2200);
-        return () => clearTimeout(t);
+        // Let impatient visitors out immediately.
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape' || e.key === 'Enter') onComplete();
+        };
+        window.addEventListener('keydown', onKey);
+        return () => {
+            clearTimeout(t);
+            window.removeEventListener('keydown', onKey);
+        };
     }, [onComplete]);
 
     return (
         <motion.div
-            className="fixed inset-0 z-[90] bg-[var(--background)] flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[90] bg-[var(--background)] flex flex-col items-center justify-center cursor-pointer"
             exit={{ y: '-100%' }}
             transition={{ duration: 0.9, ease: EASE }}
+            onClick={onComplete}
+            role="button"
+            tabIndex={0}
+            aria-label="Skip intro"
         >
             <div className="overflow-hidden">
                 <motion.h1
@@ -36,7 +48,7 @@ export const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
             </div>
 
             <motion.div
-                className="h-px w-64 md:w-[28rem] my-5 origin-left bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)]"
+                className="h-px w-64 md:w-[28rem] my-5 origin-left bg-[var(--signal)]"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1.4, ease: EASE, delay: 0.3 }}
@@ -52,6 +64,20 @@ export const IntroLoader = ({ onComplete }: IntroLoaderProps) => {
                     Full-Stack Developer &amp; 3D Artist
                 </motion.p>
             </div>
+
+            <motion.button
+                type="button"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onComplete();
+                }}
+                className="absolute bottom-8 right-8 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--foreground-secondary)] hover:text-[var(--foreground)] transition-colors"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+            >
+                Skip <span aria-hidden="true">· Esc</span>
+            </motion.button>
         </motion.div>
     );
 };

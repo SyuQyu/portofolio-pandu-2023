@@ -1,123 +1,133 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { GradientButton } from '@/components/ui/GradientButton';
-import { codingPortfolio, threeDPortfolio } from '@/contants/portofolio';
-import Image from 'next/image';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { ProjectModal } from '@/components/ui/ProjectModal';
+import { staggerParent, staggerChild } from '@/lib/motion';
+import { featuredProjects, catalogueProjects, type Project } from '@/contants/projectCuration';
+import { FaGithub, FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa';
 
-// Card with 3D Flip Effect
-const ProjectCard = ({ item }: { item: any }) => {
-    const [isFlipped, setIsFlipped] = useState(false);
-
-    return (
-        <div
-            className="relative w-full h-[300px] cursor-pointer perspective-1000 group"
-            onMouseEnter={() => setIsFlipped(true)}
-            onMouseLeave={() => setIsFlipped(false)}
-        >
-            <motion.div
-                className="w-full h-full relative preserve-3d transition-all duration-500"
-                animate={{ rotateY: isFlipped ? 180 : 0 }}
-            >
-                {/* Front Face */}
-                <div className="absolute inset-0 backface-hidden rounded-xl overflow-hidden shadow-lg border border-[var(--glass-border)] bg-[var(--surface)]">
-                    <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/90 via-transparent to-transparent flex flex-col justify-end p-6">
-                        <h3 className="text-xl font-bold text-[var(--foreground)] mb-1">{item.title}</h3>
-                        <p className="text-[var(--accent-primary)] text-sm">{item.subtitle}</p>
-                    </div>
-                </div>
-
-                {/* Back Face */}
-                <div
-                    className="absolute inset-0 backface-hidden rounded-xl bg-[var(--surface)] p-6 flex flex-col justify-between border border-[var(--accent-secondary)]/30 shadow-[0_0_20px_var(--glow-color)]"
-                    style={{ transform: 'rotateY(180deg)' }}
-                >
-                    <div>
-                        <h3 className="text-xl font-bold text-[var(--accent-secondary)] mb-2">{item.title}</h3>
-                        <p className="text-[var(--foreground-secondary)] text-sm mb-4 line-clamp-4">{item.description}</p>
-                    </div>
-
-                    <div className="flex gap-4">
-                        {item.projectLink?.github && (
-                            <a
-                                href={item.projectLink.github}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="p-2 rounded-full bg-[var(--glass-bg)] hover:bg-[var(--surface-hover)] text-[var(--foreground)] transition-colors"
-                            >
-                                <FaGithub size={20} />
-                            </a>
-                        )}
-                        {item.projectLink?.hosting && (
-                            <a
-                                href={item.projectLink.hosting}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="p-2 rounded-full bg-[var(--glass-bg)] hover:bg-[var(--surface-hover)] text-[var(--foreground)] transition-colors"
-                            >
-                                <FaExternalLinkAlt size={18} />
-                            </a>
-                        )}
-                    </div>
-                </div>
-            </motion.div>
-        </div>
-    );
+const summaryOf = (p: Project) => {
+    const text = p.description || p.detail || '';
+    if (!text) return 'Open for the code and detail.';
+    const firstSentence = text.split(/(?<=[.!?])\s/)[0];
+    return firstSentence.length > 120 ? firstSentence.slice(0, 117).trimEnd() + '…' : firstSentence;
 };
 
 export const Projects = () => {
-    const [activeTab, setActiveTab] = useState<'coding' | '3d'>('coding');
-    const items = activeTab === 'coding' ? codingPortfolio : threeDPortfolio;
+    const [selected, setSelected] = useState<Project | null>(null);
+    const [showAll, setShowAll] = useState(false);
+
+    const featured = featuredProjects;
+    const rest = catalogueProjects;
+    const visible = showAll ? rest : rest.slice(0, 12);
 
     return (
-        <section id="portofolioSection" className="py-20 relative px-6">
-            <SectionHeading number="03" title="Work" subtitle="Showcase of my latest work" />
+        <section id="portofolioSection" className="relative py-24 md:py-32 px-6">
+            <div className="mx-auto max-w-7xl">
+                <SectionHeading
+                    title="Selected work"
+                    number="/ From GitHub"
+                    subtitle="Live products and experiments, pulled straight from my GitHub. Open any for the detail."
+                />
 
-            <div className="flex justify-center gap-4 mb-12">
-                <GradientButton
-                    variant={activeTab === 'coding' ? 'primary' : 'outline'}
-                    onClick={() => setActiveTab('coding')}
+                {/* Featured — clickable project cards */}
+                <motion.div
+                    className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+                    variants={staggerParent(0.06)}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: false, amount: 0.1 }}
                 >
-                    Coding
-                </GradientButton>
-                <GradientButton
-                    variant={activeTab === '3d' ? 'primary' : 'outline'}
-                    onClick={() => setActiveTab('3d')}
-                >
-                    3D Arts
-                </GradientButton>
+                    {featured.map((p) => (
+                        <motion.button
+                            key={p.id}
+                            type="button"
+                            onClick={() => setSelected(p)}
+                            variants={staggerChild}
+                            whileHover={{ y: -5 }}
+                            transition={{ type: 'spring', stiffness: 350, damping: 24 }}
+                            className="group flex h-full flex-col rounded-[5px] border border-[var(--line)] bg-[var(--surface)] p-6 text-left transition-colors hover:border-[var(--foreground)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--signal)]"
+                        >
+                            <div className="flex items-center justify-between gap-3 font-mono text-[0.6rem] uppercase tracking-[0.16em] text-[var(--foreground-muted)]">
+                                <span>{p.language || 'Project'}</span>
+                                {p.live ? (
+                                    <span className="flex items-center gap-1.5 text-[var(--signal-ink)]">
+                                        <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--signal)]" /> Live
+                                    </span>
+                                ) : p.stars > 0 ? (
+                                    <span>★ {p.stars}</span>
+                                ) : null}
+                            </div>
+
+                            <h3 className="mt-5 font-display text-xl font-black uppercase leading-[0.98] tracking-[-0.01em] text-[var(--foreground)]">
+                                {p.name}
+                            </h3>
+                            <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--foreground-secondary)]">
+                                {summaryOf(p)}
+                            </p>
+
+                            <span className="mt-6 inline-flex items-center gap-2 font-mono text-[0.66rem] uppercase tracking-[0.18em] text-[var(--foreground)] transition-colors group-hover:text-[var(--signal-ink)]">
+                                View details
+                                <FaArrowRight size={10} className="transition-transform group-hover:translate-x-1" />
+                            </span>
+                        </motion.button>
+                    ))}
+                </motion.div>
+
+                {/* Catalogue — the rest of the repos, also clickable */}
+                <div className="mt-20 md:mt-28">
+                    <div className="flex items-baseline justify-between border-t border-[var(--line-strong)] pt-6">
+                        <h3 className="font-display text-xl font-black uppercase tracking-tight text-[var(--foreground)] md:text-2xl">
+                            More on GitHub
+                        </h3>
+                        <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--foreground-muted)]">
+                            {rest.length} repos
+                        </span>
+                    </div>
+
+                    <motion.ul
+                        key={showAll ? 'all' : 'some'}
+                        variants={staggerParent(0.03)}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: false, amount: 0.05 }}
+                    >
+                        {visible.map((p) => (
+                            <motion.li key={p.id} variants={staggerChild} className="border-b border-[var(--line)]">
+                                <button
+                                    type="button"
+                                    onClick={() => setSelected(p)}
+                                    className="group grid w-full grid-cols-[1fr_auto] items-center gap-4 py-4 text-left sm:grid-cols-[1fr_120px_auto]"
+                                >
+                                    <span className="truncate font-mono text-sm text-[var(--foreground)] transition-colors group-hover:text-[var(--signal-ink)]">
+                                        {p.name}
+                                    </span>
+                                    <span className="hidden font-mono text-[0.68rem] uppercase tracking-[0.14em] text-[var(--foreground-muted)] sm:block">
+                                        {p.language || 'Other'}
+                                    </span>
+                                    <span className="flex items-center gap-3 justify-self-end text-[var(--foreground-muted)]">
+                                        {p.live && <FaExternalLinkAlt size={11} className="transition-colors group-hover:text-[var(--signal-ink)]" />}
+                                        <FaGithub size={14} className="transition-colors group-hover:text-[var(--foreground)]" />
+                                    </span>
+                                </button>
+                            </motion.li>
+                        ))}
+                    </motion.ul>
+
+                    {rest.length > 12 && (
+                        <button
+                            onClick={() => setShowAll((s) => !s)}
+                            className="mt-8 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-[var(--signal-ink)] transition-colors hover:text-[var(--foreground)]"
+                        >
+                            {showAll ? 'Show fewer' : `Show all ${rest.length}`}
+                        </button>
+                    )}
+                </div>
             </div>
 
-            <motion.div
-                layout
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
-            >
-                <AnimatePresence mode="popLayout">
-                    {items.map((item: any, index: number) => (
-                        <motion.div
-                            key={item.id}
-                            layout
-                            style={{ transformPerspective: 1000 }}
-                            initial={{ opacity: 0, y: 40, rotateX: -18, scale: 0.92 }}
-                            animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.85, rotateX: 12 }}
-                            whileHover={{ y: -10 }}
-                            transition={{ duration: 0.45, delay: index * 0.06 }}
-                        >
-                            <ProjectCard item={item} />
-                        </motion.div>
-                    ))}
-                </AnimatePresence>
-            </motion.div>
+            <ProjectModal project={selected} onClose={() => setSelected(null)} />
         </section>
     );
 };

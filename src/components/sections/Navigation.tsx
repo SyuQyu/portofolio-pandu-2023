@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { GradientButton } from '@/components/ui/GradientButton';
@@ -8,47 +8,25 @@ import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { scrollToSection as smoothScrollTo } from '@/components/SmoothScroll';
 
 const NAV_ITEMS = [
-    { name: 'Home', href: '#homeSection' },
     { name: 'About', href: '#aboutMeSection' },
     { name: 'Experience', href: '#experienceSection' },
-    { name: 'Portfolio', href: '#portofolioSection' },
+    { name: 'Work', href: '#portofolioSection' },
+    { name: '3D', href: '#playgroundSection' },
     { name: 'Contact', href: '#contactSection' },
 ];
-
-// Studio-style live mouse coordinate readout (writes to the DOM directly to avoid re-renders)
-const CoordsReadout = () => {
-    const ref = useRef<HTMLSpanElement>(null);
-
-    useEffect(() => {
-        const onMove = (e: MouseEvent) => {
-            if (ref.current) {
-                ref.current.textContent = `X:${String(e.clientX).padStart(4, '0')} Y:${String(e.clientY).padStart(4, '0')}`;
-            }
-        };
-        window.addEventListener('mousemove', onMove, { passive: true });
-        return () => window.removeEventListener('mousemove', onMove);
-    }, []);
-
-    return (
-        <span ref={ref} className="hidden lg:block font-mono text-[10px] tracking-[0.2em] text-[var(--foreground-muted)] tabular-nums min-w-[110px]">
-            X:0000 Y:0000
-        </span>
-    );
-};
 
 export const Navigation = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
+        const handleScroll = () => setScrolled(window.scrollY > 40);
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const go = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
         smoothScrollTo(href);
         setMobileMenuOpen(false);
@@ -58,100 +36,90 @@ export const Navigation = () => {
         <>
             <motion.nav
                 className={cn(
-                    "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
+                    'fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300',
                     scrolled
-                        ? "bg-[var(--glass-bg)] backdrop-blur-xl border-[var(--glass-border)] py-4"
-                        : "bg-transparent py-6"
+                        ? 'border-[var(--line)] bg-[var(--background)]/85 backdrop-blur-xl py-3'
+                        : 'border-transparent bg-transparent py-5'
                 )}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
-                transition={{ duration: 0.6, delay: 2.9, ease: 'easeOut' }}
+                transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
-                <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                    <div className="flex items-center gap-6">
-                        <a
-                            href="#homeSection"
-                            className="font-display text-xl font-black uppercase tracking-tight text-[var(--foreground)]"
-                            onClick={(e) => scrollToSection(e, '#homeSection')}
-                        >
-                            PU<span className="text-[var(--foreground-muted)]">&copy;</span>
-                        </a>
-                        <CoordsReadout />
-                    </div>
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
+                    <a
+                        href="#homeSection"
+                        onClick={(e) => go(e, '#homeSection')}
+                        className="group flex items-baseline gap-2 font-display text-lg font-black uppercase tracking-tight text-[var(--foreground)]"
+                    >
+                        Pandu Utomo
+                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--signal)] transition-transform group-hover:scale-150" />
+                    </a>
 
-                    {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center gap-8">
-                        {NAV_ITEMS.map((item, index) => (
+                    {/* Desktop */}
+                    <div className="hidden items-center gap-8 md:flex">
+                        {NAV_ITEMS.map((item) => (
                             <a
                                 key={item.name}
                                 href={item.href}
-                                onClick={(e) => scrollToSection(e, item.href)}
-                                className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--foreground-secondary)] hover:text-[var(--foreground)] transition-colors relative group"
+                                onClick={(e) => go(e, item.href)}
+                                className="group relative font-mono text-[0.72rem] uppercase tracking-[0.18em] text-[var(--foreground-secondary)] transition-colors hover:text-[var(--foreground)]"
                             >
-                                <span className="text-[var(--foreground-muted)] mr-1">0{index + 1}</span>
                                 {item.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[var(--foreground)] transition-all duration-300 group-hover:w-full" />
+                                <span className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--signal)] transition-all duration-300 group-hover:w-full" />
                             </a>
                         ))}
                         <ThemeToggle />
-                        <GradientButton variant="outline" className="px-6 py-2 text-xs" onClick={() => window.open('/resume.pdf', '_blank')}>
+                        <GradientButton variant="outline" className="px-5 py-2.5" onClick={() => window.open('/resume.pdf', '_blank')}>
                             Resume
                         </GradientButton>
                     </div>
 
-                    {/* Mobile Toggle */}
-                    <div className="flex items-center gap-4 md:hidden">
+                    {/* Mobile toggle */}
+                    <div className="flex items-center gap-3 md:hidden">
                         <ThemeToggle />
                         <button
-                            className="text-[var(--foreground)] p-2"
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                            className="flex h-10 w-10 items-center justify-center rounded-[3px] border border-[var(--line)] text-[var(--foreground)]"
+                            onClick={() => setMobileMenuOpen((o) => !o)}
+                            aria-label="Toggle menu"
                         >
-                            <div className="w-6 h-5 flex flex-col justify-between">
-                                <span className={cn("w-full h-0.5 bg-[var(--foreground)] transition-all", mobileMenuOpen && "rotate-45 translate-y-2")} />
-                                <span className={cn("w-full h-0.5 bg-[var(--foreground)] transition-all", mobileMenuOpen && "opacity-0")} />
-                                <span className={cn("w-full h-0.5 bg-[var(--foreground)] transition-all", mobileMenuOpen && "-rotate-45 -translate-y-2.5")} />
+                            <div className="flex h-4 w-5 flex-col justify-between">
+                                <span className={cn('h-0.5 w-full bg-current transition-all', mobileMenuOpen && 'translate-y-[7px] rotate-45')} />
+                                <span className={cn('h-0.5 w-full bg-current transition-all', mobileMenuOpen && 'opacity-0')} />
+                                <span className={cn('h-0.5 w-full bg-current transition-all', mobileMenuOpen && '-translate-y-[7px] -rotate-45')} />
                             </div>
                         </button>
                     </div>
                 </div>
             </motion.nav>
 
-            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
-                        className="fixed inset-0 z-40 bg-[var(--background)]/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center gap-8"
-                        initial={{ opacity: 0, x: '100%' }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: '100%' }}
-                        transition={{ type: 'spring', damping: 20 }}
+                        className="fixed inset-0 z-40 flex flex-col justify-center gap-2 bg-[var(--background)] px-8 md:hidden"
+                        initial={{ opacity: 0, y: '-100%' }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: '-100%' }}
+                        transition={{ type: 'spring', damping: 26, stiffness: 220 }}
                     >
-                        {NAV_ITEMS.map((item, index) => (
+                        {NAV_ITEMS.map((item, i) => (
                             <motion.a
                                 key={item.name}
                                 href={item.href}
-                                onClick={(e) => scrollToSection(e, item.href)}
-                                className="text-2xl font-bold text-[var(--foreground)] hover:text-[var(--accent-primary)] transition-colors"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1 * index }}
+                                onClick={(e) => go(e, item.href)}
+                                className="border-b border-[var(--line)] py-4 font-display text-4xl font-black uppercase tracking-tight text-[var(--foreground)]"
+                                initial={{ opacity: 0, x: -24 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.06 * i }}
                             >
                                 {item.name}
                             </motion.a>
                         ))}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                        >
-                            <GradientButton onClick={() => window.open('/resume.pdf', '_blank')}>
-                                Resume
-                            </GradientButton>
-                        </motion.div>
+                        <GradientButton className="mt-8 self-start" onClick={() => window.open('/resume.pdf', '_blank')}>
+                            Download Resume
+                        </GradientButton>
                     </motion.div>
                 )}
             </AnimatePresence>
         </>
     );
 };
-

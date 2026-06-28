@@ -40,14 +40,17 @@ export const CustomCursor = () => {
         <>
             <motion.div
                 aria-hidden
-                className="fixed top-0 left-0 z-[100] pointer-events-none w-10 h-10 rounded-full border border-[var(--accent-primary)]/60 shadow-[0_0_20px_var(--glow-color)]"
+                className="fixed top-0 left-0 z-[100] pointer-events-none w-9 h-9 rounded-full border border-[var(--foreground)]/40"
                 style={{ x: rx, y: ry, translateX: '-50%', translateY: '-50%' }}
-                animate={{ scale: active ? 1.8 : 1, opacity: active ? 0.5 : 1 }}
+                animate={{
+                    scale: active ? 1.7 : 1,
+                    borderColor: active ? 'var(--signal)' : 'color-mix(in oklab, var(--foreground) 40%, transparent)',
+                }}
                 transition={{ duration: 0.2 }}
             />
             <motion.div
                 aria-hidden
-                className="fixed top-0 left-0 z-[100] pointer-events-none w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)]"
+                className="fixed top-0 left-0 z-[100] pointer-events-none w-1.5 h-1.5 rounded-full bg-[var(--signal)]"
                 style={{ x: mx, y: my, translateX: '-50%', translateY: '-50%' }}
             />
         </>

@@ -1,275 +1,192 @@
 @import "tailwindcss";
 
 @theme {
-  /* Space Theme Colors */
-  --color-primary-dark: #050510;
-  --color-primary-light: #0f0f1e;
-  --color-accent-blue: #00d4ff;
-  --color-accent-purple: #8b5cf6;
-  --color-accent-green: #10b981;
-  --color-accent-pink: #ec4899;
-  --color-star-gold: #fbbf24;
-
   /* Fonts — mapped to the next/font variables loaded in layout.tsx */
   --font-sans: var(--font-poppins), system-ui, sans-serif;
-  --font-mono: var(--font-roboto-mono), monospace;
+  --font-mono: var(--font-roboto-mono), ui-monospace, monospace;
   --font-display: var(--font-archivo), system-ui, sans-serif;
 
-  /* Animations */
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-glow: glow 2s ease-in-out infinite alternate;
-  --animate-twinkle: twinkle 3s ease-in-out infinite;
-  --animate-nebula: nebula 15s ease-in-out infinite;
+  /* Semantic z-index scale */
+  --z-base: 0;
+  --z-sticky: 40;
+  --z-nav: 50;
+  --z-progress: 60;
+  --z-overlay: 80;
+  --z-intro: 90;
+  --z-cursor: 100;
+
+  --animate-float: float 7s ease-in-out infinite;
 
   @keyframes float {
-
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-20px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
   }
 
-  @keyframes glow {
-    from {
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.4), 0 0 20px rgba(0, 212, 255, 0.2);
-    }
-
-    to {
-      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 30px rgba(139, 92, 246, 0.2);
-    }
-  }
-
-  @keyframes twinkle {
-
-    0%,
-    100% {
-      opacity: 0.3;
-      transform: scale(0.8);
-    }
-
-    50% {
-      opacity: 1;
-      transform: scale(1.2);
-    }
-  }
-
-  @keyframes nebula {
-
-    0%,
-    100% {
-      background-position: 0% 50%;
-    }
-
-    50% {
-      background-position: 100% 50%;
-    }
+  @keyframes plate-grain {
+    0%, 100% { opacity: 0.05; }
+    50% { opacity: 0.09; }
   }
 }
 
-/* Dark Theme (Studio Night) - Default */
+/* ============================================================
+   STUDIO — light "plaster gallery" theme (default)
+   A printed studio monograph: cool off-white paper, ink-black
+   grotesque type, one molten vermilion signal. No cream, no neon.
+   ============================================================ */
 :root {
-  --background: #0a0a12;
-  --background-secondary: #12121c;
-  --foreground: #f4f4f6;
-  --foreground-secondary: #9aa0b0;
-  --foreground-muted: #5c6070;
-  --surface: rgba(255, 255, 255, 0.04);
-  --surface-hover: rgba(255, 255, 255, 0.08);
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --accent-primary: #00d4ff;
-  --accent-secondary: #8b5cf6;
-  --accent-tertiary: #ec4899;
-  --glow-color: rgba(0, 212, 255, 0.25);
-  --star-color: #00d4ff;
-  --nebula-1: rgba(139, 92, 246, 0.08);
-  --nebula-2: rgba(0, 212, 255, 0.06);
+  --background: oklch(0.966 0.003 250);          /* plaster paper (cool, chroma~0, NOT cream) */
+  --background-secondary: oklch(0.928 0.004 250);/* recessed panel */
+  --foreground: oklch(0.205 0.012 55);           /* warm ink near-black */
+  --foreground-secondary: oklch(0.420 0.012 55); /* readable body support (~5:1 on paper) */
+  --foreground-muted: oklch(0.560 0.010 55);     /* decorative / large text only */
+
+  --signal: oklch(0.605 0.214 34);               /* molten vermilion — large text, fills, icons, markers */
+  --signal-ink: oklch(0.470 0.175 35);           /* darker vermilion — small text/links on paper (≥4.5:1) */
+  --ink-on-signal: oklch(0.150 0.022 40);        /* near-black text that sits ON a vermilion fill (≥4.5:1) */
+
+  /* Back-compat aliases (legacy components read these names) */
+  --accent-primary: var(--signal);
+  --accent-secondary: var(--signal-ink);
+  --accent-tertiary: var(--foreground);
+
+  --line: oklch(0.860 0.004 250);                /* hairline rule */
+  --line-strong: oklch(0.205 0.012 55);          /* full-strength ink rule */
+  --surface: oklch(0.940 0.004 250);
+  --surface-hover: oklch(0.910 0.004 250);
+  --glass-bg: oklch(0.955 0.003 250);            /* legacy alias → solid panel */
+  --glass-border: var(--line);
+  --glow-color: oklch(0.205 0.012 55 / 0.10);    /* legacy alias → soft ink shadow */
+
+  --shadow-plate: 0 1px 2px oklch(0.205 0.012 55 / 0.06), 0 18px 40px -24px oklch(0.205 0.012 55 / 0.30);
+  --shadow-lift: 0 1px 2px oklch(0.205 0.012 55 / 0.08), 0 30px 60px -28px oklch(0.205 0.012 55 / 0.40);
+
+  --grain: oklch(0.205 0.012 55 / 0.04);
+  color-scheme: light;
 }
 
-/* Light Theme (Studio Day) */
-.light {
-  --background: #f4f4f8;
-  --background-secondary: #ebebf2;
-  --foreground: #14141f;
-  --foreground-secondary: #4a5061;
-  --foreground-muted: #8a8fa0;
-  --surface: rgba(20, 20, 31, 0.04);
-  --surface-hover: rgba(20, 20, 31, 0.08);
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-border: rgba(99, 102, 241, 0.18);
-  --accent-primary: #6366f1;
-  --accent-secondary: #a855f7;
-  --accent-tertiary: #ec4899;
-  --glow-color: rgba(99, 102, 241, 0.22);
-  --star-color: #6366f1;
-  --nebula-1: rgba(168, 85, 247, 0.07);
-  --nebula-2: rgba(99, 102, 241, 0.06);
+/* ============================================================
+   CINEMA — warm-charcoal dark theme (mirror)
+   Same brand, dim the lights. Warm near-black, bone type,
+   the same vermilion signal. Deliberately NOT a blue-black void.
+   ============================================================ */
+.dark {
+  --background: oklch(0.155 0.008 55);
+  --background-secondary: oklch(0.205 0.009 55);
+  --foreground: oklch(0.940 0.006 70);
+  --foreground-secondary: oklch(0.740 0.008 70);
+  --foreground-muted: oklch(0.580 0.010 70);
+
+  --signal: oklch(0.672 0.205 36);
+  --signal-ink: oklch(0.760 0.165 42);
+  --ink-on-signal: oklch(0.165 0.022 40);
+
+  --accent-primary: var(--signal);
+  --accent-secondary: var(--signal-ink);
+  --accent-tertiary: var(--foreground);
+
+  --line: oklch(0.300 0.008 55);
+  --line-strong: oklch(0.940 0.006 70);
+  --surface: oklch(0.205 0.009 55);
+  --surface-hover: oklch(0.245 0.010 55);
+  --glass-bg: oklch(0.200 0.009 55);
+  --glass-border: var(--line);
+  --glow-color: oklch(0 0 0 / 0.45);
+
+  --shadow-plate: 0 1px 2px oklch(0 0 0 / 0.4), 0 20px 44px -24px oklch(0 0 0 / 0.7);
+  --shadow-lift: 0 1px 2px oklch(0 0 0 / 0.5), 0 34px 64px -28px oklch(0 0 0 / 0.8);
+
+  --grain: oklch(0.940 0.006 70 / 0.035);
+  color-scheme: dark;
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  /* clip (not hidden) contains horizontal overflow WITHOUT creating a scroll
+     container — `overflow-x: hidden` here silently breaks `position: sticky`. */
+  overflow-x: clip;
 }
 
-/* Cosmic Background Effect */
+/* Faint paper grain so flat fields never read as a dead rectangle */
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   pointer-events: none;
   z-index: -1;
-  background:
-    radial-gradient(ellipse at 20% 20%, var(--nebula-1) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, var(--nebula-2) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, var(--nebula-1) 0%, transparent 70%);
-  animation: nebula 15s ease-in-out infinite;
-  background-size: 200% 200%;
+  opacity: 0.6;
+  background-image: radial-gradient(var(--grain) 0.5px, transparent 0.5px);
+  background-size: 4px 4px;
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--ink-on-signal);
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background-secondary);
-}
-
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--background); }
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-primary);
-  border-radius: 4px;
-  opacity: 0.5;
+  background: var(--foreground-muted);
+  border: 3px solid var(--background);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--signal); }
+
+/* Display type defaults */
+.font-display {
+  font-feature-settings: "ss01";
+  text-wrap: balance;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-secondary);
+/* A flat, bordered panel — replaces the old glassmorphism everywhere it lingers */
+.glass,
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
 }
 
-/* Glass Effect - Theme Aware */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  transition: all 0.3s ease;
+/* The one signal underline for inline links */
+.signal-link {
+  color: var(--signal-ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--signal), var(--signal));
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease, color 0.2s ease;
+}
+.signal-link:hover {
+  background-size: 100% 1.5px;
 }
 
-.glass:hover {
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 20px var(--glow-color);
-}
-
-/* Text Gradient */
-.text-gradient {
-  background: linear-gradient(120deg, var(--accent-primary) 0%, var(--accent-secondary) 50%, var(--accent-tertiary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.cosmic-star {
-  color: var(--star-color);
-  filter: drop-shadow(0 0 6px var(--glow-color));
-}
-
-/* Cosmic glow utilities */
-.cosmic-glow {
-  box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
-}
-
-.cosmic-glow-text {
-  text-shadow: 0 0 10px var(--accent-primary), 0 0 20px var(--accent-primary);
-}
-
-/* Nebula gradient background */
-.nebula-bg {
-  background: linear-gradient(135deg,
-      var(--background) 0%,
-      var(--background-secondary) 50%,
-      var(--background) 100%);
-  background-size: 400% 400%;
-  animation: nebula 15s ease infinite;
-}
-
-/* Aurora effect for buttons/accents */
-.aurora {
-  background: linear-gradient(90deg,
-      var(--accent-primary),
-      var(--accent-secondary),
-      var(--accent-tertiary),
-      var(--accent-secondary),
-      var(--accent-primary));
-  background-size: 300% 100%;
-  animation: aurora-flow 8s linear infinite;
-}
-
-@keyframes aurora-flow {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  100% {
-    background-position: 300% 50%;
-  }
-}
-
-/* Constellation line effect */
-.constellation-line {
-  stroke: var(--accent-primary);
-  stroke-width: 1;
-  opacity: 0.3;
-}
+/* legacy: .text-gradient is now a flat signal color (no gradient text) */
+.text-gradient { color: var(--signal); }
 
 /* Lenis smooth scroll */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
+/* 3D helpers (still used by the live render frame) */
+.perspective-1000 { perspective: 1000px; }
+.preserve-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-/* Faint grid that fades out radially — used behind the hero */
-.hero-grid {
-  background-image:
-    linear-gradient(to right, var(--glass-border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--glass-border) 1px, transparent 1px);
-  background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 72%);
-  mask-image: radial-gradient(ellipse at center, black 25%, transparent 72%);
-}
-
-/* 3D card flip helpers */
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.preserve-3d {
-  transform-style: preserve-3d;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* Theme transition */
-* {
-  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
+/* Smooth theme switch on the few properties that should cross-fade */
+@media (prefers-reduced-motion: no-preference) {
+  body, .panel, .glass {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  }
 }

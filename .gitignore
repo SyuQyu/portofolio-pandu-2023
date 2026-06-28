@@ -33,3 +33,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent / skill tooling (not part of the app)
+.agents/
+.claude/
+.cursor/
+.gemini/
+.impeccable/
+
+# local scratch / verification artifacts
+/verify-*.jpeg
+/hatta-*.jpeg
+/.playwright-mcp/

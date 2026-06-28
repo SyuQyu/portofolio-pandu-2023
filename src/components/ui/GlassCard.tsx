@@ -46,7 +46,7 @@ export const GlassCard = ({ children, className, hoverEffect = true }: GlassCard
             )}
             initial={{ opacity: 0, y: 40, scale: 0.97, filter: 'blur(6px)' }}
             whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
         >
             {children}

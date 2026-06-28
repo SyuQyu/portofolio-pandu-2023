@@ -273,9 +273,15 @@ const SceneContent = () => {
 // from document.body so 3D hover works through the DOM content above it.
 export const GlobalScene = () => {
     const [mounted, setMounted] = useState(false);
+    const [reduce, setReduce] = useState(false);
 
     useEffect(() => {
         setMounted(true);
+        const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const sync = () => setReduce(mq.matches);
+        sync();
+        mq.addEventListener('change', sync);
+        return () => mq.removeEventListener('change', sync);
     }, []);
 
     if (!mounted) return null;
@@ -283,6 +289,9 @@ export const GlobalScene = () => {
     return (
         <div className="fixed inset-0 -z-10 pointer-events-none">
             <Canvas
+                // Reduced motion: render a single static frame — the scene stays
+                // as a still backdrop instead of drifting and diving on scroll.
+                frameloop={reduce ? 'never' : 'always'}
                 camera={{ position: [0, 0, 7], fov: 50 }}
                 dpr={[1, 1.5]}
                 gl={{ antialias: false }}

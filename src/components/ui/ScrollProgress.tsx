@@ -8,7 +8,7 @@ export const ScrollProgress = () => {
 
     return (
         <motion.div
-            className="fixed top-0 left-0 right-0 h-[3px] origin-left z-[60] bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)]"
+            className="fixed top-0 left-0 right-0 h-[2px] origin-left z-[60] bg-[var(--signal)]"
             style={{ scaleX }}
         />
     );
