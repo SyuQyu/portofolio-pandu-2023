@@ -6,6 +6,15 @@
   --font-mono: var(--font-roboto-mono), ui-monospace, monospace;
   --font-display: var(--font-archivo), system-ui, sans-serif;
 
+  /* Label type ramp — three discrete steps, nothing between.
+     Before this existed the codebase carried TEN one-off micro sizes
+     (0.55 / 0.58 / 0.6 / 0.62 / 0.65 / 0.66 / 0.68 / 0.7 / 0.72 / 0.78rem).
+     Values a reader cannot tell apart are not a system; they are each
+     component inventing its own. */
+  --text-label-xs: 0.62rem;   /* captions, fine print, in-frame annotations */
+  --text-label-sm: 0.68rem;   /* default mono label, metadata rows */
+  --text-label-md: 0.75rem;   /* nav items, buttons, section kickers */
+
   /* Semantic z-index scale */
   --z-base: 0;
   --z-sticky: 40;
@@ -59,6 +68,13 @@
 
   --shadow-plate: 0 1px 2px oklch(0.205 0.012 55 / 0.06), 0 18px 40px -24px oklch(0.205 0.012 55 / 0.30);
   --shadow-lift: 0 1px 2px oklch(0.205 0.012 55 / 0.08), 0 30px 60px -28px oklch(0.205 0.012 55 / 0.40);
+
+  /* The render plate — the one always-dark surface on the page. A viewport
+     into a rendered world reads as a lightbox, not as a themed panel, so it
+     keeps its own warm near-black in BOTH themes. Ink is bone, never #fff. */
+  --plate: oklch(0.180 0.013 52);
+  --plate-ink: oklch(0.928 0.008 70);
+  --plate-line: oklch(0.928 0.008 70 / 0.14);
 
   --grain: oklch(0.205 0.012 55 / 0.04);
   color-scheme: light;
@@ -140,7 +156,7 @@ body::before {
 ::-webkit-scrollbar-thumb {
   background: var(--foreground-muted);
   border: 3px solid var(--background);
-  border-radius: 999px;
+  border-radius: 9999px; /* chip token — scrollbar thumb only */
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--signal); }
 

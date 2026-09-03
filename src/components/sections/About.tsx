@@ -75,7 +75,7 @@ export const About = () => {
                         <dl className="mt-12 divide-y divide-[var(--line)] border-y border-[var(--line)]">
                             {FACTS.map(([k, v]) => (
                                 <div key={k} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:gap-8">
-                                    <dt className="w-24 shrink-0 font-mono text-[0.62rem] uppercase tracking-[0.2em] text-[var(--foreground-muted)]">
+                                    <dt className="w-24 shrink-0 font-mono text-label-xs uppercase tracking-[0.2em] text-[var(--foreground-muted)]">
                                         {k}
                                     </dt>
                                     <dd className="text-[var(--foreground)]">{v}</dd>
@@ -85,7 +85,7 @@ export const About = () => {
 
                         {/* Toolkit chips */}
                         <div className="mt-12">
-                            <h3 className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
+                            <h3 className="font-mono text-label-sm uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
                                 The toolkit
                             </h3>
                             <ul className="mt-5 flex flex-wrap gap-2.5">
@@ -102,7 +102,7 @@ export const About = () => {
                                     </motion.li>
                                 ))}
                             </ul>
-                            <p className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[var(--foreground-secondary)]">
+                            <p className="mt-5 font-mono text-label-md uppercase tracking-[0.14em] text-[var(--foreground-secondary)]">
                                 Beyond the stack: {SOFT.join(' · ')}
                             </p>
                         </div>

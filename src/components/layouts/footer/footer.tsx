@@ -44,7 +44,7 @@ export default function Footer() {
                             <a
                                 key={item.name}
                                 href={item.href}
-                                className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[var(--background)]/70 transition-colors hover:text-[var(--signal)]"
+                                className="font-mono text-label-md uppercase tracking-[0.18em] text-[var(--background)]/70 transition-colors hover:text-[var(--signal)]"
                             >
                                 {item.name}
                             </a>
@@ -68,10 +68,10 @@ export default function Footer() {
                 </div>
 
                 <div className="mt-12 flex flex-col gap-2 border-t border-[var(--background)]/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
-                    <span className="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-[var(--background)]/55">
+                    <span className="font-mono text-label-sm uppercase tracking-[0.16em] text-[var(--background)]/55">
                         © {year} Pandu Utomo · All rights reserved
                     </span>
-                    <span className="font-mono text-[0.65rem] uppercase tracking-[0.16em] text-[var(--background)]/55">
+                    <span className="font-mono text-label-sm uppercase tracking-[0.16em] text-[var(--background)]/55">
                         Built with Next.js · Three.js · a renderer&apos;s eye
                     </span>
                 </div>

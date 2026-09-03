@@ -38,7 +38,7 @@ export const Contact = () => {
                     <p className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--signal-ink)]">Let&apos;s talk</p>
                     <h2
                         className="mt-5 max-w-[16ch] font-display font-black uppercase leading-[0.86] tracking-[-0.035em] text-[var(--foreground)]"
-                        style={{ fontSize: 'clamp(2.5rem, 8vw, 5.5rem)' }}
+                        style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)' }}
                     >
                         Build something worth remembering.
                     </h2>
@@ -61,7 +61,7 @@ export const Contact = () => {
                             {CHANNELS.map(({ icon: Icon, label, value, href }) => {
                                 const inner = (
                                     <>
-                                        <span className="flex w-28 shrink-0 items-center gap-3 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[var(--foreground-muted)]">
+                                        <span className="flex w-28 shrink-0 items-center gap-3 font-mono text-label-sm uppercase tracking-[0.18em] text-[var(--foreground-muted)]">
                                             <Icon size={13} className="text-[var(--signal)]" /> {label}
                                         </span>
                                         <span className="text-[var(--foreground)] transition-colors group-hover:text-[var(--signal-ink)]">
@@ -108,7 +108,7 @@ export const Contact = () => {
                     >
                         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                             <label className="flex flex-col gap-2">
-                                <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[var(--foreground-muted)]">Name</span>
+                                <span className="font-mono text-label-sm uppercase tracking-[0.18em] text-[var(--foreground-muted)]">Name</span>
                                 <input
                                     type="text"
                                     value={formState.name}
@@ -118,7 +118,7 @@ export const Contact = () => {
                                 />
                             </label>
                             <label className="flex flex-col gap-2">
-                                <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[var(--foreground-muted)]">Email</span>
+                                <span className="font-mono text-label-sm uppercase tracking-[0.18em] text-[var(--foreground-muted)]">Email</span>
                                 <input
                                     type="email"
                                     value={formState.email}
@@ -129,7 +129,7 @@ export const Contact = () => {
                             </label>
                         </div>
                         <label className="flex flex-col gap-2">
-                            <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[var(--foreground-muted)]">Message</span>
+                            <span className="font-mono text-label-sm uppercase tracking-[0.18em] text-[var(--foreground-muted)]">Message</span>
                             <textarea
                                 rows={6}
                                 value={formState.message}

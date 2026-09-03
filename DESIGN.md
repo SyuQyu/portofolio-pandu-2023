@@ -1,196 +1,369 @@
 ---
 name: Pandu Utomo Portfolio
-description: A dark, cinematic developer-and-3D-artist portfolio built like a control room around a glowing core.
+description: A studio monograph — a developer-and-3D-artist portfolio set on plaster paper in ink and one molten vermilion, printed rather than lit.
+descends-from:
+  layout: stillpage        # warm editorial x print DNA
+  wordmark: gazu           # monochrome fashion x oversized wordmark
+  captions: hidden-places  # no scrim; the image is the work
 colors:
-  core-glow: "#00d4ff"
-  core-glow-light: "#6366f1"
-  signal-violet: "#8b5cf6"
-  signal-violet-light: "#a855f7"
-  signal-magenta: "#ec4899"
-  signal-green: "#10b981"
-  star-gold: "#fbbf24"
-  void: "#0a0a12"
-  void-raised: "#12121c"
-  ink: "#f4f4f6"
-  ink-secondary: "#9aa0b0"
-  ink-muted: "#5c6070"
-  day: "#f4f4f8"
-  day-raised: "#ebebf2"
-  day-ink: "#14141f"
-  day-ink-secondary: "#4a5061"
+  paper: "#f2f4f6"
+  paper-recessed: "#e5e7ea"
+  ink: "#1c1612"
+  ink-secondary: "#534b47"
+  ink-muted: "#79736f"
+  signal: "#e53908"
+  signal-ink: "#a62000"
+  on-signal: "#130805"
+  rule: "#cfd1d3"
+  surface: "#e9ebee"
+  plate: "#16100c"
+  plate-ink: "#ebe6e2"
+  dark-paper: "#0f0b09"
+  dark-ink: "#eeeae7"
+  dark-ink-secondary: "#aeaaa5"
+  dark-signal: "#f9582a"
+  dark-signal-ink: "#ff8956"
+  dark-rule: "#312d2a"
 typography:
   display:
     fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "clamp(3rem, 13vw, 8rem)"
+    fontSize: "clamp(2.75rem, 11vw, 7rem)"
     fontWeight: 900
-    lineHeight: 0.95
-    letterSpacing: "-0.025em"
+    lineHeight: 0.86
+    letterSpacing: "-0.035em"
+    textTransform: "uppercase"
   headline:
     fontFamily: "Archivo, system-ui, sans-serif"
-    fontSize: "clamp(2.5rem, 6vw, 4.5rem)"
-    fontWeight: 800
+    fontSize: "clamp(2.5rem, 7vw, 5rem)"
+    fontWeight: 900
+    lineHeight: 0.88
+    letterSpacing: "-0.03em"
+    textTransform: "uppercase"
+  divider:
+    fontFamily: "Archivo, system-ui, sans-serif"
+    fontSize: "clamp(2.75rem, 10vw, 7rem)"
+    fontWeight: 900
     lineHeight: 1
-    letterSpacing: "-0.025em"
+    letterSpacing: "-0.03em"
+    textTransform: "uppercase"
+  title:
+    fontFamily: "Archivo, system-ui, sans-serif"
+    fontSize: "clamp(2rem, 4vw, 3rem)"
+    fontWeight: 900
+    lineHeight: 0.9
+    letterSpacing: "-0.03em"
+    textTransform: "uppercase"
+  subtitle:
+    fontFamily: "Archivo, system-ui, sans-serif"
+    fontSize: "clamp(1.6rem, 4vw, 2.5rem)"
+    fontWeight: 900
+    lineHeight: 0.95
+    letterSpacing: "-0.02em"
+    textTransform: "uppercase"
+  lede:
+    fontFamily: "Archivo, system-ui, sans-serif"
+    fontSize: "2rem"
+    fontWeight: 400
+    lineHeight: 1.18
+    letterSpacing: "-0.01em"
+  role:
+    fontFamily: "Archivo, system-ui, sans-serif"
+    fontSize: "clamp(1.05rem, 2.4vw, 1.6rem)"
+    fontWeight: 500
+    lineHeight: 1.2
+    textTransform: "uppercase"
   body:
     fontFamily: "Poppins, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.6
-    letterSpacing: "normal"
+    measure: "65-75ch"
+  label-xs:
+    fontFamily: "Roboto Mono, monospace"
+    fontSize: "0.62rem"
+    lineHeight: 1.4
+    letterSpacing: "0.16em"
+    textTransform: "uppercase"
   label:
     fontFamily: "Roboto Mono, monospace"
-    fontSize: "0.75rem"
-    fontWeight: 400
+    fontSize: "0.68rem"
     lineHeight: 1.4
     letterSpacing: "0.2em"
+    textTransform: "uppercase"
+  label-md:
+    fontFamily: "Roboto Mono, monospace"
+    fontSize: "0.75rem"
+    lineHeight: 1.4
+    letterSpacing: "0.18em"
+    textTransform: "uppercase"
 rounded:
-  pill: "9999px"
-  card: "16px"
-  scroll: "24px"
+  hairline: "3px"
+  plate: "4px"
+  chip: "9999px"
 spacing:
   xs: "8px"
   sm: "16px"
   md: "24px"
   lg: "64px"
-  section: "128px"
+  section: "112px"
 components:
   button-primary:
-    backgroundColor: "{colors.core-glow}"
-    textColor: "#ffffff"
+    backgroundColor: "{colors.signal}"
+    textColor: "{colors.on-signal}"
     typography: "{typography.label}"
-    rounded: "{rounded.pill}"
-    padding: "12px 32px"
+    rounded: "{rounded.hairline}"
+    padding: "14px 28px"
+    hover: "inverts to ink field, paper text"
   button-outline:
     backgroundColor: "transparent"
+    border: "1px solid {colors.ink}"
     textColor: "{colors.ink}"
-    typography: "{typography.label}"
-    rounded: "{rounded.pill}"
-    padding: "12px 32px"
-  button-outline-hover:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.void}"
-  glass-card:
-    backgroundColor: "{colors.void-raised}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.card}"
+    rounded: "{rounded.hairline}"
+    hover: "fills ink, text goes paper"
+  panel:
+    backgroundColor: "{colors.surface}"
+    border: "1px solid {colors.rule}"
+    rounded: "{rounded.plate}"
     padding: "24px"
 ---
 
 # Design System: Pandu Utomo Portfolio
 
+> **This document was rewritten on 2026-09-03 because it had stopped describing
+> the site.** The previous version specified a dark "control room" theme built on
+> a cyan `#00d4ff` → violet `#8b5cf6` gradient, glassmorphic cards and coloured
+> glow shadows. The code moved off that direction; this file did not, and it is
+> the file an agent reads first. Anything built from the stale spec would have
+> reintroduced a purple-to-blue gradient as *doctrine*. If you change the
+> direction again, change this file in the same commit.
+
 ## 1. Overview
 
-**Creative North Star: "The Control Room"**
+**Creative North Star: "The Studio Monograph"**
 
-This is a developer-and-3D-artist portfolio that behaves like the cockpit of a rendered world. A single glowing energy core floats behind the type; everything around it — HUD micro-labels, a live mouse-coordinate readout, mono annotations, honest counters ("3+ Years / 20+ Projects") — is the instrumentation that frames it. The feeling is *stepping into a control room*, not reading a résumé: precision hardware around spectacle, where the spectacle is earned by real WebGL on the page. Calm at rest, alive on interaction.
+This is a printed monograph about a person who builds software and renders
+worlds — not a control room, not a SaaS landing page. The page reads as cool
+plaster paper with near-black ink laid on it: hairline rules that actually
+divide things, oversized grotesque headings set tight and uppercase, mono
+micro-labels carrying real data, and exactly one molten vermilion that appears
+where something is live, selected, or asking to be clicked.
 
-The system is committed to a dark default (the "void"), because the brand's warmth is carried by the accent glow and the 3D imagery, never by a tinted-paper background. Depth comes from a fixed full-page 3D scene the page scrolls *through*, plus restrained glass panels — not from drop shadows. It explicitly rejects the generic-template-portfolio look (hero → card grid → contact form) and the AI-slop tells: gradient text everywhere, eyebrow kickers on every section, identical icon-heading cards. Differentiation lives in the motion choreography and the 3D world, not the section list.
+Depth comes from **overlap, rule weight and generous whitespace**, never from
+glow, blur or a stack of translucent cards. The one exception is the render
+plate: a single always-dark frame holding the live WebGL scene, which reads as a
+lightbox on the page rather than a themed panel.
 
-**Key Characteristics:**
-- Dark, cinematic surface with a single luminous accent that reads as a live signal
-- HUD/instrumentation voice: mono labels, coordinate readouts, honest numbers
-- Depth via a navigable 3D scene + sparse glass, not shadows
-- Masked slide-up reveals and a one-time cinematic intro, all motion-safe
-- Display type set huge, black, and uppercase against quiet mono support
+It descends from three library entries in `e:\web\ai reference`:
+- **stillpage** — the print DNA: paper ground, hairline rules, mono corner
+  labels, near-square corners, no shadows or gradients.
+- **gazu** — the oversized uppercase wordmark used as structure, not decoration.
+- **hidden-places** — the caption rule: the image is the work, so nothing is
+  laid over it.
 
-## 2. Colors
+**Key characteristics**
+- Paper ground, warm ink, one vermilion signal — no second accent anywhere in the UI
+- Type contrast by *voice* (grotesque display / humanist body / mono label), not by size alone
+- Hairline rules and honest spacing instead of cards, glass or glow
+- Masked slide-up reveals on headings; almost nothing else moves
+- One primary action per screen
 
-A near-black void carrying one signature luminous cyan, with a tight family of secondary signals reserved for the 3D scene and rare emphasis. Light theme ("Studio Day") mirrors the roles with an indigo-led accent.
+## 2. Colours
 
-### Primary
-- **Core Glow** (#00d4ff dark / #6366f1 light): The signature accent — it emanates from the 3D energy core and reappears as button fills, the active scroll dot, link underlines, and section rule-lines. The single hue a visitor should associate with the brand.
+A cool plaster paper carrying a warm near-black ink and a single molten
+vermilion. The neutrals are deliberately **tinted** — the paper runs cool
+(hue 250), the ink runs warm (hue 55) — so nothing on the page is a pure or
+untempered grey.
 
-### Secondary
-- **Signal Violet** (#8b5cf6 dark / #a855f7 light): The companion accent — paired with Core Glow in button gradients, glow shadows, and orbiting 3D forms. Never used for body text.
-- **Signal Magenta** (#ec4899): Tertiary energy accent, used almost exclusively inside the 3D scene and the rare gradient rule-line.
+### Signal
+- **Vermilion** (`#e53908` light / `#f9582a` dark): the one accent. It marks the
+  live dot, the selected ink chip, the primary button field, link underlines,
+  the full stop after the name, and the small rule above a section label.
+  Nothing else is coloured.
+- **Signal Ink** (`#a62000` light / `#ff8956` dark): the darker/lighter sibling
+  used *only* where vermilion must carry small text or a link at ≥4.5:1.
+  Vermilion itself is for fills, icons and large text.
 
-### Tertiary
-- **Signal Green** (#10b981) and **Star Gold** (#fbbf24): Scene-only accents for floating sculptures and starlight. Not part of the UI palette.
+### Neutrals
+- **Paper** `#f2f4f6` — the ground. Cool, chroma ≈ 0, and explicitly not cream.
+- **Paper recessed** `#e5e7ea` — image wells and recessed panels.
+- **Ink** `#1c1612` — headlines and primary text. Warm near-black, never `#000`.
+- **Ink secondary** `#534b47` — body prose and supporting copy.
+- **Ink muted** `#79736f` — labels and structural marks only.
+- **Rule** `#cfd1d3` — the hairline. `--line-strong` promotes it to full ink
+  where a divider needs to carry a section.
 
-### Neutral
-- **Void** (#0a0a12): The default page background and the 3D scene's fog/clear color.
-- **Void Raised** (#12121c): Secondary surface — scrolled nav bar, raised panels.
-- **Ink** (#f4f4f6): Primary text and headlines on dark.
-- **Ink Secondary** (#9aa0b0): Supporting text, HUD labels, nav items — the lowest token allowed for real text on the void (~7:1).
-- **Ink Muted** (#5c6070): Decorative/structural only — dividers, the "©" mark, idle iconography. **Never** body or label text on its own.
-- **Studio Day** neutrals (#f4f4f8 / #ebebf2 / #14141f / #4a5061): the light-theme mirror of the above.
+### The render plate
+- **Plate** `#16100c` / **Plate ink** `#ebe6e2` — the live WebGL frame keeps its
+  own warm near-black and bone ink in *both* themes. A viewport into a rendered
+  world is a lightbox, not a surface that should follow the page theme.
 
-### Named Rules
-**The Single Signal Rule.** Core Glow is the one accent a visitor should remember. The other signals belong to the 3D scene; promoting them into the UI dilutes the instrument.
+### Named rules
+**The Single Signal Rule.** There is exactly one accent hue. If a second colour
+appears in the UI, it is a bug. The four render inks (Vermilion, Bone, Moss,
+Stone) exist *inside* the WebGL scene as a named ink tray and never leak out.
 
-**The Muted-Is-Not-Text Rule.** `ink-muted` (#5c6070) clears ~3:1 at best. It is forbidden for any text the user must read — labels included. Reading text starts at `ink-secondary`.
+**The Tinted Neutral Rule.** No `#000`, no `#fff`, no untinted grey. Paper is
+cool, ink is warm, and the difference is what stops the page reading as a
+default.
+
+**The Muted-Is-Not-Prose Rule.** `ink-muted` is for labels and rules. Reading
+text starts at `ink-secondary`.
 
 ## 3. Typography
 
-**Display Font:** Archivo (with system-ui, sans-serif)
-**Body Font:** Poppins (with system-ui, sans-serif)
-**Label/Mono Font:** Roboto Mono (monospace)
+**Display:** Archivo · **Body:** Poppins · **Label:** Roboto Mono
 
-**Character:** A high-contrast trio. Archivo Black set huge and uppercase is the spectacle; Poppins keeps prose quietly humanist and readable; Roboto Mono is the instrumentation voice — every label, coordinate, counter, and HUD annotation. The pairing works because the three sit on different axes (grotesque display / humanist body / mono label), never competing.
+Three faces on three different axes — grotesque display, humanist body, mono
+instrument — so they contrast by voice and never compete. Archivo Black set huge,
+uppercase and tight is the spectacle; Poppins keeps prose quiet and readable;
+Roboto Mono carries every label, count and annotation.
 
 ### Hierarchy
-- **Display** (900, `clamp(3rem, 13vw, 8rem)`, 0.95): Hero headline only — black, uppercase, tight tracking, masked slide-up reveal.
-- **Headline** (800, `clamp(2.5rem, 6vw, 4.5rem)`, 1): Section titles via `SectionHeading` — uppercase, leading-none, masked reveal.
-- **Title** (700, 1.25rem, 1.3): Card and sub-section headings.
-- **Body** (400, 1rem, 1.6): Poppins prose; cap measure at 65–75ch.
-- **Label** (400, 0.75rem, 0.2em tracking, UPPERCASE): Roboto Mono — HUD micro-labels, nav items, button text, the coordinate readout.
+- **Display** (900, `clamp(2.75rem, 11vw, 7rem)`, 0.86, −0.035em): the name in
+  the hero, masked slide-up per word, with a vermilion full stop.
+- **Headline** (900, `clamp(2.5rem, 7vw, 5rem)`, 0.88, −0.03em): section titles
+  via `SectionHeading`, the Marquee band, and the Contact statement — all the
+  same role, so all the same step.
+- **Divider** (900, `clamp(2.75rem, 10vw, 7rem)`): the scrolling `KineticHeading`
+  band. Capped at the display maximum: a *decorative* divider must never be set
+  larger than the page's own name, which it was (7.5rem against the hero's 7).
+- **Title** (900, `clamp(2rem, 4vw, 3rem)`, 0.9): sticky sub-heads — "Who am I?",
+  "My work experience".
+- **Subtitle** (900, `clamp(1.6rem, 4vw, 2.5rem)`, 0.95): "Education", project
+  names in the modal.
+- **Lede** (Archivo, 2rem, 1.18): the one oversized paragraph that opens About.
+- **Role** (500, `clamp(1.05rem, 2.4vw, 1.6rem)`): the hero's role line.
+- **Body** (400, 1rem, 1.6): Poppins, 65–75ch measure.
+- **Label** (Roboto Mono, uppercase, three steps and nothing between):
+  `text-label-xs` 0.62rem for captions, fine print and in-frame annotations;
+  `text-label-sm` 0.68rem for the default mono label and metadata rows;
+  `text-label-md` 0.75rem for nav items, buttons and section kickers.
 
-### Named Rules
-**The Instrument Label Rule.** Anything that reads as data — labels, counters, coordinates, kickers — is Roboto Mono, uppercase, ≥0.2em tracking. Prose is never mono; mono is never prose.
+  This ramp is enforced. Before it existed the codebase carried **ten** one-off
+  micro sizes (0.55 / 0.58 / 0.6 / 0.62 / 0.65 / 0.66 / 0.68 / 0.7 / 0.72 /
+  0.78rem) across 35 usages. Nobody can tell 0.65rem from 0.66rem; sizes a
+  reader cannot distinguish are not a system, they are each component inventing
+  its own value. Use the tokens, never a literal `text-[0.6xrem]`.
 
-**The Display Ceiling Rule.** The hero clamp tops at ~8rem and never tightens past −0.025em. Bigger or tighter and it stops designing and starts shouting.
+### Named rules
+**The Instrument Label Rule.** Anything that reads as data — labels, counts,
+captions, kickers — is Roboto Mono, uppercase, ≥0.18em tracking, with honest
+values. Prose is never mono; mono is never prose.
+
+**The Display Ceiling Rule.** The hero clamp tops at 7rem and never tightens past
+−0.035em.
 
 ## 4. Elevation
 
-This system is **shadow-light by doctrine**. Depth is created three ways, in order of importance: (1) the fixed full-page 3D scene that the whole page scrolls *through*, giving real parallax; (2) translucent glass panels (`backdrop-filter: blur`) that let the scene bleed behind UI; (3) colored *glow*, not gray shadow, as the only "lift." There are no neutral drop shadows anywhere — a gray shadow would read as a 2014 app against this void.
+**This system is flat by doctrine.** Depth is created by, in order: hairline
+rules, generous whitespace, overlap, and a single very soft plate shadow under
+images so a render sits *on* the paper rather than being punched into it.
 
-### Shadow Vocabulary
-- **Core Glow Lift** (`box-shadow: 0 0 20px var(--glow-color)`): Resting glow on primary buttons and active glass; the accent's own color at low alpha.
-- **Core Glow Hover** (`box-shadow: 0 0 35px var(--glow-color)`): Intensified on hover — the surface responds by glowing brighter, not by casting darker.
+- **`--shadow-plate`** — a 1px contact line plus a wide, low-opacity ink shadow.
+  Used only on images.
+- **`--shadow-lift`** — the same, slightly deeper. Reserved; use sparingly.
 
-### Named Rules
-**The Glow-Not-Shadow Rule.** Elevation is expressed as the accent color blooming outward, never as a neutral-gray drop shadow. If it looks gray, it's wrong.
+### Named rules
+**The No-Glow Rule.** Elevation is never a coloured glow, a neon halo or a
+`box-shadow` in the accent hue. That reads as a fake-depth tell. If a surface
+needs to separate, give it a rule or give it space.
+
+**The No-Glass Rule.** No `backdrop-filter` as a *surface* treatment. Exactly two
+blurs remain, and both are cases where content genuinely passes beneath the
+element: the scrolled nav bar, and the project modal's backdrop. Panels are
+opaque, bordered and flat. If you add a third, justify it here or don't add it.
 
 ## 5. Components
 
-### Buttons
-- **Shape:** Full pill (`9999px`), mono uppercase label at 0.15em tracking, 12px × 32px padding.
-- **Primary:** Core Glow → Signal Violet gradient fill, white text, resting Core Glow Lift that intensifies on hover; scales to 1.04 on hover, 0.96 on tap.
-- **Outline:** Transparent with a 1px `ink` border; inverts on hover (fills `ink`, text goes `void`).
-- **Secondary:** Glass surface (`--surface`) with a `--glass-border`, brightening on hover.
+### Buttons (`GradientButton` — name is legacy; there is no gradient)
+- **Shape:** 3px radius rectangle. Mono uppercase label at 0.18em.
+- **Primary:** solid vermilion field, near-black text, inverting to an ink field
+  on hover. Lifts 2px. One per screen.
+- **Outline:** transparent with a 1px ink border, inverting to an ink fill.
+- **Secondary:** flat surface panel with a hairline border.
 
-### Cards / Containers (`GlassCard`)
-- **Corner Style:** 16px radius (`card`).
-- **Background:** `--glass-bg` (translucent) with `backdrop-filter: blur(12–20px)`, so the 3D scene shows through.
-- **Border:** 1px `--glass-border`; on hover, border shifts toward Core Glow at 40% and gains Core Glow Lift.
-- **Behavior:** Mouse-driven 3D tilt (±8°) and a blur-in entrance (`blur(6px) → 0`). Use glass sparingly — it is a feature, not a default surface.
-- **Internal Padding:** 24px.
+### Panels
+Flat, opaque `--surface` with a 1px `--line` border and a 4–5px radius. **No
+nesting** — a panel inside a panel is a bug. If a container has no border,
+background or purpose, delete it.
 
-### Navigation
-- **Style:** Fixed top bar, transparent at rest, transitioning to glass (`--glass-bg` + blur) once scrolled past 50px.
-- **Typography:** Mono uppercase nav items at 0.2em tracking, each prefixed with its index (`01 … 05`) and an animated underline on hover. A live `X:0000 Y:0000` coordinate readout sits beside the `PU©` wordmark on large screens.
-- **States:** `ink-secondary` → `ink` on hover; mobile collapses to a full-screen glass overlay with staggered links.
+### Section openers (`SectionHeading`)
+A full-width ink rule that draws itself left-to-right, then an oversized
+uppercase title with an optional plain-language descriptor set to the right.
+No tracked-uppercase eyebrow above every section, and **no per-section numbering
+by default** — the `number` prop exists only where an ordered sequence is real.
 
-### Inputs / Fields
-- **Style:** Glass surface, 1px `--glass-border`, pill or `card` radius depending on context.
-- **Focus:** Border shifts to Core Glow with a soft glow; never a default browser outline alone.
+### Image captions
+Captions sit on the paper **below** the image, above a hairline rule: title in
+display or semibold, mono tag to the right. Never over the image, and never on a
+gradient scrim. The renders are the work; obscuring one to make white type
+legible destroys the lighting the render was made for.
 
-### Signature Component: HUD Instrumentation
-The micro-labels (top/bottom of hero), the coordinate readout, the scroll indicator, and the section rule-lines together form the "control room" layer. They are mono, uppercase, low-key in color (`ink-secondary` + a text-shadow scrim over the busy scene), and carry *honest* data — location, years, project counts, live coordinates — never decorative lorem.
+### The render plate (signature component)
+The live WebGL frame in the 3D section: a bordered always-dark plate with a mono
+status bar (`LIVE RENDER · WEBGL`, a vermilion live dot), the canvas itself, and
+two flat control clusters — shape and a **named ink tray** (Vermilion, Bone,
+Moss, Stone). It is the page's one strong moment, and it earns it by being real
+3D rather than a video.
 
-## 6. Do's and Don'ts
+## 6. Motion
 
-### Do:
-- **Do** keep Core Glow as the single memorable accent; let the other signals live in the 3D scene (The Single Signal Rule).
-- **Do** express elevation as colored glow blooming outward (`0 0 20px var(--glow-color)`), never a gray drop shadow (The Glow-Not-Shadow Rule).
-- **Do** set instrumentation — labels, counters, coordinates — in Roboto Mono, uppercase, ≥0.2em tracking, with *honest* values.
-- **Do** start any real text at `ink-secondary` (#9aa0b0) or brighter; add a text-shadow scrim when text sits over the animated scene.
-- **Do** give every animation a `prefers-reduced-motion` path — static scene, instant reveals, no looping indicators (it's a stated non-negotiable).
+Short and flat. Fade-and-rise 12–26px over 600–900ms on `[0.16, 1, 0.3, 1]`;
+headings use a masked slide-up from 108–115%. Stagger 30–80ms. Hover and state
+changes transition **named properties** over 200–300ms.
 
-### Don't:
-- **Don't** ship AI-slop tells: gradient text as decoration, an uppercase tracked eyebrow above every section, numbered markers on every section, or identical icon-heading-text card grids. Keep `.text-gradient` rare and meaningful.
-- **Don't** build the generic-template-portfolio shape (hero → card grid of projects → contact form) and call it done; differentiation comes from motion and the 3D world.
-- **Don't** use `ink-muted` (#5c6070) for any text the user must read (The Muted-Is-Not-Text Rule).
-- **Don't** introduce a tinted cream/paper background to feel "warm." Warmth here is the accent glow and the 3D imagery; the body stays the void.
-- **Don't** reach for glassmorphism as a default surface or stack nested cards. Glass is a rare, purposeful panel.
-- **Don't** push the hero display past ~8rem or tighter than −0.025em (The Display Ceiling Rule).
+- **No bounce, no elastic, no overshoot.** The two springs in the codebase are
+  low-amplitude nudges (`y: -2` on a button), not physics toys.
+- Every animation respects `prefers-reduced-motion` via `MotionConfig
+  reducedMotion="user"` in the layout.
+- Never `transition-all` — name the properties, or a layout-thrashing one gets
+  caught by accident.
+
+## 7. Do's and Don'ts
+
+### Do
+- **Do** keep vermilion as the only accent, and be able to point at the one place
+  it earns attention on each screen (The Single Signal Rule).
+- **Do** tint every neutral — cool paper, warm ink (The Tinted Neutral Rule).
+- **Do** separate with hairline rules and whitespace, not cards or glow.
+- **Do** caption images below them, on the paper.
+- **Do** set instrumentation in Roboto Mono, uppercase, with honest values.
+- **Do** record provenance for every asset in `public/ASSETS.md` when you add one.
+
+### Don't
+- **Don't** reintroduce a gradient of any kind — least of all purple-to-blue.
+  The previous spec mandated cyan → violet on the primary button; that is the
+  single most recognisable AI-generated signature there is.
+- **Don't** use `#000` or `#fff`. There are tokens for both ends.
+- **Don't** add glassmorphism, `backdrop-blur` surfaces, or coloured glow
+  shadows (The No-Glass and No-Glow Rules).
+- **Don't** put a scrim, gradient or dark overlay on top of a render to make text
+  readable. Move the text off the image.
+- **Don't** nest cards, or add a wrapper `div` with no border, background or job.
+- **Don't** ship the generic template shape (hero → icon-card trio → contact
+  form) or an uppercase tracked eyebrow above every section.
+- **Don't** add a second CTA of equal weight to any screen.
+- **Don't** swap in Inter or DM Sans. The stack is Archivo / Poppins / Roboto
+  Mono, and it is named on purpose.
+
+## 8. Accessibility
+
+Target **WCAG 2.1 AA** in both themes: body text ≥4.5:1, large text ≥3:1.
+`--foreground-secondary` and `--foreground-muted` are the tokens most likely to
+fail — check them against their real background, not against paper. Vermilion
+`#e53908` does not clear 4.5:1 for small text on paper; that is what
+`--signal-ink` is for. Every animation has a reduced-motion path.
+
+## 9. Before shipping
+
+Run the knowledge-base pre-flight from the project root:
+
+```bash
+node "e:/web/ai reference/scripts/verify.mjs" src
+node "e:/web/ai reference/scripts/verify.mjs" --contrast http://localhost:3000
+npx impeccable detect src
+```
+
+A clean pass means "no mechanical tells", not "good". It cannot see nested
+cards, cannot read text rendered inside a render, and cannot tell you whether
+this still looks like a specific design. Those stay human.

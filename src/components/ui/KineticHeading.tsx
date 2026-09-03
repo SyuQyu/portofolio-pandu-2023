@@ -25,9 +25,9 @@ export const KineticHeading = ({ text, speed = 30 }: KineticHeadingProps) => {
                         className="font-display font-black uppercase leading-none tracking-[-0.03em]"
                         style={
                             filled
-                                ? { fontSize: 'clamp(2.75rem, 10vw, 7.5rem)', color: 'var(--foreground)' }
+                                ? { fontSize: 'clamp(2.75rem, 10vw, 7rem)', color: 'var(--foreground)' }
                                 : {
-                                      fontSize: 'clamp(2.75rem, 10vw, 7.5rem)',
+                                      fontSize: 'clamp(2.75rem, 10vw, 7rem)',
                                       color: 'transparent',
                                       WebkitTextStroke: '1.4px var(--foreground)',
                                   }

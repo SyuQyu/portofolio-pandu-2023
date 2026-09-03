@@ -56,10 +56,10 @@ export const Hero = () => {
                 >
                     {META.map(([label, value]) => (
                         <div key={label}>
-                            <dt className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
+                            <dt className="font-mono text-label-xs uppercase tracking-[0.22em] text-[var(--foreground-muted)]">
                                 {label}
                             </dt>
-                            <dd className="mt-1.5 font-mono text-[0.78rem] uppercase tracking-[0.08em] text-[var(--foreground)]">
+                            <dd className="mt-1.5 font-mono text-label-md uppercase tracking-[0.08em] text-[var(--foreground)]">
                                 {value}
                             </dd>
                         </div>
@@ -108,7 +108,7 @@ export const Hero = () => {
                     </Magnetic>
                     <button
                         onClick={() => scrollToSection('#contactSection')}
-                        className="signal-link font-mono text-[0.72rem] uppercase tracking-[0.18em]"
+                        className="signal-link font-mono text-label-md uppercase tracking-[0.18em]"
                     >
                         or get in touch
                     </button>
@@ -117,7 +117,7 @@ export const Hero = () => {
                 {/* Scroll cue */}
                 <motion.div
                     variants={fadeItem}
-                    className="mt-16 flex items-center gap-3 font-mono text-[0.62rem] uppercase tracking-[0.25em] text-[var(--foreground-muted)]"
+                    className="mt-16 flex items-center gap-3 font-mono text-label-xs uppercase tracking-[0.25em] text-[var(--foreground-muted)]"
                 >
                     <motion.span
                         aria-hidden

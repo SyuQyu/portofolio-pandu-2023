@@ -7,14 +7,23 @@ import { KineticHeading } from '@/components/ui/KineticHeading';
 import { Sparkle } from '@/components/ui/Sparkle';
 import { EASE, staggerParent, staggerChild } from '@/lib/motion';
 
-interface Role {
+interface Position {
     role: string;
-    company: string;
     period: string;
-    logo?: string;
-    mono?: string;
     responsibilities?: string[];
     accomplishments?: string[];
+}
+
+// One employer, not one job title. Two stints at the same company stay under a
+// single heading the way they actually happened, instead of reading down the
+// timeline as two unrelated employers.
+interface Role {
+    company: string;
+    logo?: string;
+    mono?: string;
+    /** Employment type and location, where that is part of the story. */
+    meta?: string;
+    positions: Position[];
 }
 
 interface Education {
@@ -29,81 +38,114 @@ interface Education {
 
 const WORK: Role[] = [
     {
-        role: 'Fullstack Web Developer',
         company: 'CrescentRating',
-        period: 'Sep 2024 to Present',
         logo: '/image/company/cr.jpg',
-        responsibilities: [
-            "Slice the UI/UX team's designs into a new company website.",
-            'Convert the existing site from the old build to the new one and wire up backend connections.',
-        ],
-        accomplishments: [
-            'Resolved front-end and back-end bugs to keep the new site stable.',
-            'Presented progress and deliverables to the team.',
-        ],
-    },
-    {
-        role: 'Freelance Frontend Developer',
-        company: 'Implementasi Teknologi Indonesia',
-        period: 'Oct 2025 to Dec 2025',
-        mono: 'ITI',
-        responsibilities: [
-            'Build and maintain an Admin Dashboard for Patra Logistik to manage internal operational data.',
-            'Develop admin web apps with React, Next.js and Tailwind CSS, integrating APIs for stable module communication.',
-        ],
-        accomplishments: [
-            'Kept code quality and traceability under control with disciplined Git practice.',
+        positions: [
+            {
+                role: 'Fullstack Web Developer',
+                period: 'Sep 2024 to Present',
+                responsibilities: [
+                    "Slice the UI/UX team's designs into a new company website.",
+                    'Convert the existing site from the old build to the new one and wire up backend connections.',
+                ],
+                accomplishments: [
+                    'Resolved front-end and back-end bugs to keep the new site stable.',
+                    'Presented progress and deliverables to the team.',
+                ],
+            },
         ],
     },
     {
-        role: 'Fullstack Web Developer',
+        company: 'PT Implementasi Teknologi Indonesia',
+        logo: '/image/company/itid.jpg',
+        meta: 'Freelance · Bekasi, West Java · Remote',
+        positions: [
+            {
+                role: 'Fullstack Developer',
+                period: 'Feb 2026 to Apr 2026',
+                // TODO: bullets pending — this role's description is collapsed on
+                // LinkedIn, and PHP / Laravel are the only two of its six skills
+                // visible there. Nothing invented in the meantime.
+            },
+            {
+                role: 'Frontend Developer',
+                period: 'Nov 2025 to Feb 2026',
+                responsibilities: [
+                    'Design and build the OILS (One Integrated Logistic System) admin dashboard in Next.js and Tailwind CSS across a four-month active development cycle for Patra Logistik, a logistics subsidiary of PT Pertamina (Persero).',
+                    'Integrate and validate the REST API endpoints behind the dashboard with Postman, keeping data accurate and consistent across every module.',
+                ],
+                accomplishments: [
+                    'Shipped 15+ validated REST endpoints and responsive UI across desktop, tablet and mobile for operational staff working from multiple locations.',
+                    'Worked in a three-person cross-functional team (2 front-end, 1 back-end) on a GitLab branching and merge-request workflow, keeping a clean source history through the project lifecycle.',
+                ],
+            },
+        ],
+    },
+    {
         company: 'Barrakusuma Spatial Teknologi Indonesia',
-        period: 'Jul 2025 to Nov 2025',
         logo: '/image/company/barras.jpg',
-        responsibilities: [
-            'Build an interactive government dashboard to monitor and analyse forest data, with responsive Nuxt.js interfaces.',
-            'Integrate geospatial processing with PostGIS and PostgreSQL for spatial analysis and accurate mapping.',
-        ],
-        accomplishments: [
-            'Implemented 3D map visualization for deeper insight into forest areas and spatial patterns.',
-            'Delivered scalable, high-performance solutions for large geospatial datasets, collaborating remotely with stakeholders.',
+        positions: [
+            {
+                role: 'Fullstack Web Developer',
+                period: 'Jul 2025 to Nov 2025',
+                responsibilities: [
+                    'Build an interactive government dashboard to monitor and analyse forest data, with responsive Nuxt.js interfaces.',
+                    'Integrate geospatial processing with PostGIS and PostgreSQL for spatial analysis and accurate mapping.',
+                ],
+                accomplishments: [
+                    'Implemented 3D map visualization for deeper insight into forest areas and spatial patterns.',
+                    'Delivered scalable, high-performance solutions for large geospatial datasets, collaborating remotely with stakeholders.',
+                ],
+            },
         ],
     },
     {
-        role: 'Fullstack Web Developer · Part-time',
         company: 'Peluang.co',
-        period: 'Oct 2023 to Mar 2024',
         logo: '/image/company/peluang.jpg',
-        responsibilities: [
-            'Slice the franchise-advertising product UI with Next.js, Tailwind and shadcn UI for a seamless, responsive design.',
-            'Implement backend services, APIs and the supporting database.',
-        ],
-        accomplishments: [
-            'Delivered a responsive product franchises use to advertise their business on Peluang.co.',
+        positions: [
+            {
+                role: 'Fullstack Web Developer · Part-time',
+                period: 'Oct 2023 to Mar 2024',
+                responsibilities: [
+                    'Build the franchise-advertising product UI in Next.js, Tailwind and shadcn UI, down to mobile.',
+                    'Implement backend services, APIs and the supporting database.',
+                ],
+                accomplishments: [
+                    'Delivered a responsive product franchises use to advertise their business on Peluang.co.',
+                ],
+            },
         ],
     },
     {
-        role: 'Fullstack Web Developer',
         company: 'Etech',
-        period: 'Jun 2022 to Sep 2022',
         mono: 'ET',
-        responsibilities: [
-            'Implement the UI in React.js and build Express.js APIs from a designed database.',
-        ],
-        accomplishments: [
-            'Refactored front-end and back-end code to improve performance and maintainability.',
+        positions: [
+            {
+                role: 'Fullstack Web Developer',
+                period: 'Jun 2022 to Sep 2022',
+                responsibilities: [
+                    'Implement the UI in React.js and build Express.js APIs from a designed database.',
+                ],
+                accomplishments: [
+                    'Refactored front-end and back-end code to improve performance and maintainability.',
+                ],
+            },
         ],
     },
     {
-        role: 'Fullstack Web Developer · Intern',
         company: 'PT. Brilyan Trimatra Utama',
-        period: 'Oct 2019 to Mar 2020',
         logo: '/image/company/brilyan.jpg',
-        responsibilities: [
-            'Build an accommodation website for PON XX 2020 with a React.js interface.',
-            'Develop Express.js APIs from a structured database design.',
+        positions: [
+            {
+                role: 'Fullstack Web Developer · Intern',
+                period: 'Oct 2019 to Mar 2020',
+                responsibilities: [
+                    'Build an accommodation website for PON XX 2020 with a React.js interface.',
+                    'Develop Express.js APIs from a structured database design.',
+                ],
+                accomplishments: ['Delivered the accommodation platform within the internship program.'],
+            },
         ],
-        accomplishments: ['Delivered the accommodation platform within the internship program.'],
     },
 ];
 
@@ -134,7 +176,7 @@ const Mark = ({ logo, mono, alt, size = 'md' }: { logo?: string; mono?: string; 
             {logo ? (
                 <Image src={logo} alt={alt} width={px} height={px} className="h-full w-full object-cover" />
             ) : (
-                <span className="font-mono text-[0.55rem] tracking-wider text-[var(--foreground-secondary)]">{mono}</span>
+                <span className="font-mono text-label-xs tracking-wider text-[var(--foreground-secondary)]">{mono}</span>
             )}
         </span>
     );
@@ -142,7 +184,7 @@ const Mark = ({ logo, mono, alt, size = 'md' }: { logo?: string; mono?: string; 
 
 const BulletList = ({ heading, items }: { heading: string; items: string[] }) => (
     <div className="mt-5">
-        <h4 className="font-mono text-[0.65rem] font-medium uppercase tracking-[0.2em] text-[var(--foreground)]">
+        <h4 className="font-mono text-label-sm font-medium uppercase tracking-[0.2em] text-[var(--foreground)]">
             {heading}
         </h4>
         <motion.ul className="mt-3 space-y-2.5" variants={staggerParent(0.06)}>
@@ -254,30 +296,49 @@ export const Experience = () => {
                                     >
                                         <motion.div variants={staggerChild} className="flex flex-wrap items-center gap-x-4 gap-y-2">
                                             <Mark logo={exp.logo} mono={exp.mono} alt={exp.company} />
-                                            <h3 className="font-display text-2xl md:text-[1.75rem] font-bold leading-none tracking-tight text-[var(--foreground)]">
+                                            <h3 className="font-display text-2xl font-bold leading-none tracking-tight text-[var(--foreground)]">
                                                 {exp.company}
                                             </h3>
                                         </motion.div>
 
-                                        <motion.p
-                                            variants={staggerChild}
-                                            className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-[var(--foreground-secondary)]"
-                                        >
-                                            <span className="text-[var(--foreground)]">{exp.role}</span>
-                                            <Sparkle className="h-3 w-3 shrink-0 text-[var(--signal)]" />
-                                            <span className="tabular-nums">{exp.period}</span>
-                                        </motion.p>
+                                        {exp.meta && (
+                                            <motion.p
+                                                variants={staggerChild}
+                                                className="mt-2 font-mono text-label-sm uppercase tracking-[0.14em] text-[var(--foreground-muted)]"
+                                            >
+                                                {exp.meta}
+                                            </motion.p>
+                                        )}
 
-                                        {exp.responsibilities && (
-                                            <motion.div variants={staggerChild}>
-                                                <BulletList heading="Key Responsibilities" items={exp.responsibilities} />
-                                            </motion.div>
-                                        )}
-                                        {exp.accomplishments && (
-                                            <motion.div variants={staggerChild}>
-                                                <BulletList heading="Accomplishments" items={exp.accomplishments} />
-                                            </motion.div>
-                                        )}
+                                        {/* A second stint at the same employer is set off by a rule
+                                            rather than a second timeline node — one company, one node. */}
+                                        <div className={exp.positions.length > 1 ? 'mt-5 space-y-8 border-l border-[var(--line)] pl-5' : ''}>
+                                            {exp.positions.map((pos) => (
+                                                <div key={pos.role + pos.period}>
+                                                    <motion.p
+                                                        variants={staggerChild}
+                                                        className={`flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-label-md uppercase tracking-[0.12em] text-[var(--foreground-secondary)] ${
+                                                            exp.positions.length > 1 ? '' : 'mt-3'
+                                                        }`}
+                                                    >
+                                                        <span className="text-[var(--foreground)]">{pos.role}</span>
+                                                        <Sparkle className="h-3 w-3 shrink-0 text-[var(--signal)]" />
+                                                        <span className="tabular-nums">{pos.period}</span>
+                                                    </motion.p>
+
+                                                    {pos.responsibilities && (
+                                                        <motion.div variants={staggerChild}>
+                                                            <BulletList heading="Key Responsibilities" items={pos.responsibilities} />
+                                                        </motion.div>
+                                                    )}
+                                                    {pos.accomplishments && (
+                                                        <motion.div variants={staggerChild}>
+                                                            <BulletList heading="Accomplishments" items={pos.accomplishments} />
+                                                        </motion.div>
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
                                     </motion.div>
                                 </li>
                             );
@@ -295,7 +356,7 @@ export const Experience = () => {
                     >
                         <h2
                             className="font-display font-black uppercase leading-none tracking-[-0.03em] text-[var(--foreground)]"
-                            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}
+                            style={{ fontSize: 'clamp(1.6rem, 4vw, 2.5rem)' }}
                         >
                             Education
                         </h2>
@@ -312,7 +373,7 @@ export const Experience = () => {
                             >
                                 <div className="flex items-center gap-4">
                                     <Mark logo={e.logo} mono={e.mono} alt={e.institution} />
-                                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[var(--foreground-secondary)] tabular-nums">
+                                    <p className="font-mono text-label-md uppercase tracking-[0.14em] text-[var(--foreground-secondary)] tabular-nums">
                                         {e.period}
                                     </p>
                                 </div>

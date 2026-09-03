@@ -36,7 +36,7 @@ export const Navigation = () => {
         <>
             <motion.nav
                 className={cn(
-                    'fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300',
+                    'fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,padding] duration-300',
                     scrolled
                         ? 'border-[var(--line)] bg-[var(--background)]/85 backdrop-blur-xl py-3'
                         : 'border-transparent bg-transparent py-5'
@@ -62,10 +62,10 @@ export const Navigation = () => {
                                 key={item.name}
                                 href={item.href}
                                 onClick={(e) => go(e, item.href)}
-                                className="group relative font-mono text-[0.72rem] uppercase tracking-[0.18em] text-[var(--foreground-secondary)] transition-colors hover:text-[var(--foreground)]"
+                                className="group relative font-mono text-label-md uppercase tracking-[0.18em] text-[var(--foreground-secondary)] transition-colors hover:text-[var(--foreground)]"
                             >
                                 {item.name}
-                                <span className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--signal)] transition-all duration-300 group-hover:w-full" />
+                                <span className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--signal)] transition-[width] duration-300 group-hover:w-full" />
                             </a>
                         ))}
                         <ThemeToggle />
@@ -83,9 +83,9 @@ export const Navigation = () => {
                             aria-label="Toggle menu"
                         >
                             <div className="flex h-4 w-5 flex-col justify-between">
-                                <span className={cn('h-0.5 w-full bg-current transition-all', mobileMenuOpen && 'translate-y-[7px] rotate-45')} />
-                                <span className={cn('h-0.5 w-full bg-current transition-all', mobileMenuOpen && 'opacity-0')} />
-                                <span className={cn('h-0.5 w-full bg-current transition-all', mobileMenuOpen && '-translate-y-[7px] -rotate-45')} />
+                                <span className={cn('h-0.5 w-full bg-current transition-transform duration-300', mobileMenuOpen && 'translate-y-[7px] rotate-45')} />
+                                <span className={cn('h-0.5 w-full bg-current transition-opacity duration-300', mobileMenuOpen && 'opacity-0')} />
+                                <span className={cn('h-0.5 w-full bg-current transition-transform duration-300', mobileMenuOpen && '-translate-y-[7px] -rotate-45')} />
                             </div>
                         </button>
                     </div>

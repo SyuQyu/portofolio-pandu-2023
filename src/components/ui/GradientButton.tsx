@@ -17,7 +17,7 @@ export const GradientButton = ({
     ...props
 }: GradientButtonProps) => {
     const base =
-        'group relative inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-[3px] font-mono text-[0.7rem] uppercase tracking-[0.18em] font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--signal)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]';
+        'group relative inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-[3px] font-mono text-label-md uppercase tracking-[0.18em] font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--signal)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]';
 
     const variants = {
         primary: 'bg-[var(--signal)] text-[var(--ink-on-signal)] hover:bg-[var(--foreground)] hover:text-[var(--background)]',

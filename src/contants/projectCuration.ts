@@ -20,10 +20,23 @@ export interface Project {
     featured: boolean;
     live: string;
     links: ProjectLink[];
+    /** Screenshot of the shipped site. Only hand-curated selected work has one. */
+    image?: string;
+    imageAlt?: string;
+    /** Tech stack, rendered as chips. Empty until the owner confirms it. */
+    stack?: string[];
+    /** Sits behind a login — the public URL only reaches a sign-in screen. */
+    gated?: boolean;
+    /** Says, in the detail view, what the visitor is looking at and why they
+     *  cannot reach it themselves. Only written where that needs explaining. */
+    accessNote?: string;
 }
 
-// Repos hidden from the site entirely.
+// Repos hidden from the site entirely. `company-profile-mni` is here because
+// it leads the section as hand-curated selected work; listing it twice would
+// read as two different projects.
 const EXCLUDE = new Set([
+    'company-profile-mni',
     'project-ganteng',
     'CR-BARENG',
     'backend-skripsi-2025',
@@ -97,8 +110,9 @@ const singleProjects: Project[] = githubProjects
 
 const all = [...singleProjects, ...groupedProjects];
 
-export const featuredProjects: Project[] = all.filter((p) => p.featured);
-
-export const catalogueProjects: Project[] = all
-    .filter((p) => !p.featured)
-    .sort((a, b) => (b.year || '').localeCompare(a.year || '') || a.name.localeCompare(b.name));
+// The lead of the work section is hand-curated (see `selectedWork.ts`), so the
+// GitHub side is one flat catalogue — nothing is promoted out of it by a star
+// count, and nothing is dropped for failing to be promoted.
+export const catalogueProjects: Project[] = all.sort(
+    (a, b) => (b.year || '').localeCompare(a.year || '') || a.name.localeCompare(b.name)
+);

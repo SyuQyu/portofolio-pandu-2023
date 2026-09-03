@@ -19,6 +19,11 @@ interface ThreeDPortfolioItem {
     subtitle: string;
     description: string;
     image: string;
+    /** Intrinsic pixel size. The gallery lays plates out at their NATIVE aspect
+     *  ratio — 13 of these renders are 9:16, and forcing them into a 4:3 cell
+     *  cropped away more than half the composition. */
+    width: number;
+    height: number;
 }
 
 export const codingPortfolio: PortfolioItem[] = [
@@ -327,6 +332,8 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Environment Design',
         description: 'A detailed 3D architectural corridor showcasing advanced lighting techniques and realistic materials. Created using Blender 3D with focus on atmospheric lighting and perspective composition.',
         image: '/image/3D/corridor.png',
+        width: 1920,
+        height: 1080,
     },
     {
         id: '2',
@@ -334,6 +341,8 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Fantasy Scene',
         description: 'Mystical crystal cave environment featuring dynamic lighting effects and procedural crystal formations. Demonstrates expertise in environmental storytelling and fantasy art direction.',
         image: '/image/3D/crystal1.png',
+        width: 1920,
+        height: 1080,
     },
     {
         id: '3',
@@ -341,6 +350,8 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Outdoor Environment',
         description: 'Serene garden landscape with detailed vegetation and natural lighting. Showcases skills in organic modeling, texture work, and outdoor scene composition.',
         image: '/image/3D/garden.png',
+        width: 1080,
+        height: 1920,
     },
     {
         id: '4',
@@ -348,6 +359,8 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Interior Architecture',
         description: 'Contemporary kitchen interior with realistic materials and professional lighting setup. Demonstrates proficiency in architectural visualization and interior design principles.',
         image: '/image/3D/kitchenset1.png',
+        width: 2160,
+        height: 3840,
     },
     {
         id: '5',
@@ -355,6 +368,8 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Interior Architecture',
         description: 'Alternative kitchen layout exploring different design approaches and material combinations. Shows versatility in interior visualization and space planning.',
         image: '/image/3D/kitchenset2.png',
+        width: 1920,
+        height: 1080,
     },
     {
         id: '6',
@@ -362,6 +377,8 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Game Asset',
         description: 'Stylized character environment designed for game development. Features optimized topology and game-ready assets with careful attention to performance and visual appeal.',
         image: '/image/3D/kunoichi.png',
+        width: 1080,
+        height: 1920,
     },
     {
         id: '7',
@@ -369,6 +386,8 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Interior Design',
         description: 'Contemporary living room scene with modern furniture and ambient lighting. Demonstrates skills in interior design visualization and atmospheric rendering.',
         image: '/image/3D/livingroom.png',
+        width: 3840,
+        height: 2160,
     },
     {
         id: '8',
@@ -376,6 +395,8 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Fantasy Architecture',
         description: 'Luxurious royal chamber with ornate decorations and rich materials. Showcases expertise in period architecture and detailed texture work.',
         image: '/image/3D/royalty.png',
+        width: 2160,
+        height: 3840,
     },
     {
         id: '9',
@@ -383,6 +404,8 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Game Design',
         description: 'Futuristic sci-fi environment with advanced lighting and technical details. Created for game development with optimized performance and visual impact.',
         image: '/image/3D/s15.png',
+        width: 3840,
+        height: 2160,
     },
     {
         id: '10',
@@ -390,6 +413,8 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Environmental Design',
         description: 'Detailed architectural door and entrance design with focus on proportions and material authenticity. Demonstrates technical modeling skills.',
         image: '/image/3D/door.png',
+        width: 2160,
+        height: 3840,
     },
     {
         id: '11',
@@ -397,6 +422,8 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Fantasy Interior',
         description: 'Medieval-inspired throne room with dramatic lighting and atmospheric effects. Shows proficiency in historical architecture and mood creation.',
         image: '/image/3D/thorneroom.png',
+        width: 4096,
+        height: 2160,
     },
     {
         id: '12',
@@ -404,5 +431,7 @@ export const threeDPortfolio: ThreeDPortfolioItem[] = [
         subtitle: 'Vehicle Modeling',
         description: 'Detailed train car modeling with realistic materials and environmental context. Demonstrates hard surface modeling and technical accuracy.',
         image: '/image/3D/train.png',
+        width: 1920,
+        height: 1080,
     },
 ];
